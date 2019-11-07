@@ -37,6 +37,6 @@
 - Création du projet: 07/10/19
 
 
-### Realases à venir:
+### Releases à venir:
 
 - /
