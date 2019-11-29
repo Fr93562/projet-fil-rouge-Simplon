@@ -67,6 +67,6 @@ Si le joueur a un compte. Son score viendra alimenter son classement personnel e
 - Ajout de partie règle de jeu: le 29/11/19
 
 
-### Realases à venir:
+### Releases à venir:
 
 - /
