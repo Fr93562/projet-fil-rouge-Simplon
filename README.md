@@ -31,12 +31,13 @@
 
 /
 
+
+## Règles de jeu
+
 * Un plateau de jeu
 * Un dé
 * Des pions
 * Un portefeuille 
-
-## Règles de jeu
 
 La partie se termine quand le portefeuille de son adversaire est vide. Vous êtes alors le ``MEILLEUR développeur`` de la partie et votre portefeuille est bien rempli.
 
