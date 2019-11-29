@@ -63,7 +63,7 @@ Si le joueur a un compte. Son score viendra alimenter son classement personnel e
 ### Mises à jour:
 
 - Création du projet: 07/10/19
-- Ajouts divers
+- Ajouts divers: 28/11/19
 - Ajout de partie règle de jeu: le 29/11/19
 
 
