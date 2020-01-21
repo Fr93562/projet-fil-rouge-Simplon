@@ -60,14 +60,26 @@ Ensuite le deuxième joueur joue. Chaque joueur joue chacun son tour. La partie 
 ## Compte utilisateur
 Si le joueur a un compte. Son score viendra alimenter son classement personnel et le classement des inscrits qui sera définie en nombre de mise remportée et en jeux gagnés.
 
+## Maquette, MCD et USE CASES
+
+### Maquette
+[Maquette](https://marvelapp.com/ddeaiaa)
+
+### MCD
+![MCD](https://github.com/Fr93562/projet-fil-rouge-Simplon/blob/master/docs/mcd/MCDCamille-Final-.PNG?raw=true)
+
+### USE CASES
+![USE CASES](https://github.com/Fr93562/projet-fil-rouge-Simplon/blob/master/docs/use-cases/francois%20-%20use%20case%20v2.jpg?raw=true)
 
 ### Mises à jour:
 
 - Création du projet: 07/10/19
 - Ajouts divers: 28/11/19
-- Ajout de partie règle de jeu: le 29/11/19
+- Ajout de partie règle de jeu: 29/11/19
+- Ajout maquettes, MCD, Use Case: 20/01/20
 
 
 ### Releases à venir:
 
-- /
+- Back-End: 24/01/20
+- Front-End: 14/02/20
