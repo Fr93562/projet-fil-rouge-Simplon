@@ -25,11 +25,11 @@ public class RankingController
 	private RankingRepository rankingRepository;
 	
 	/**
-	 * méthode qui permet de rajouter un score au classement
+	 * mï¿½thode qui permet de rajouter un score au classement
 	 * @param ranking le nouveau rang
-	 * @return le rang ajouté
+	 * @return le rang ajoutï¿½
 	 */
-	@PostMapping("/rank/ajouter")
+	@PostMapping("/ranks")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Ranking ajoutRank(@RequestBody Ranking rank) 
 	{
@@ -37,20 +37,29 @@ public class RankingController
 	}
 	
 	/**
-	 * méthode qui permet d'afficher le classement
+	 * mï¿½thode qui permet d'afficher le classement
 	 * @return classement
 	 */
-	@GetMapping("/rank/afficher")
+	@GetMapping("/ranks")
 	public List<Ranking> afficherRank() 
 	{
-		return rankingRepository.findAll();
+		List<Ranking> output = rankingRepository.findAll();
+		
+		for (Ranking ranking : output) {
+			
+			ranking.getUser().setPassword("null");
+			ranking.getUser().setEmail("null");
+			ranking.getUser().setTypeUser(null);
+		}
+		
+		return output;
 	}
 	
 	/**
-	 * méthode qui permet de modifier le classement
+	 * mï¿½thode qui permet de modifier le classement
 	 * @param newRank
 	 */
-	@PutMapping("/rank/modifier")
+	@PutMapping("/ranks")
 	public void modifierRank(@RequestBody Ranking newRank) 
 	{
 		Optional<Ranking> oldRank = rankingRepository.findById(newRank.getId());

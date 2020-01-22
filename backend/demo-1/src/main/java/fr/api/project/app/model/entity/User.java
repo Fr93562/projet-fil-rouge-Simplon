@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /*
  * Correspond � la table des utilisateurs
@@ -108,6 +110,7 @@ public class User {
 		this.typeUser = typeUser;
 	}
 
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="user_langage", joinColumns={@JoinColumn(name="id_user", unique=false)}, inverseJoinColumns={@JoinColumn(name="id_langage", unique=false)})
 	public Collection <Langage> getLangage() {
