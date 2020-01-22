@@ -9,13 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /*
- * Correspond à la table des langages
+ * Correspond ï¿½ la table des langages
  */
 @Entity
 public class Langage {
 
 	private int id;
-	private String langage;
+	private String language;
 	private Collection <Question> question;
 	
 	
@@ -26,17 +26,17 @@ public class Langage {
 		
 	}
 	
-	public Langage(String langage) {
-		this.langage = langage;
+	public Langage(String language) {
+		this.language = language;
 	}
 	
-	public Langage(String langage, Collection<Question> question) {
-		this.langage = langage;
+	public Langage(String language, Collection<Question> question) {
+		this.language = language;
 		this.question = question;
 	}
 
 	/*
-	 * Méthodes getters and setters
+	 * Mï¿½thodes getters and setters
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -46,11 +46,11 @@ public class Langage {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLangage() {
-		return langage;
+	public String getLanguage() {
+		return language;
 	}
-	public void setLangage(String langage) {
-		this.langage = langage;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	@OneToMany
