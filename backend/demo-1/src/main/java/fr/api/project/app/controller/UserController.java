@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.api.project.app.model.entity.TypeUser;
 import fr.api.project.app.model.entity.User;
+import fr.api.project.app.repository.TypeUserRepository;
 import fr.api.project.app.repository.UserRepository;
 
 
@@ -32,6 +34,9 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private TypeUserRepository typeUserRepository;
+	
 	/**
 	 * Crée un nouvel utilisateur
 	 * 
@@ -41,6 +46,9 @@ public class UserController {
 	@PostMapping("/users")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public User create(@RequestBody User userData) {
+		
+		TypeUser defaultRole = typeUserRepository.findByType("user");
+		userData.setTypeUser(defaultRole);
 		
 		return userRepository.saveAndFlush(userData);
 	}
@@ -99,8 +107,34 @@ public class UserController {
 		
 		  if(verify.isPresent()) {
 			  
-			  userRepository.saveAndFlush(userData);			  
-			  output = "User has been update";
+			TypeUser defaultRole = typeUserRepository.findByType("user");
+			userData.setTypeUser(defaultRole);
+			
+			userRepository.saveAndFlush(userData);			  
+			output = "User has been update";
+		  }
+		  
+		  return output;
+	}
+	
+	/**
+	 * Mets a jour l'utilisateur
+	 * Utilisable uniquement sous accès administrateur
+	 * 
+	 * @param userData
+	 * @return : une reponse en fonction de l'existence
+	 */
+	@PutMapping("/users/admin")
+	@ResponseStatus(code = HttpStatus.OK)
+	public String updateAll(@RequestBody User userData) {
+		
+		String output = "User not found";
+		Optional<User> verify = userRepository.findById(userData.getId());
+		
+		  if(verify.isPresent()) {
+			
+			userRepository.saveAndFlush(userData);			  
+			output = "User has been update";
 		  }
 		  
 		  return output;

@@ -11,4 +11,6 @@ import fr.api.project.app.model.entity.TypeUser;
 @Repository
 public interface TypeUserRepository extends JpaRepository<TypeUser, Integer> {
 
+	TypeUser findByType(String string);
+
 }
