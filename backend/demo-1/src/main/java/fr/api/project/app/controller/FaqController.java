@@ -27,9 +27,6 @@ public class FaqController {
 	@Autowired
 	private FaqRepository faqRepository;
 	
-	
-	
-	
 	/**
 	 * méthode qui permet de rajouter une question à la Faq
 	 * @param faq la nouvelle question
