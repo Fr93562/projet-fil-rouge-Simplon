@@ -29,7 +29,7 @@ public class RankingController
 	 * @param ranking le nouveau rang
 	 * @return le rang ajouté
 	 */
-	@PostMapping("/rank/ajout")
+	@PostMapping("/rank/ajouter")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Ranking ajoutRank(@RequestBody Ranking rank) 
 	{
