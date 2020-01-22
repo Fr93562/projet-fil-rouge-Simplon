@@ -38,14 +38,14 @@ public class QuestionController {
 	 * @param newQuestion La question à ajouter
 	 * @return La question ajouté
 	 */
-	@PostMapping("/question")
+	@PostMapping("/questions")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Question addQuestion(@RequestBody Question newQuestion) {
 
 		return questionRepository.saveAndFlush(newQuestion);
 	}
 
-	@RequestMapping(value = "/question/", params = {"langage"})
+	@RequestMapping(value = "/questions/", params = {"langage"})
 	public List<Question> listQuestion(String langage) {
 		
 		List<Question> output = null;
@@ -68,7 +68,7 @@ public class QuestionController {
 	 * 
 	 * @return : renvoie une liste en Json
 	 */
-	@GetMapping("/question")
+	@GetMapping("/questions")
 	public List<Question> readAll() {
 
 		return questionRepository.findAll();
@@ -80,7 +80,7 @@ public class QuestionController {
 	 * @param modifQuestion
 	 * @return : une reponse en fonction de l'existence
 	 */
-	@PutMapping("/question")
+	@PutMapping("/questions")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String updateQuestion(@RequestBody Question modifQuestion) {
 
@@ -101,7 +101,7 @@ public class QuestionController {
 	 * 
 	 * @param delQuestion : corresponds au Json transformé en objet question
 	 */
-	@DeleteMapping("/question")
+	@DeleteMapping("/questions")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody Question delQuestion) {
 
