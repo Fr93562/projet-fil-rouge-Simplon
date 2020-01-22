@@ -1,9 +1,12 @@
 package fr.api.project.app.model.entity;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -21,15 +24,21 @@ public class Ressource
 	private int id;
 	private String text;
 	private String link;
+	
+	
+	@OneToMany(mappedBy="ressource")
+	private Collection<Question> questions;
 
 	public Ressource() {}
 
-	public Ressource(int id, String text, String link) 
+	public Ressource(String text, String link, Collection <Question> questions) 
 	{
-		this.id = id;
 		this.text = text;
 		this.link = link;
+		this.questions = questions;
 	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -54,6 +63,16 @@ public class Ressource
 	public void setLink(String link) {
 		this.link = link;
 	}
+
+	public Collection<Question> getQuestion() {
+		return questions;
+	}
+
+	public void setQuestion(Collection<Question> question) {
+		this.questions = question;
+	}
+	
+	
 	
 	
 

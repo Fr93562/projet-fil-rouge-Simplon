@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /*
  * Correspond au classement des utilisateurs
@@ -14,6 +15,7 @@ public class Ranking {
 	
 	private int id;
 	private int point;
+	private User user;
 	
 	/*
 	 * Constructeurs
@@ -26,17 +28,16 @@ public class Ranking {
 		this.point = point;
 	}
 
-	public Ranking(int id, int point) {
-		this.id = id;
+	public Ranking(int point, User user) {
 		this.point = point;
+		this.user = user;
 	}
 
-	
 	/*
 	 * Méthodes getters and setters
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}
@@ -52,6 +53,16 @@ public class Ranking {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
+	@OneToOne
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 	
 }
