@@ -1,5 +1,95 @@
 package fr.api.project.app.model.entity;
 
-public class Question {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+/**
+ * déclaration de l'objet model Question
+ * Modèle de table pour hibernate
+ * id avec avec auto incrémentation
+ * @author trivial code devs
+ *
+ */
+@Entity
+public class Question 
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String question;
+	private int level;
+	private String answer;
+	private String choice1, choice2, choice3;
+	
+	public Question() {}
+
+	public Question(int id, String question, int level, String answer, String choice1, String choice2, String choice3) 
+	{
+		this.id = id;
+		this.question = question;
+		this.level = level;
+		this.answer = answer;
+		this.choice1 = choice1;
+		this.choice2 = choice2;
+		this.choice3 = choice3;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public String getChoice1() {
+		return choice1;
+	}
+
+	public void setChoice1(String choice1) {
+		this.choice1 = choice1;
+	}
+
+	public String getChoice2() {
+		return choice2;
+	}
+
+	public void setChoice2(String choice2) {
+		this.choice2 = choice2;
+	}
+
+	public String getChoice3() {
+		return choice3;
+	}
+
+	public void setChoice3(String choice3) {
+		this.choice3 = choice3;
+	}
+	
 }
