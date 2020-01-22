@@ -8,11 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
- * Déclaration de l'objet model Ressource
- * modèle de table pour hibernate
- * id avec avec auto incrémentation
+ * Dï¿½claration de l'objet model Ressource
+ * modï¿½le de table pour hibernate
+ * id avec avec auto incrï¿½mentation
  * @author trivial code devs
  *
  */
@@ -64,6 +66,7 @@ public class Ressource
 		this.link = link;
 	}
 
+	@JsonIgnore
 	public Collection<Question> getQuestion() {
 		return questions;
 	}

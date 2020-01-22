@@ -28,29 +28,29 @@ public class FaqController {
 	private FaqRepository faqRepository;
 	
 	/**
-	 * méthode qui permet de rajouter une question à la Faq
+	 * mï¿½thode qui permet de rajouter une question ï¿½ la Faq
 	 * @param faq la nouvelle question
-	 * @return la question ajoutée
+	 * @return la question ajoutï¿½e
 	 */
-	@PostMapping("/faq/ajout")
+	@PostMapping("/faq")
 	public Faq ajoutFaq(@RequestBody Faq faq) {
 		return faqRepository.saveAndFlush(faq);
 	}
 	
 	/**
-	 * méthode qui permet d'afficher la liste des questions
+	 * mï¿½thode qui permet d'afficher la liste des questions
 	 * @return la liste des questions
 	 */
-	@GetMapping("/faq/afficher")
+	@GetMapping("/faq")
 	public List<Faq> afficherFaq() {
 		return faqRepository.findAll();
 	}
 	
 	/**
-	 * méthode qui permet de modifier une question
-	 * @param newFaq question modifiée
+	 * mï¿½thode qui permet de modifier une question
+	 * @param newFaq question modifiï¿½e
 	 */
-	@PutMapping("/faq/modifier")
+	@PutMapping("/faq")
 	public void modifierFaq(@RequestBody Faq newFaq) {
 		Optional<Faq> oldFaq = faqRepository.findById(newFaq.getId());
 		  if(oldFaq.isPresent()) {
@@ -59,8 +59,8 @@ public class FaqController {
 	}
 	
 	/**
-	 * méthode qui permet de supprimer une question
-	 * @param removeFaq question à supprimer
+	 * mï¿½thode qui permet de supprimer une question
+	 * @param removeFaq question ï¿½ supprimer
 	 */
 	@DeleteMapping("/faq/supprimer")
 	public void supprimerFaq(@RequestBody Faq removeFaq) {
