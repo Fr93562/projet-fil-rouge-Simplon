@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.api.project.app.model.entity.Faq;
 import fr.api.project.app.repository.FaqRepository;
 
-
+/**
+ * gère les routes des faq
+ * @author 
+ *
+ */
 @CrossOrigin("*")
 @RestController
 public class FaqController {
 
-	/**
-	 * Commentaires: CRUD complet + (readAll) 1iere modif d'une branche
-	 */
+	
 	@Autowired
 	private FaqRepository faqRepository;
-	
-	
 	
 	
 	/**
