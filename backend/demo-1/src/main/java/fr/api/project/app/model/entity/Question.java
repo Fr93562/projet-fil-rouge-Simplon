@@ -25,19 +25,23 @@ public class Question
 	private String choice1, choice2, choice3;
 	
 	@ManyToOne
-	//@JoinColumn(name="ressource",referencedColumnName="id")
+	private Categorie categorie;
+	
+	@ManyToOne
 	private Ressource ressource;
 	
 	public Question() {}
 
 	public Question(String question, int level, String answer, String choice1, String choice2, String choice3,
-			Ressource ressource) {
+			Categorie categorie, Ressource ressource) {
+		
 		this.question = question;
 		this.level = level;
 		this.answer = answer;
 		this.choice1 = choice1;
 		this.choice2 = choice2;
 		this.choice3 = choice3;
+		this.categorie = categorie;
 		this.ressource = ressource;
 	}
 
@@ -103,6 +107,14 @@ public class Question
 
 	public void setRessource(Ressource ressource) {
 		this.ressource = ressource;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
 	

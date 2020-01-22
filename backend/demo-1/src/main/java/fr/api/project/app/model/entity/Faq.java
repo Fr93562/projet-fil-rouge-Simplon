@@ -30,7 +30,7 @@ public class Faq
 		this.response = response;
 		this.priority = priority;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
