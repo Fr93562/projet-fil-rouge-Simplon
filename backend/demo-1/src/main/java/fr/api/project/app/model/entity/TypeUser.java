@@ -27,17 +27,12 @@ public class TypeUser {
 		this.type = type;
 	}
 
-	public TypeUser(int id, String type) {
-		this.id = id;
-		this.type = type;
-	}
-
 	
 	/*
 	 * Méthodes getters and setters
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}

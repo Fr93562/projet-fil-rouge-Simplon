@@ -28,14 +28,7 @@ public class Ranking {
 		this.point = point;
 	}
 
-	public Ranking(int id, int point) {
-		this.id = id;
-		this.point = point;
-	}
-
-	public Ranking(int id, int point, User user) {
-		super();
-		this.id = id;
+	public Ranking(int point, User user) {
 		this.point = point;
 		this.user = user;
 	}
@@ -44,7 +37,7 @@ public class Ranking {
 	 * Méthodes getters and setters
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}

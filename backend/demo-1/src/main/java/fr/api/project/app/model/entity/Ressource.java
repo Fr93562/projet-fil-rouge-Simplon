@@ -31,9 +31,8 @@ public class Ressource
 
 	public Ressource() {}
 
-	public Ressource(int id, String text, String link, Collection <Question> questions) 
+	public Ressource(String text, String link, Collection <Question> questions) 
 	{
-		this.id = id;
 		this.text = text;
 		this.link = link;
 		this.questions = questions;

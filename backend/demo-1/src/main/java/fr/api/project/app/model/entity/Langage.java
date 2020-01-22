@@ -30,13 +30,7 @@ public class Langage {
 		this.langage = langage;
 	}
 	
-	public Langage(int id, String langage) {
-		this.id = id;
-		this.langage = langage;
-	}
-	
-	public Langage(int id, String langage, Collection<Question> question) {
-		this.id = id;
+	public Langage(String langage, Collection<Question> question) {
 		this.langage = langage;
 		this.question = question;
 	}
@@ -45,7 +39,7 @@ public class Langage {
 	 * Méthodes getters and setters
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}

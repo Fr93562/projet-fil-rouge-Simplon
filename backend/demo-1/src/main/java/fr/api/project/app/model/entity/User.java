@@ -45,17 +45,7 @@ public class User {
 		this.dateInscription = dateInscription;
 	}
 	
-	public User(int id, String username, String email, String password, Date dateInscription) {
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.dateInscription = dateInscription;
-	}
-
-	public User(int id, String username, String email, String password, Date dateInscription, Ranking ranking) {
-		super();
-		this.id = id;
+	public User(String username, String email, String password, Date dateInscription, Ranking ranking) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -63,9 +53,8 @@ public class User {
 		this.ranking = ranking;
 	}
 
-	public User(int id, String username, String email, String password, Date dateInscription, Ranking ranking,
+	public User(String username, String email, String password, Date dateInscription, Ranking ranking,
 			TypeUser typeUser) {
-		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -92,7 +81,7 @@ public class User {
 	 * méthodes getters et setters
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}

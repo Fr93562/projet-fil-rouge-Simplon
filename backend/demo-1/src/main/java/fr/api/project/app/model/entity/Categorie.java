@@ -21,9 +21,8 @@ public class Categorie
 	
 	public Categorie() {}
 
-	public Categorie(int id, String type) 
+	public Categorie(String type) 
 	{
-		this.id = id;
 		this.type = type;
 	}
 
