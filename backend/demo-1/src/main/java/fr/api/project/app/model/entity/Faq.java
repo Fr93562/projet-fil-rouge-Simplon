@@ -24,14 +24,13 @@ public class Faq
 	
 	public Faq() {}
 
-	public Faq(int id, String question, String response, String priority) 
+	public Faq(String question, String response, String priority) 
 	{
-		this.id = id;
 		this.question = question;
 		this.response = response;
 		this.priority = priority;
 	}
-
+	
 	public int getId() {
 		return id;
 	}

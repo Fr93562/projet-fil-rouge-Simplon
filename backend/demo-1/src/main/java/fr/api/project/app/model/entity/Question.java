@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * déclaration de l'objet model Question
@@ -23,17 +24,25 @@ public class Question
 	private String answer;
 	private String choice1, choice2, choice3;
 	
+	@ManyToOne
+	private Categorie categorie;
+	
+	@ManyToOne
+	private Ressource ressource;
+	
 	public Question() {}
 
-	public Question(int id, String question, int level, String answer, String choice1, String choice2, String choice3) 
-	{
-		this.id = id;
+	public Question(String question, int level, String answer, String choice1, String choice2, String choice3,
+			Categorie categorie, Ressource ressource) {
+		
 		this.question = question;
 		this.level = level;
 		this.answer = answer;
 		this.choice1 = choice1;
 		this.choice2 = choice2;
 		this.choice3 = choice3;
+		this.categorie = categorie;
+		this.ressource = ressource;
 	}
 
 	public int getId() {
@@ -91,5 +100,25 @@ public class Question
 	public void setChoice3(String choice3) {
 		this.choice3 = choice3;
 	}
+
+	public Ressource getRessource() {
+		return ressource;
+	}
+
+	public void setRessource(Ressource ressource) {
+		this.ressource = ressource;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	
+	
+	
 	
 }
