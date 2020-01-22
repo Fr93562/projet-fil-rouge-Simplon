@@ -30,14 +30,14 @@ import fr.api.project.app.repository.LangageRepository;
 public class LangageController {
 
 	@Autowired
-	private LangageRepository langageRepository;
+	private LangageRepository langageRepository2;
 	
 
 	@PostMapping("/langages")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Langage create(@RequestBody Langage langageData) {
 		
-		return langageRepository.saveAndFlush(langageData);
+		return langageRepository2.saveAndFlush(langageData);
 	}
 	
 
@@ -45,11 +45,11 @@ public class LangageController {
 	public Optional<Langage> read(String langage) {
 		
 		Optional<Langage> output = null;
-		Optional<Langage> verify = langageRepository.findByLangage(langage);
+		Optional<Langage> verify = langageRepository2.findByLanguage(langage);
 		
 		  if(verify.isPresent()) {
 			  
-			  output = langageRepository.findByLangage(langage);
+			  output = langageRepository2.findByLanguage(langage);
 		  }
 		
 		return output;
@@ -59,7 +59,7 @@ public class LangageController {
 	@GetMapping("/langages")
 	public List<Langage> readAll() {
 		
-		return  langageRepository.findAll();
+		return  langageRepository2.findAll();
 	}
 	
 
@@ -68,15 +68,15 @@ public class LangageController {
 	public String update(@RequestBody Langage langageData) {
 		
 		String output = "Langage not found";
-		Optional<Langage> verify = langageRepository.findById(langageData.getId());
+		Optional<Langage> verify = langageRepository2.findById(langageData.getId());
 		
 		  if(verify.isPresent()) {
 			  
-			  Optional<Langage> langageInter = langageRepository.findById(langageData.getId());
+			  Optional<Langage> langageInter = langageRepository2.findById(langageData.getId());
 			  Langage LangageInter = langageInter.get();
 			  
 			  langageData.setQuestion(LangageInter.getQuestion());
-			  langageRepository.saveAndFlush(langageData);			
+			  langageRepository2.saveAndFlush(langageData);			
 			  
 			  output = "Langage has been update";
 		  }
@@ -90,16 +90,16 @@ public class LangageController {
 	 * 
 	 * @param userData : corresponds au Json transformé en objet user
 	 */
-	@DeleteMapping("/users")
+	@DeleteMapping("/langages")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody Langage langageData) {
 		
 		String output = "User not found";
-		Optional<Langage> verify = langageRepository.findById(langageData.getId());
+		Optional<Langage> verify = langageRepository2.findById(langageData.getId());
 		
 		if(verify.isPresent()) {
 		
-			langageRepository.delete(langageData);	
+			langageRepository2.delete(langageData);	
 			output = "User has been delete";
 		}
 		return output;

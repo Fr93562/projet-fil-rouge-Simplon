@@ -47,7 +47,7 @@ public class UserController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public User create(@RequestBody User userData) {
 		
-		TypeUser defaultRole = typeUserRepository.findByType("user");
+		TypeUser defaultRole = typeUserRepository.findByType("Joueur");
 		userData.setTypeUser(defaultRole);
 		
 		return userRepository.saveAndFlush(userData);
@@ -107,7 +107,7 @@ public class UserController {
 		
 		  if(verify.isPresent()) {
 			  
-			TypeUser defaultRole = typeUserRepository.findByType("user");
+			TypeUser defaultRole = typeUserRepository.findByType("Joueur");
 			userData.setTypeUser(defaultRole);
 			
 			userRepository.saveAndFlush(userData);			  
@@ -145,12 +145,13 @@ public class UserController {
 	 * La réponse dépend de son existence en Bdd
 	 * 
 	 * @param userData : corresponds au Json transformé en objet user
-	 */
+	 */ 
 	@DeleteMapping("/users")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody User userData) {
 		
 		String output = "User not found";
+		
 		Optional<User> verify = userRepository.findById(userData.getId());
 		
 		if(verify.isPresent()) {
@@ -158,6 +159,9 @@ public class UserController {
 			userRepository.delete(userData);	
 			output = "User has been delete";
 		}
+		
 		return output;
+		
 	}
+	
 }

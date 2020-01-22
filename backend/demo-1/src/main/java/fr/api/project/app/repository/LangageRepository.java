@@ -14,6 +14,6 @@ import fr.api.project.app.model.entity.Langage;
 public interface LangageRepository extends JpaRepository<Langage, Integer> {
 
 
-	Optional<Langage> findByLangage(String langage);
+	Optional<Langage> findByLanguage(String langage);
 
 }

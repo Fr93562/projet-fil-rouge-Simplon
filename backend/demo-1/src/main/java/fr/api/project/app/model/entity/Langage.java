@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /*
  * Correspond � la table des langages
  */
@@ -53,6 +55,7 @@ public class Langage {
 		this.language = language;
 	}
 
+	@JsonIgnore
 	@OneToMany
 	public Collection<Question> getQuestion() {
 		return question;
