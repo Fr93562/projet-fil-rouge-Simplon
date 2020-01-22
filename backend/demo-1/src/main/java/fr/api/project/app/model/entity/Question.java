@@ -6,10 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
- * déclaration de l'objet model Question
- * Modèle de table pour hibernate
- * id avec avec auto incrémentation
+ * dï¿½claration de l'objet model Question
+ * Modï¿½le de table pour hibernate
+ * id avec avec auto incrï¿½mentation
  * @author trivial code devs
  *
  */
@@ -27,6 +29,7 @@ public class Question
 	@ManyToOne
 	private Categorie categorie;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Ressource ressource;
 	

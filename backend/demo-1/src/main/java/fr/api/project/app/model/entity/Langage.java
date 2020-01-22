@@ -61,8 +61,4 @@ public class Langage {
 	public void setQuestion(Collection<Question> question) {
 		this.question = question;
 	}
-	
-	
-	
-	
 }
