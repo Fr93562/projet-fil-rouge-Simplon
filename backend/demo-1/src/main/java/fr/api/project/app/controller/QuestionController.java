@@ -5,20 +5,32 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import fr.api.project.app.model.entity.Langage;
 import fr.api.project.app.model.entity.Question;
+import fr.api.project.app.repository.LangageRepository;
 import fr.api.project.app.repository.QuestionRepository;
 
+@CrossOrigin("*")
+@RestController
 public class QuestionController {
 	
 	@Autowired
 	private QuestionRepository questionRepository;
+	
+	@Autowired
+	private LangageRepository langageRepository;
 
 
 
@@ -29,14 +41,28 @@ public class QuestionController {
 	 */
 	@PostMapping("/question")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Question AddQuestion(@RequestBody Question newQuestion) {
+	public Question addQuestion(@RequestBody Question newQuestion) {
 
 		return questionRepository.saveAndFlush(newQuestion);
 	}
 
-	/**
-	 * Pas de question a faire dans langage
-	 */
+	@RequestMapping(value = "/question/", params = {"langage"})
+	public List<Question> listQuestion(String langage) {
+		
+		List<Question> output = null;
+		Optional<Langage> language = langageRepository.findByLanguage(langage);
+		
+		if (language.isPresent()) {
+			Optional<List<Integer>> questionList = questionRepository.findAllByLangageId(language.get().getId());
+			
+			  if(questionList.isPresent()) { 
+				  List<Integer> list = questionList.get();
+				  output = questionRepository.findAllById(list);
+			  }
+		}
+		
+		return output;
+	}
 
 	/**
 	 * Renvoie toutes les questions au format Json 
