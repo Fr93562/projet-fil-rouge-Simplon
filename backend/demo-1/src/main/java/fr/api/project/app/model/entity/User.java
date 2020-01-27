@@ -16,10 +16,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /*
- * Correspond � la table des utilisateurs
+ * Correspond a la table des utilisateurs
  */
 @Entity
 public class User {
+	
+	/**
+	 * Attributs
+	 */
 	
 	private int id;
 	private String username;
@@ -28,10 +32,12 @@ public class User {
 	private Date dateInscription;
 	private TypeUser typeUser;
 	private Collection <Langage> langage;
+	private long ranking;
 	
 	/*
 	 * Constructeurs
 	 */
+	
 	public User() {
 		
 	}
@@ -51,23 +57,23 @@ public class User {
 		this.dateInscription = dateInscription;
 		this.typeUser = typeUser;
 	}
-	
-	
 
-	public User(int id, String username, String email, String password, Date dateInscription, 
-			TypeUser typeUser, Collection <Langage> langage) {
-		this.id = id;
+	public User(String username, String email, String password, Date dateInscription, TypeUser typeUser,
+			Collection<Langage> langage, long ranking) {
+		super();
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.dateInscription = dateInscription;
 		this.typeUser = typeUser;
 		this.langage = langage;
+		this.ranking = ranking;
 	}
 
 	/*
-	 * m�thodes getters et setters
+	 * Methodes getters et setters
 	 */
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -101,7 +107,7 @@ public class User {
 		this.dateInscription = dateInscription;
 	}
 
-	@ManyToOne
+	@ManyToOne //Plusieurs utilisateurs ont un Type
 	public TypeUser getTypeUser() {
 		return typeUser;
 	}
@@ -110,8 +116,9 @@ public class User {
 		this.typeUser = typeUser;
 	}
 
-	@JsonIgnore
-	@ManyToMany
+	@JsonIgnore //Evite les boucles d'appel
+	@ManyToMany //Plusieurs utilisateurs ont plusieurs Langages
+	//Creation d'une table intermediaire
 	@JoinTable(name="user_langage", joinColumns={@JoinColumn(name="id_user", unique=false)}, inverseJoinColumns={@JoinColumn(name="id_langage", unique=false)})
 	public Collection <Langage> getLangage() {
 		return langage;
@@ -119,6 +126,14 @@ public class User {
 
 	public void setLangage(Collection <Langage> langage) {
 		this.langage = langage;
+	}
+
+	public long getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(long ranking) {
+		this.ranking = ranking;
 	}
 	
 	

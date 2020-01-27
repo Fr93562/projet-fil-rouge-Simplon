@@ -13,8 +13,12 @@ import fr.api.project.app.model.entity.Question;
 public interface QuestionRepository extends JpaRepository<Question, Integer> 
 {
 
-	@Query(value = "SELECT question_id FROM langage_question WHERE langage_id = ?1", nativeQuery = true)
-	Optional<List<Integer>> findAllByLangageId(int langageid);
-
+	/**
+	 * Fourni la Liste des questions correspondant au langage
+	 * @param langage langage a trouver
+	 * @return Liste de question correspondant au langage
+	 */
+	@Query(value = "SELECT * FROM question LEFT JOIN langage_question lq ON question.id = lq.question_id WHERE lq.langage_id = (SELECT id FROM langage WHERE language=?1)", nativeQuery = true)
+	Optional<List<Question>> findAllByLangage(String langage);
 
 }

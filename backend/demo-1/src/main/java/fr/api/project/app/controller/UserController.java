@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.api.project.app.model.entity.Categorie;
 import fr.api.project.app.model.entity.TypeUser;
 import fr.api.project.app.model.entity.User;
 import fr.api.project.app.repository.TypeUserRepository;
@@ -28,6 +29,7 @@ import fr.api.project.app.repository.UserRepository;
  * @author FrancoisMacko
  */
 @CrossOrigin("*")
+@RequestMapping("/users")
 @RestController
 public class UserController {
 
@@ -43,7 +45,7 @@ public class UserController {
 	 * @param userData: Corresponds aux données users passées dans le Json
 	 * @return
 	 */
-	@PostMapping("/users")
+	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public User create(@RequestBody User userData) {
 		
@@ -60,7 +62,7 @@ public class UserController {
 	 * @param username : pseudo de l'utilisateur
 	 * @return : renvoie un objet utilisateur ou null
 	 */
-	@RequestMapping(value = "/users/", params = {"username"})
+	@RequestMapping(value = "", params = {"username"})
 	public Optional<User> read(String username) {
 		
 		Optional<User> output = null;
@@ -80,7 +82,7 @@ public class UserController {
 	 * 
 	 * @return : renvoie une liste en Json
 	 */
-	@GetMapping("/users")
+	@GetMapping("")
 	public List<User> readAll() {
 		
 		List<User> output = userRepository.findAll();
@@ -98,7 +100,7 @@ public class UserController {
 	 * @param userData
 	 * @return : une reponse en fonction de l'existence
 	 */
-	@PutMapping("/users")
+	@PutMapping("")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String update(@RequestBody User userData) {
 		
@@ -124,7 +126,7 @@ public class UserController {
 	 * @param userData
 	 * @return : une reponse en fonction de l'existence
 	 */
-	@PutMapping("/users/admin")
+	@PutMapping("/admin")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String updateAll(@RequestBody User userData) {
 		
@@ -146,7 +148,7 @@ public class UserController {
 	 * 
 	 * @param userData : corresponds au Json transformé en objet user
 	 */ 
-	@DeleteMapping("/users")
+	@DeleteMapping("")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody User userData) {
 		
@@ -164,4 +166,60 @@ public class UserController {
 		
 	}
 	
+	/**
+	 * Liste tous les types
+	 * @return La liste des types
+	 */
+	@GetMapping("/type")
+	public List<TypeUser> getTypeUser(){
+		return typeUserRepository.findAll();
+	}
+	
+	/**
+	 * Ajoute un type
+	 * @return Le type cree
+	 */
+	@PostMapping("/type")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public TypeUser addTypeUser(@RequestBody TypeUser newTypeUser){
+		return typeUserRepository.saveAndFlush(newTypeUser);
+	}
+	
+	/**
+	 * Modifie un type
+	 * @param modifTypeUser
+	 * @return le type modifie
+	 */
+	@PutMapping("/type")
+	@ResponseStatus(code = HttpStatus.OK)
+	public String updateTypeUser(@RequestBody TypeUser modifTypeUser) {
+
+		String output = "Type not found";
+		Optional<TypeUser> verify = typeUserRepository.findById(modifTypeUser.getId());
+
+		  if(verify.isPresent()) {
+			  typeUserRepository.saveAndFlush(modifTypeUser);			  
+			  output = "Type has been update";
+		  }
+		  return output;
+	}
+	
+	/**
+	 * Supprime le type 
+	 * @param delTypeUser Type a supprimé
+	 * @return retourne un message en fonction du resultat de la requete
+	 */
+	@DeleteMapping("/type")
+	@ResponseStatus(code = HttpStatus.OK)
+	public String deleteTypeUser(@RequestBody TypeUser delTypeUser) {
+
+		String output = "Type not found";
+		Optional<TypeUser> verify = typeUserRepository.findById(delTypeUser.getId());
+
+		if(verify.isPresent()) {
+			typeUserRepository.delete(delTypeUser);	
+			output = "Type has been delete";
+		}
+		return output;
+	}
 }

@@ -9,15 +9,19 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * d�claration de l'objet model Question
- * Mod�le de table pour hibernate
- * id avec avec auto incr�mentation
+ * Declaration de l'objet model Question
+ * Model de table pour hibernate
+ * Id avec avec auto-incrementation
  * @author trivial code devs
  *
  */
 @Entity
 public class Question 
 {
+	/**
+	 * Attributs
+	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -26,18 +30,22 @@ public class Question
 	private String answer;
 	private String choice1, choice2, choice3;
 	
-	@ManyToOne
+	@ManyToOne //Plusieurs Questions ont une Categorie
 	private Categorie categorie;
 	
-	@JsonIgnore
-	@ManyToOne
+	@JsonIgnore	//Evite les boucles d'appel
+	@ManyToOne //PLusieurs Questionq ont une Ressource
 	private Ressource ressource;
+	
+	/**
+	 * Constructeurs
+	 */
 	
 	public Question() {}
 
 	public Question(String question, int level, String answer, String choice1, String choice2, String choice3,
-			Categorie categorie, Ressource ressource) {
-		
+			Categorie categorie, Ressource ressource) 
+	{
 		this.question = question;
 		this.level = level;
 		this.answer = answer;
@@ -47,6 +55,10 @@ public class Question
 		this.categorie = categorie;
 		this.ressource = ressource;
 	}
+	
+	/**
+	 * Getters/Setters
+	 */
 
 	public int getId() {
 		return id;
@@ -119,9 +131,4 @@ public class Question
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-
-	
-	
-	
-	
 }

@@ -6,21 +6,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * déclaration de l'objet model FAQ
- * Modèle de table pour hibernate
- * id avec avec auto incrémentation
+ * Declaration de l'objet model FAQ
+ * Model de table pour hibernate
+ * Id avec avec auto-incrementation
  * @author trivial code devs
  *
  */
 @Entity
 public class Faq 
 {
+	/**
+	 * Attributs
+	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String question;
 	private String response;
 	private String priority;
+	
+	/**
+	 * Constructeurs
+	 */
 	
 	public Faq() {}
 
@@ -30,6 +38,10 @@ public class Faq
 		this.response = response;
 		this.priority = priority;
 	}
+	
+	/**
+	 * Getter/Setters
+	 */
 	
 	public int getId() {
 		return id;
@@ -62,9 +74,4 @@ public class Faq
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-	
-	
-	
-	
-	
 }

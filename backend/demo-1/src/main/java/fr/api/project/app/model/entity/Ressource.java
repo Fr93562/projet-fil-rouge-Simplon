@@ -12,25 +12,32 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
- * D�claration de l'objet model Ressource
- * mod�le de table pour hibernate
- * id avec avec auto incr�mentation
+ * Declaration de l'objet model Ressource
+ * Model de table pour hibernate
+ * Id avec avec auto-incrementation
  * @author trivial code devs
  *
  */
 @Entity
 public class Ressource 
 {
+	/**
+	 * Attributs
+	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String text;
 	private String link;
 	
-	
-	@OneToMany(mappedBy="ressource")
+	@OneToMany(mappedBy="ressource") //Une ressource peut avoir plusieurs Questions
 	private Collection<Question> questions;
 
+	/**
+	 * Constructeurs
+	 */
+	
 	public Ressource() {}
 
 	public Ressource(String text, String link, Collection <Question> questions) 
@@ -40,7 +47,9 @@ public class Ressource
 		this.questions = questions;
 	}
 	
-	
+	/**
+	 * Getter/Setters
+	 */
 
 	public int getId() {
 		return id;
@@ -66,7 +75,7 @@ public class Ressource
 		this.link = link;
 	}
 
-	@JsonIgnore
+	@JsonIgnore //Evite les boucles d'appel
 	public Collection<Question> getQuestion() {
 		return questions;
 	}
@@ -74,9 +83,4 @@ public class Ressource
 	public void setQuestion(Collection<Question> question) {
 		this.questions = question;
 	}
-	
-	
-	
-	
-
 }

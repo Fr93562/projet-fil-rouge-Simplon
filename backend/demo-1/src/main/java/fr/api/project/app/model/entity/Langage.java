@@ -11,11 +11,15 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
- * Correspond � la table des langages
+ * Correspond a la table des langages
  */
 @Entity
 public class Langage {
 
+	/**
+	 * Attributs
+	 */
+	
 	private int id;
 	private String language;
 	private Collection <Question> question;
@@ -24,6 +28,7 @@ public class Langage {
 	/*
 	 * Constructeurs
 	 */
+	
 	public Langage() {
 		
 	}
@@ -38,8 +43,9 @@ public class Langage {
 	}
 
 	/*
-	 * M�thodes getters and setters
+	 * Methodes getters and setters
 	 */
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -55,8 +61,8 @@ public class Langage {
 		this.language = language;
 	}
 
-	@JsonIgnore
-	@OneToMany
+	@JsonIgnore //Evite les boucles d'appel
+	@OneToMany  //Un Langage peut etre dans plusieurs Questions
 	public Collection<Question> getQuestion() {
 		return question;
 	}

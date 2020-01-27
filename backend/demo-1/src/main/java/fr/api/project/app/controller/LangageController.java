@@ -27,21 +27,30 @@ import fr.api.project.app.repository.LangageRepository;
  */
 @CrossOrigin("*")
 @RestController
+@RequestMapping("/langages")
 public class LangageController {
 
 	@Autowired
 	private LangageRepository langageRepository2;
-	
 
-	@PostMapping("/langages")
+	/**
+	 * Ajoute un langage
+	 * @param langageData langage a ajoute
+	 * @return le langage ajoute
+	 */
+	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Langage create(@RequestBody Langage langageData) {
 		
 		return langageRepository2.saveAndFlush(langageData);
 	}
-	
 
-	@RequestMapping(value = "/langages/", params = {"langage"})
+	/**
+	 * Cherche un langage par nom
+	 * @param langage nom du langage
+	 * @return langage trouver ou pas
+	 */
+	@RequestMapping(value = "", params = {"langage"})
 	public Optional<Langage> read(String langage) {
 		
 		Optional<Langage> output = null;
@@ -55,15 +64,22 @@ public class LangageController {
 		return output;
 	}
 	
-
-	@GetMapping("/langages")
+	/**
+	 * Recupere la liste des langages
+	 * @return Liste des Langages
+	 */
+	@GetMapping("")
 	public List<Langage> readAll() {
 		
 		return  langageRepository2.findAll();
 	}
 	
-
-	@PutMapping("/langages")
+	/**
+	 * Modifie un langage
+	 * @param langageData langage a modifie
+	 * @return Message en fonction de la reussite de la requete
+	 */
+	@PutMapping("")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String update(@RequestBody Langage langageData) {
 		
@@ -71,9 +87,7 @@ public class LangageController {
 		Optional<Langage> verify = langageRepository2.findById(langageData.getId());
 		
 		  if(verify.isPresent()) {
-			  
-			  Optional<Langage> langageInter = langageRepository2.findById(langageData.getId());
-			  Langage LangageInter = langageInter.get();
+			  Langage LangageInter = verify.get();
 			  
 			  langageData.setQuestion(LangageInter.getQuestion());
 			  langageRepository2.saveAndFlush(langageData);			
@@ -90,7 +104,7 @@ public class LangageController {
 	 * 
 	 * @param userData : corresponds au Json transformé en objet user
 	 */
-	@DeleteMapping("/langages")
+	@DeleteMapping("")
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody Langage langageData) {
 		

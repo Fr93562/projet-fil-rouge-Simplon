@@ -6,12 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /*
- * Correspond à la table des types d'utilisateur
+ * Correspond a la table des types d'utilisateurs
  */
 @Entity
 public class TypeUser {
 	
-
+	/**
+	 * Attributs
+	 */
 	
 	private int id;
 	private String type;
@@ -19,6 +21,7 @@ public class TypeUser {
 	/*
 	 * Constructeurs
 	 */
+	
 	public TypeUser() {
 		
 	}
@@ -27,10 +30,10 @@ public class TypeUser {
 		this.type = type;
 	}
 
-	
 	/*
-	 * Méthodes getters and setters
+	 * Methodes getters and setters
 	 */
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -47,11 +50,5 @@ public class TypeUser {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }

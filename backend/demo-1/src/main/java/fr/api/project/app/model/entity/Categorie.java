@@ -4,20 +4,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 /**
- * Déclaration de l'objet model Ressource
- * modèle de table pour hibernate
- * id avec avec auto incrémentation
+ * Declaration de l'objet model Ressource
+ * Model de table pour hibernate
+ * Id avec avec auto-incrementation
  * @author trivial code devs
  *
  */
 @Entity
 public class Categorie 
 {
+	/**
+	 * Attributs
+	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String type;
+	
+	/**
+	 * Constructeurs
+	 */
 	
 	public Categorie() {}
 
@@ -26,6 +35,10 @@ public class Categorie
 		this.type = type;
 	}
 
+	/**
+	 * Getter/Setters
+	 */
+	
 	public int getId() {
 		return id;
 	}
@@ -41,5 +54,4 @@ public class Categorie
 	public void setType(String type) {
 		this.type = type;
 	}
-	
 }
