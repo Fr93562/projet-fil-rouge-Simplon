@@ -134,7 +134,7 @@ public class UserController {
 		
 		  if(verify.isPresent()) {
 			
-			userRepository. saveAndFlush(userData);			  
+			userRepository.saveAndFlush(userData);			  
 			output = "User has been update";
 		  }
 		  

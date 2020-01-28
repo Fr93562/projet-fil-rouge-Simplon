@@ -87,7 +87,7 @@ public class RessourceController {
 	 * @return Liste des ressources correspondant au IDs
 	 */
 	@GetMapping("/end")
-	public List<Ressource> returnListRessouce(@RequestBody List<Integer> ids) {
+	public List<Ressource> returnListRessources(@RequestBody List<Integer> ids) {
 		return ressourceRepository.findAllById(ids);
 	}
 }
