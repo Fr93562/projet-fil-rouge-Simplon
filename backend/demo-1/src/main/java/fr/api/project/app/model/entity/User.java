@@ -12,7 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /*
@@ -116,7 +116,7 @@ public class User {
 		this.typeUser = typeUser;
 	}
 
-	@JsonIgnore //Evite les boucles d'appel
+	@JsonManagedReference //Evite les boucles d'appel
 	@ManyToMany //Plusieurs utilisateurs ont plusieurs Langages
 	//Creation d'une table intermediaire
 	@JoinTable(name="user_langage", joinColumns={@JoinColumn(name="id_user", unique=false)}, inverseJoinColumns={@JoinColumn(name="id_langage", unique=false)})
@@ -135,10 +135,4 @@ public class User {
 	public void setRanking(long ranking) {
 		this.ranking = ranking;
 	}
-	
-	
-	
-	
-	
-	
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.api.project.app.model.entity.Categorie;
 import fr.api.project.app.model.entity.TypeUser;
 import fr.api.project.app.model.entity.User;
 import fr.api.project.app.repository.TypeUserRepository;
@@ -45,7 +44,7 @@ public class UserController {
 	 * @param userData: Corresponds aux données users passées dans le Json
 	 * @return
 	 */
-	@PostMapping("")
+	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public User create(@RequestBody User userData) {
 		
@@ -62,7 +61,7 @@ public class UserController {
 	 * @param username : pseudo de l'utilisateur
 	 * @return : renvoie un objet utilisateur ou null
 	 */
-	@RequestMapping(value = "", params = {"username"})
+	@RequestMapping(params = {"username"})
 	public Optional<User> read(String username) {
 		
 		Optional<User> output = null;
@@ -82,7 +81,7 @@ public class UserController {
 	 * 
 	 * @return : renvoie une liste en Json
 	 */
-	@GetMapping("")
+	@GetMapping
 	public List<User> readAll() {
 		
 		List<User> output = userRepository.findAll();
@@ -100,7 +99,7 @@ public class UserController {
 	 * @param userData
 	 * @return : une reponse en fonction de l'existence
 	 */
-	@PutMapping("")
+	@PutMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String update(@RequestBody User userData) {
 		
@@ -135,11 +134,34 @@ public class UserController {
 		
 		  if(verify.isPresent()) {
 			
-			userRepository.saveAndFlush(userData);			  
+			userRepository. saveAndFlush(userData);			  
 			output = "User has been update";
 		  }
 		  
 		  return output;
+	}
+	
+	/**
+	 * Mets a jour le ranking
+	 * @param username Utilisateur a mettre a jour
+	 * @param point Points a ajouter
+	 * @return Un message en fonction de la reussite ou non
+	 */
+	@PutMapping(value = "/ranking", params = {"id", "point"})
+	@ResponseStatus(code = HttpStatus.OK)
+	public String updateRanking(int id, long point) {
+		
+		String retour = "User not found";
+		Optional<User> userExiste = userRepository.findById(id);
+		
+		  if(userExiste.isPresent()) {
+			User userModif = userExiste.get();
+			userModif.setRanking(userModif.getRanking() + point);
+			userRepository.saveAndFlush(userModif);			  
+			retour = "Ranking has been update";
+		  }
+		  
+		  return retour;
 	}
 	
 	/**
@@ -148,7 +170,7 @@ public class UserController {
 	 * 
 	 * @param userData : corresponds au Json transformé en objet user
 	 */ 
-	@DeleteMapping("")
+	@DeleteMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody User userData) {
 		

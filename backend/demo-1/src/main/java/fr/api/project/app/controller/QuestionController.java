@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.api.project.app.model.entity.Categorie;
-import fr.api.project.app.model.entity.Langage;
 import fr.api.project.app.model.entity.Question;
 import fr.api.project.app.repository.CategorieRepository;
-import fr.api.project.app.repository.LangageRepository;
 import fr.api.project.app.repository.QuestionRepository;
 
 /**
@@ -48,18 +46,18 @@ public class QuestionController {
 	 * @param newQuestion La question à ajouter
 	 * @return La question ajouté
 	 */
-	@PostMapping("")
+	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Question addQuestion(@RequestBody Question newQuestion) {
 		return questionRepository.saveAndFlush(newQuestion);
 	}
 
 	/**
-	 * Retourne les questions correspondant au type de langage en parametr
+	 * Retourne les questions correspondant au type de langage en parametre
 	 * @param langage langage recherche
 	 * @return Liste de questions en JSON
 	 */
-	@RequestMapping(value = "", params = {"langage"})
+	@RequestMapping(params = {"langage"})
 	public List<Question> listQuestion(String langage) {
 
 		Optional<List<Question>> questionList = questionRepository.findAllByLangage(langage);
@@ -74,7 +72,7 @@ public class QuestionController {
 	 * 
 	 * @return : renvoie une liste en Json
 	 */
-	@GetMapping("")
+	@GetMapping
 	public List<Question> readAll() {
 
 		return questionRepository.findAll();
@@ -86,7 +84,7 @@ public class QuestionController {
 	 * @param modifQuestion la question modifie
 	 * @return Un String contenant le resultat de la requete
 	 */
-	@PutMapping("")
+	@PutMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String updateQuestion(@RequestBody Question modifQuestion) {
 
@@ -106,7 +104,7 @@ public class QuestionController {
 	 * 
 	 * @param delQuestion : corresponds au Json transformé en objet question
 	 */
-	@DeleteMapping("")
+	@DeleteMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody Question delQuestion) {
 

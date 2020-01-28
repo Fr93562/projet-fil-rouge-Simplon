@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.api.project.app.model.entity.Ressource;
 import fr.api.project.app.repository.RessourceRepository;
 
-
 /**
- * gère les routes des ressources
+ * Gère les routes des ressources
  * @author Elodie
  *
  */
@@ -36,7 +35,7 @@ public class RessourceController {
 	 * @param ressource la nouvelle ressource
 	 * @return la ressource ajoutée
 	 */
-	@PostMapping("")
+	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Ressource ajoutRessource(@RequestBody Ressource ressource) {
 		return ressourceRepository.saveAndFlush(ressource);
@@ -46,7 +45,7 @@ public class RessourceController {
 	 * Méthode qui permet d'afficher la liste des ressources
 	 * @return la liste des ressources
 	 */
-	@GetMapping("")
+	@GetMapping
 	public List<Ressource> afficherRessource() {
 		return ressourceRepository.findAll();
 	}
@@ -55,7 +54,7 @@ public class RessourceController {
 	 * Méthode qui permet de modifier une ressource
 	 * @param newRessource ressource modifiée
 	 */
-	@PutMapping("")
+	@PutMapping
 	public String modifierRessource(@RequestBody Ressource newRessource) {
 		String retour = "Ressource non trouvé";
 		Optional<Ressource> oldRessource = ressourceRepository.findById(newRessource.getId());
@@ -70,7 +69,7 @@ public class RessourceController {
 	 * méthode qui permet de supprimer une ressource
 	 * @param removeRessource ressource à supprimer
 	 */
-	@DeleteMapping("")
+	@DeleteMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String supprimerRessource(@RequestBody Ressource removeRessource) {
 		String retour = "Ressource non trouvé";
@@ -82,4 +81,13 @@ public class RessourceController {
 		  return retour;
 	}
 	
+	/**
+	 * Retourne la Liste des ressources correpondant a la liste des IDs
+	 * @param ids Liste des IDs a recuperer
+	 * @return Liste des ressources correspondant au IDs
+	 */
+	@GetMapping("/end")
+	public List<Ressource> returnListRessouce(@RequestBody List<Integer> ids) {
+		return ressourceRepository.findAllById(ids);
+	}
 }

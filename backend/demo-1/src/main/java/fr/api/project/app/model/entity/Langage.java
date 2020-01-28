@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /*
  * Correspond a la table des langages
@@ -61,7 +61,7 @@ public class Langage {
 		this.language = language;
 	}
 
-	@JsonIgnore //Evite les boucles d'appel
+	@JsonBackReference //Evite les boucles d'appel
 	@OneToMany  //Un Langage peut etre dans plusieurs Questions
 	public Collection<Question> getQuestion() {
 		return question;

@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 /**
@@ -75,7 +75,8 @@ public class Ressource
 		this.link = link;
 	}
 
-	@JsonIgnore //Evite les boucles d'appel
+	//TODO: Meme fonction que JsonIgnore voir a remplacer pour afficher l'objet Question sans boucle
+	@JsonBackReference //Evite les boucles d'appel
 	public Collection<Question> getQuestion() {
 		return questions;
 	}

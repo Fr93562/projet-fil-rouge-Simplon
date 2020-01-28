@@ -38,7 +38,7 @@ public class LangageController {
 	 * @param langageData langage a ajoute
 	 * @return le langage ajoute
 	 */
-	@PostMapping("")
+	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Langage create(@RequestBody Langage langageData) {
 		
@@ -50,7 +50,7 @@ public class LangageController {
 	 * @param langage nom du langage
 	 * @return langage trouver ou pas
 	 */
-	@RequestMapping(value = "", params = {"langage"})
+	@RequestMapping(params = {"langage"})
 	public Optional<Langage> read(String langage) {
 		
 		Optional<Langage> output = null;
@@ -68,7 +68,7 @@ public class LangageController {
 	 * Recupere la liste des langages
 	 * @return Liste des Langages
 	 */
-	@GetMapping("")
+	@GetMapping
 	public List<Langage> readAll() {
 		
 		return  langageRepository2.findAll();
@@ -79,7 +79,7 @@ public class LangageController {
 	 * @param langageData langage a modifie
 	 * @return Message en fonction de la reussite de la requete
 	 */
-	@PutMapping("")
+	@PutMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String update(@RequestBody Langage langageData) {
 		
@@ -104,7 +104,7 @@ public class LangageController {
 	 * 
 	 * @param userData : corresponds au Json transformé en objet user
 	 */
-	@DeleteMapping("")
+	@DeleteMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	public String delete(@RequestBody Langage langageData) {
 		
@@ -118,4 +118,5 @@ public class LangageController {
 		}
 		return output;
 	}
+	
 }

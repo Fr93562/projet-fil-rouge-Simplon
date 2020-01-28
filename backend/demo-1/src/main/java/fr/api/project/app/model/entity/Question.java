@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Declaration de l'objet model Question
@@ -33,8 +33,7 @@ public class Question
 	@ManyToOne //Plusieurs Questions ont une Categorie
 	private Categorie categorie;
 	
-	@JsonIgnore	//Evite les boucles d'appel
-	@ManyToOne //PLusieurs Questionq ont une Ressource
+	@ManyToOne //Plusieurs Questions ont une Ressource
 	private Ressource ressource;
 	
 	/**
@@ -115,7 +114,9 @@ public class Question
 	public void setChoice3(String choice3) {
 		this.choice3 = choice3;
 	}
-
+	
+	//TODO: Meme fonction que JsonIgnore voir a remplacer pour afficher l'objet Ressource sans boucle
+	@JsonManagedReference //Evite les boucles d'appel
 	public Ressource getRessource() {
 		return ressource;
 	}
