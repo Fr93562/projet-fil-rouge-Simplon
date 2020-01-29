@@ -86,234 +86,341 @@ Si le joueur a un compte. Son score viendra alimenter son classement personnel e
 
 ### L'application back-end
 
-L'API propose 7 types de ressources:
+L'API propose 6 contrôleurs différents:
 
-#### Les ressources users:
+#### Contrôleur UserController :
 
-Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/student/ ```
+Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/users ```
 
-__Exemples__:
+__Exemples__ :
 
-* Création:
+* Créer un utilisateur :
 
-Méthode POST - ``` http://localhost:8080/student/add ```
+Méthode POST - ``` http://localhost:8080/users```
 
 Type de Données passées dans le body de la requête:
 
 ```
 {
-    "id": 1,
-    "name": "Black",
-    "username": "Wildow",
-    "mail": "shield@avengers.fr",
-    "idLocalisation": "5"
+    "username": "Test",
+    "email": "test@laposte.fr",
+    "password": "test",
+    "dateInscription": "2020-01-20",
+    "langage": [
+        {
+            "id": 1
+        },
+        {
+        	"id": 6
+        }
+    ]
 }
 ```
 
 
-* Recherche:
+* Récuperer un utilisateur :
 
-Méthode GET - ``` http://localhost:8080/student/?username=Fran%C3%A7ois&mail=test@hotmail.fr ```
+Méthode GET - ``` http://localhost:8080/users/?username=test ```
 
 Réponse:
 
 ```
 {
-  "id": 11,
-  "idLocalisation": 16,
-  "mail": "test@hotmail.fr",
-  "name": "Macko",
-  "username": "François"
+    "id": 7,
+    "username": "Test",
+    "email": "test@laposte.fr",
+    "password": "test",
+    "dateInscription": "2020-01-20T00:00:00.000+0000",
+    "typeUser": {
+        "id": 2,
+        "type": "Joueur"
+    },
+    "langage": [
+        {
+            "id": 1,
+            "language": "Java"
+        },
+        {
+            "id": 6,
+            "language": "PHP"
+        }
+    ],
+    "ranking": 0
 }
 ```
 
+* Récuperer tous les utilisateurs :
 
-* Tout rechercher:
-
-Méthode GET - ``` http://localhost:8080/student/all ```
+Méthode GET - ``` http://localhost:8080/users ```
 
 Réponse:
 
 ```
-Array[17][
-
-  {
-    "id": 11,
-    "idLocalisation": 16,
-    "mail": "test@hotmail.fr",
-    "name": "Macko",
-    "username": "François"
-  },
-  
-  {
-    "id": 12, ...
+[
+  ...
+    {
+        "id": 7,
+        "username": "Test",
+        "email": "test@laposte.fr",
+        "password": "null",
+        "dateInscription": "2020-01-20T00:00:00.000+0000",
+        "typeUser": {
+            "id": 2,
+            "type": "Joueur"
+        },
+        "langage": [
+            {
+                "id": 1,
+                "language": "Java"
+            },
+            {
+                "id": 6,
+                "language": "PHP"
+            }
+        ],
+        "ranking": 0
+    }
+]
 ```
 
+* Mise à jour utilisateur :
 
-* Suppression:
+Méthode PUT - ``` http://localhost:8080/users ```
 
-Méthode DELETE - ``` http://localhost:8080/student/remove ```
+Un lien specifique existe pour l'administrateur.
+
+Méthode PUT - ``` http://localhost:8080/users/admin ```
 
 Type de données passées dans le body de la requête:
 
 ```
 {
-  "id": 11,
-  "idLocalisation": 16,
-  "mail": "test@hotmail.fr",
-  "name": "Macko",
-  "username": "François"
+    "id": 7,
+    "username": "Testmodifié",
+    "email": "test@laposte.fr",
+    "password": "test"
 }
 ```
-
-#### Les ressources ranking:
-
-Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/localisation/ ```
-
-
-* Création:
-
-Méthode POST - ``` http://localhost:8080/localisation/add ```
-
-Type de Données passées dans le body de la requête:
-
-```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
-```
-
-* Recherche:
-
-Méthode GET - ``` ttp://localhost:8080/localisation/?id=15 ```
-
 Réponse:
 
 ```
-{
-  "id": 15,
-  "localisation": "5 Place de Wicklow, 78180 Montigny-le-Bretonneux",
-  "name": "Montigny-le-Bretonneux"
-}
-```
-
-* Tout rechercher:
-
-Méthode GET - ``` ttp://localhost:8080/localisation/all ```
-
-Réponse:
-
-```
-Array[5][
-  
-  {
-    "id": 13,
-    "localisation": "42 Rue de Cornulier, 44000 Nantes",
-    "name": "Nantes"
-  }, ...
+User has been update
 ```
 
 * Suppression:
 
-Méthode DELETE - ``` http://localhost:8080/localisation/remove ```
+Méthode DELETE - ``` http://localhost:8080/users ```
+
+Type de données passées dans le body de la requête :
+
+```
+{
+    "id": 7
+}
+```
+Réponse:
+
+```
+User has been delete
+```
+* Mise à jour du classement :
+
+Méthode PUT - ``` http://localhost:8080/users/ranking/?id=8&point=200 ```
 
 Réponse:
 
 ```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
+Ranking has been update
 ```
 
-#### Les ressources langages:
+* Ajouter un type d'utilisateur :
 
-Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/localisation/ ```
+Méthode POST - ``` http://localhost:8080/users/type ```
 
-
-* Création:
-
-Méthode POST - ``` http://localhost:8080/localisation/add ```
-
-Type de Données passées dans le body de la requête:
+Type de Données passées dans le body de la requête :
 
 ```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
+    {
+        "type": "Joueur Test"
+    }
 ```
-
-* Recherche:
-
-Méthode GET - ``` ttp://localhost:8080/localisation/?id=15 ```
-
 Réponse:
 
 ```
 {
-  "id": 15,
-  "localisation": "5 Place de Wicklow, 78180 Montigny-le-Bretonneux",
-  "name": "Montigny-le-Bretonneux"
+    "id": 4,
+    "type": "Joueur Test"
 }
 ```
 
-* Tout rechercher:
+* Récupérer les types d'utilisateur :
 
-Méthode GET - ``` ttp://localhost:8080/localisation/all ```
-
-Réponse:
-
-```
-Array[5][
-  
-  {
-    "id": 13,
-    "localisation": "42 Rue de Cornulier, 44000 Nantes",
-    "name": "Nantes"
-  }, ...
-```
-
-* Suppression:
-
-Méthode DELETE - ``` http://localhost:8080/localisation/remove ```
+Méthode GET - ``` http://localhost:8080/users/type ```
 
 Réponse:
 
 ```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
-```
-
-```
-
-Array[7][
-  "Projet = Student Simplon LP4",
-  "Version = 0.1",
-  "Format utilisé = Json",
-  "Fonctionnalités des students = Création, lecture, mise à jour et suppression des étudiants de la LP4",
-  "Fonctionnalités des localisations = Création, lecture et suppression des lieux des étudiants de la LP4",
-  "Adresse github = https://github.com/Fr93562/projet-1-fullstack-Simplon",
-  "Technologies utilisées = Java/Spring/MySQL"
+[
+    {
+        "id": 1,
+        "type": "Administrateur"
+    },
+    {
+        "id": 2,
+        "type": "Joueur"
+    },
+    {
+        "id": 3,
+        "type": "Joueur Premium"
+    }
 ]
+```
+* Mise à jour du type d'utilisateur :
+
+Méthode PUT - ``` http://localhost:8080/users/type ```
+
+Type de Données passées dans le body de la requête :
 
 ```
+{
+    "id": 4,
+    "type": "Joueur Essai"
+}
+```
+Réponse:
 
-#### Les ressources questions:
+```
+Type has been update
+```
 
-Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/localisation/ ```
+* Suppression d'un type d'utilisateur :
+
+Méthode DELETE - ``` http://localhost:8080/users/type ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "id": 4
+}
+```
+Réponse:
+
+```
+Type has been delete
+```
+
+#### Controlleur RessourceController :
+
+Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/ressources ```
 
 
-* Création:
+* Ajouter une nouvelle ressource :
 
-Méthode POST - ``` http://localhost:8080/localisation/add ```
+Méthode POST - ``` http://localhost:8080/ressources ```
+
+Type de Données passées dans le body de la requête:
+
+```
+  {
+    "text": "Cours TEST",
+    "link": "https://test.org"
+  }
+```
+Réponse:
+
+```
+{
+    "id": 5,
+    "text": "Cours TEST",
+    "link": "https://test.org"
+}
+```
+
+* Recherche la liste complète des ressources :
+
+Méthode GET - ``` http://localhost:8080/ressources ```
+
+Réponse:
+
+```
+  {
+    "id": 4,
+    "text": "Java",
+    "link": "https://jmdoudoux.developpez.com/cours/developpons/java/"
+  } ...
+```
+
+* Modifier une ressource :
+
+Méthode PUT - ``` http://localhost:8080/ressources ```
+
+Type de Données passées dans le body de la requête:
+
+```
+  {
+    "id": 5,
+    "text": "Cours TESTMODIF",
+    "link": "https://testmodif.com"
+  }
+```
+Réponse:
+
+```
+Ressource modifiée
+```
+
+* Supprimer d'une ressource :
+
+Méthode DELETE - ``` http://localhost:8080/ressources ```
+
+Type de Données passées dans le body de la requête:
+
+```
+    {
+        "id": 5
+    }
+```
+Réponse:
+
+```
+Ressource supprimée
+```
+
+*  Retourne la Liste des ressources correspondant a la liste des IDs des questions
+
+Méthode GET - ``` http://localhost:8080/ressources/end ```
+
+Type de Données passées dans le body de la requête:
+
+```
+[2,4]
+```
+Réponse:
+
+```
+[
+    {
+        "id": 2,
+        "text": "CSS",
+        "link": "https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3"
+    },
+    {
+        "id": 4,
+        "text": "Java",
+        "link": "https://jmdoudoux.developpez.com/cours/developpons/java/"
+    }
+]
+```
+
+#### Controlleur QuestionController :
+
+Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/questions ```
+
+
+* Ajoute une nouvelle question :
+
+Méthode POST - ``` http://localhost:8080/questions ```
 
 Type de Données passées dans le body de la requête:
 
@@ -339,20 +446,31 @@ Réponse:
 }
 ```
 
-* Tout rechercher:
+* Affiche la liste de toutes les questions :
 
-Méthode GET - ``` ttp://localhost:8080/localisation/all ```
+Méthode GET - ``` http://localhost:8080/questions ```
 
 Réponse:
 
-```
-Array[5][
-  
-  {
-    "id": 13,
-    "localisation": "42 Rue de Cornulier, 44000 Nantes",
-    "name": "Nantes"
-  }, ...
+```  
+    {
+        "id": 1,
+        "question": "Definition du terme HTML ?",
+        "level": 1,
+        "answer": "HyperText Markup Language",
+        "choice1": "Pas ça",
+        "choice2": "Non plus",
+        "choice3": "Toujours pas",
+        "categorie": {
+            "id": 1,
+            "type": "QCM"
+        },
+        "ressource": {
+            "id": 1,
+            "text": "Cours HTML",
+            "link": "https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3"
+        }
+    }, ...
 ```
 
 * Suppression:
