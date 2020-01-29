@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Declaration de l'objet model Question
@@ -115,8 +114,6 @@ public class Question
 		this.choice3 = choice3;
 	}
 	
-	//TODO: Meme fonction que JsonIgnore voir a remplacer pour afficher l'objet Ressource sans boucle
-	@JsonManagedReference //Evite les boucles d'appel
 	public Ressource getRessource() {
 		return ressource;
 	}

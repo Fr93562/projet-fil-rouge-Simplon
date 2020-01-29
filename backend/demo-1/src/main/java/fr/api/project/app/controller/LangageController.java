@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.api.project.app.model.entity.Langage;
+import fr.api.project.app.model.entity.Question;
 import fr.api.project.app.repository.LangageRepository;
 
 
@@ -119,4 +120,24 @@ public class LangageController {
 		return output;
 	}
 	
+	/**
+	 * Permet apres la creation d'une question de lier un langage a une question
+	 * @param question question a lier
+	 * @param langage langage a lier
+	 */
+	@PostMapping(value = "/qlink", params = {"langage"})
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public String linkLangageQuestion (@RequestBody Question question, String langage) {
+		Optional<Langage> langageVerif = langageRepository2.findByLanguage(langage);
+		String retour = "Langage inexistant";
+		
+		if (langageVerif.isPresent()) {
+			Langage langageComplet = langageVerif.get();
+			langageComplet.getQuestion().add(question);
+			langageRepository2.saveAndFlush(langageComplet);
+			retour = "Liaison effectué";
+		}
+		
+		return retour;
+	}
 }

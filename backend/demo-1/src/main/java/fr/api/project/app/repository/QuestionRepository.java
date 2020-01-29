@@ -10,15 +10,24 @@ import org.springframework.stereotype.Repository;
 import fr.api.project.app.model.entity.Question;
 
 @Repository
-public interface QuestionRepository extends JpaRepository<Question, Integer> 
-{
+public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
 	/**
 	 * Fourni la Liste des questions correspondant au langage
+	 * 
 	 * @param langage langage a trouver
-	 * @return Liste de question correspondant au langage
+	 * @return Liste de questions correspondant au langage
 	 */
 	@Query(value = "SELECT * FROM question LEFT JOIN langage_question lq ON question.id = lq.question_id WHERE lq.langage_id = (SELECT id FROM langage WHERE language=?1)", nativeQuery = true)
 	Optional<List<Question>> findAllByLangage(String langage);
+
+	/**
+	 * Fourni la Liste des questions correspondant a la ressource
+	 * 
+	 * @param ressources a trouver
+	 * @return Liste de questions correspondant a la ressource
+	 */
+	@Query(value = "SELECT * FROM question left join ressource src on question.ressource_id = src.id where src.id = ?1", nativeQuery = true)
+	Optional<List<Question>> findAllByRessources(int ressources);
 
 }

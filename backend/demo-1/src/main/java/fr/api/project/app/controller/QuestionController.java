@@ -58,7 +58,7 @@ public class QuestionController {
 	 * @return Liste de questions en JSON
 	 */
 	@RequestMapping(params = {"langage"})
-	public List<Question> listQuestion(String langage) {
+	public List<Question> listQuestionParLangage(String langage) {
 
 		Optional<List<Question>> questionList = questionRepository.findAllByLangage(langage);
 		if(questionList.isPresent()) {
@@ -176,5 +176,20 @@ public class QuestionController {
 			output = "Categorie has been delete";
 		}
 		return output;
+	}
+	
+	/**
+	 * Retourne les questions correspondant a l'id de la ressource en parametre
+	 * @param ressource recherche
+	 * @return Liste de questions en JSON
+	 */
+	@RequestMapping(value = "/ressource",params = {"ressources"})
+	public List<Question> listQuestionParRessource(int ressources) {
+
+		Optional<List<Question>> questionList = questionRepository.findAllByRessources(ressources);
+		if(questionList.isPresent()) {
+			return questionList.get();
+		}
+		return new ArrayList<Question>();
 	}
 }
