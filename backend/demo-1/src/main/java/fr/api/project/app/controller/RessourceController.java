@@ -60,7 +60,7 @@ public class RessourceController {
 		Optional<Ressource> oldRessource = ressourceRepository.findById(newRessource.getId());
 		  if(oldRessource.isPresent()) {
 			  ressourceRepository.saveAndFlush(newRessource);
-			  return "Ressource modifié";
+			  return "Ressource modifiée";
 		  }
 		  return retour;
 	}
@@ -76,15 +76,15 @@ public class RessourceController {
 		Optional<Ressource> oldRessource = ressourceRepository.findById(removeRessource.getId());
 		  if(oldRessource.isPresent()) {
 			  ressourceRepository.delete(removeRessource);
-			  return "Ressource Supprimé";
+			  return "Ressource Supprimée";
 		  }
 		  return retour;
 	}
 	
 	/**
-	 * Retourne la Liste des ressources correpondant a la liste des IDs
+	 * Retourne la Liste des ressources correspondant a la liste des IDs des questions
 	 * @param ids Liste des IDs a recuperer
-	 * @return Liste des ressources correspondant au IDs
+	 * @return Liste des ressources correspondant au IDs des questions
 	 */
 	@GetMapping("/end")
 	public List<Ressource> returnListRessources(@RequestBody List<Integer> ids) {

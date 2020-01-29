@@ -50,6 +50,7 @@ public class UserController {
 		
 		TypeUser defaultRole = typeUserRepository.findByType("Joueur");
 		userData.setTypeUser(defaultRole);
+		userData.setRanking(0);
 		
 		return userRepository.saveAndFlush(userData);
 	}
