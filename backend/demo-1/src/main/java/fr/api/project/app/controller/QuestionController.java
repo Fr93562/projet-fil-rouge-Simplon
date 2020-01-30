@@ -112,7 +112,7 @@ public class QuestionController {
 		Optional<Question> verify = questionRepository.findById(delQuestion.getId());
 
 		if(verify.isPresent()) {
-
+			questionRepository.deleteByIdLink(delQuestion.getId());
 			questionRepository.delete(delQuestion);	
 			output = "Question has been delete";
 		}
