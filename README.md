@@ -9,7 +9,7 @@
 * Contexte: Parcours Développeur web et mobile / Simplon  	
 * Date: 07/11/2019
 
-* Version: 0.2
+* Version: 0.5
 * Etat du projet: en cours
 
 
@@ -86,7 +86,7 @@ Si le joueur a un compte. Son score viendra alimenter son classement personnel e
 
 ### L'application back-end
 
-L'API propose 6 contrôleurs différents:
+L'API propose 6 contrôleurs différents :
 
 #### Contrôleur UserController :
 
@@ -98,7 +98,7 @@ __Exemples__ :
 
 Méthode POST - ``` http://localhost:8080/users```
 
-Type de Données passées dans le body de la requête:
+Type de Données passées dans le body de la requête :
 
 ```
 {
@@ -122,7 +122,7 @@ Type de Données passées dans le body de la requête:
 
 Méthode GET - ``` http://localhost:8080/users/?username=test ```
 
-Réponse:
+Réponse :
 
 ```
 {
@@ -153,7 +153,7 @@ Réponse:
 
 Méthode GET - ``` http://localhost:8080/users ```
 
-Réponse:
+Réponse :
 
 ```
 [
@@ -191,7 +191,7 @@ Un lien specifique existe pour l'administrateur.
 
 Méthode PUT - ``` http://localhost:8080/users/admin ```
 
-Type de données passées dans le body de la requête:
+Type de données passées dans le body de la requête :
 
 ```
 {
@@ -201,13 +201,13 @@ Type de données passées dans le body de la requête:
     "password": "test"
 }
 ```
-Réponse:
+Réponse :
 
 ```
 User has been update
 ```
 
-* Suppression:
+* Suppression :
 
 Méthode DELETE - ``` http://localhost:8080/users ```
 
@@ -218,7 +218,7 @@ Type de données passées dans le body de la requête :
     "id": 7
 }
 ```
-Réponse:
+Réponse :
 
 ```
 User has been delete
@@ -227,7 +227,7 @@ User has been delete
 
 Méthode PUT - ``` http://localhost:8080/users/ranking/?id=8&point=200 ```
 
-Réponse:
+Réponse :
 
 ```
 Ranking has been update
@@ -244,7 +244,7 @@ Type de Données passées dans le body de la requête :
         "type": "Joueur Test"
     }
 ```
-Réponse:
+Réponse :
 
 ```
 {
@@ -257,7 +257,7 @@ Réponse:
 
 Méthode GET - ``` http://localhost:8080/users/type ```
 
-Réponse:
+Réponse :
 
 ```
 [
@@ -287,7 +287,7 @@ Type de Données passées dans le body de la requête :
     "type": "Joueur Essai"
 }
 ```
-Réponse:
+Réponse :
 
 ```
 Type has been update
@@ -304,22 +304,23 @@ Type de Données passées dans le body de la requête :
     "id": 4
 }
 ```
-Réponse:
+Réponse :
 
 ```
 Type has been delete
 ```
 
-#### Controlleur RessourceController :
+#### Contrôleur RessourceController :
 
 Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/ressources ```
 
+__Exemples__ :
 
 * Ajouter une nouvelle ressource :
 
 Méthode POST - ``` http://localhost:8080/ressources ```
 
-Type de Données passées dans le body de la requête:
+Type de Données passées dans le body de la requête :
 
 ```
   {
@@ -327,7 +328,7 @@ Type de Données passées dans le body de la requête:
     "link": "https://test.org"
   }
 ```
-Réponse:
+Réponse :
 
 ```
 {
@@ -341,7 +342,7 @@ Réponse:
 
 Méthode GET - ``` http://localhost:8080/ressources ```
 
-Réponse:
+Réponse :
 
 ```
   {
@@ -355,7 +356,7 @@ Réponse:
 
 Méthode PUT - ``` http://localhost:8080/ressources ```
 
-Type de Données passées dans le body de la requête:
+Type de Données passées dans le body de la requête :
 
 ```
   {
@@ -364,7 +365,7 @@ Type de Données passées dans le body de la requête:
     "link": "https://testmodif.com"
   }
 ```
-Réponse:
+Réponse :
 
 ```
 Ressource modifiée
@@ -381,7 +382,7 @@ Type de Données passées dans le body de la requête:
         "id": 5
     }
 ```
-Réponse:
+Réponse :
 
 ```
 Ressource supprimée
@@ -391,12 +392,12 @@ Ressource supprimée
 
 Méthode GET - ``` http://localhost:8080/ressources/end ```
 
-Type de Données passées dans le body de la requête:
+Type de Données passées dans le body de la requête :
 
 ```
 [2,4]
 ```
-Réponse:
+Réponse :
 
 ```
 [
@@ -413,10 +414,11 @@ Réponse:
 ]
 ```
 
-#### Controlleur QuestionController :
+#### Contrôleur QuestionController :
 
 Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/questions ```
 
+__Exemples__ :
 
 * Ajoute une nouvelle question :
 
@@ -425,24 +427,19 @@ Méthode POST - ``` http://localhost:8080/questions ```
 Type de Données passées dans le body de la requête:
 
 ```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
-```
-
-* Recherche:
-
-Méthode GET - ``` ttp://localhost:8080/localisation/?id=15 ```
-
-Réponse:
-
-```
 {
-  "id": 15,
-  "localisation": "5 Place de Wicklow, 78180 Montigny-le-Bretonneux",
-  "name": "Montigny-le-Bretonneux"
+    "question": "C'est un Test ?",
+    "level": 1,
+    "answer": "Oui",
+    "choice1": "Peut-etre",
+    "choice2": "Non",
+    "choice3": "Surement pas",
+    "categorie": {
+        "id": 1
+    },
+    "ressource": {
+        "id": 3
+    }
 }
 ```
 
@@ -450,9 +447,10 @@ Réponse:
 
 Méthode GET - ``` http://localhost:8080/questions ```
 
-Réponse:
+Réponse :
 
-```  
+``` 
+[ 
     {
         "id": 1,
         "question": "Definition du terme HTML ?",
@@ -471,83 +469,329 @@ Réponse:
             "link": "https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3"
         }
     }, ...
+]
 ```
 
-* Suppression:
+* Affiche la liste de toutes les questions d'un langage :
 
-Méthode DELETE - ``` http://localhost:8080/localisation/remove ```
+Méthode GET - ``` http://localhost:8080/questions/?langage=java ```
 
-Réponse:
+Réponse :
+
+```  
+[
+    {
+        "id": 4,
+        "question": "Pour compiler un programme Java de quoi a t'on besoin? JDK ou JRE",
+        "level": 1,
+        "answer": "JDK",
+        "choice1": "Pas ça",
+        "choice2": "Non plus",
+        "choice3": "Toujours pas",
+        "categorie": {
+            "id": 1,
+            "type": "QCM"
+        },
+        "ressource": {
+            "id": 4,
+            "text": "Java",
+            "link": "https://jmdoudoux.developpez.com/cours/developpons/java/"
+        }
+    }
+]
+```
+* Modifier une question :
+
+Méthode PUT - ``` http://localhost:8080/questions ```
+
+Type de Données passées dans le body de la requête :
 
 ```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
+{
+    "id": 5,
+    "question": "C'est un Test modifié ?",
+    "level": 1,
+    "answer": "Oui",
+    "choice1": "Peut-etre",
+    "choice2": "Non",
+    "choice3": "Surement pas",
+    "categorie": {
+        "id": 1,
+        "type": "QCM"
+    },
+    "ressource": {
+        "id": 3,
+        "text": "JavaScript",
+        "link": "https://openclassrooms.com/fr/courses/2984401-apprenez-a-coder-avec-javascript"
+      }
+}
+```
+Réponse :
+
+```
+Question has been update
 ```
 
-#### Les ressources "ressources":
+* Suppression d'une question:
 
-Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/localisation/ ```
+Méthode DELETE - ``` http://localhost:8080/questions ```
 
+Type de Données passées dans le body de la requête :
 
-* Création:
+```
+{
+    "id": 5
+}
+```
+Réponse :
 
-Méthode POST - ``` http://localhost:8080/localisation/add ```
+```
+Question has been delete
+```
+* Ajouter une categorie de question :
+
+Méthode POST - ``` http://localhost:8080/questions/cat ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "type": "Test"
+}
+```
+Réponse :
+
+```
+{
+    "id": 4,
+    "type": "Test"
+}
+```
+
+* Récupérer les categories questions :
+
+Méthode GET - ``` http://localhost:8080/questions/cat ```
+
+Réponse :
+
+```
+[
+    {
+        "id": 1,
+        "type": "QCM"
+    },
+    {
+        "id": 2,
+        "type": "Code"
+    },
+    {
+        "id": 3,
+        "type": "Ecrite"
+    }
+]
+```
+* Mise à jour d'une categorie de questions :
+
+Méthode PUT - ``` http://localhost:8080/questions/cat ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "id": 4,
+    "type": "Test modifié"
+}
+```
+Réponse :
+
+```
+Categorie has been update
+```
+
+* Suppression d'une categorie de questions :
+
+Méthode DELETE - ``` http://localhost:8080/questions/cat ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "id": 4
+}
+```
+Réponse :
+
+```
+Categorie has been delete
+```
+
+#### Contrôleur LangageController :
+
+Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/langages ```
+
+__Exemples__ :
+
+* Ajout d'un nouveau langage :
+
+Méthode POST - ``` http://localhost:8080/langages ```
 
 Type de Données passées dans le body de la requête:
 
 ```
-  {
-    "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
-```
-
-* Recherche:
-
-Méthode GET - ``` ttp://localhost:8080/localisation/?id=15 ```
-
-Réponse:
-
-```
 {
-  "id": 15,
-  "localisation": "5 Place de Wicklow, 78180 Montigny-le-Bretonneux",
-  "name": "Montigny-le-Bretonneux"
+    "language": "C++"
 }
 ```
 
-* Tout rechercher:
+* Affiche la liste de tous les langages :
 
-Méthode GET - ``` ttp://localhost:8080/localisation/all ```
+Méthode GET - ``` http://localhost:8080/langages ```
 
-Réponse:
+Réponse :
 
+```  
+[
+    {
+        "id": 1,
+        "language": "Java"
+    },
+    {
+        "id": 2,
+        "language": "C#"
+    },
+    {
+        "id": 3,
+        "language": "HTML"
+    },...
+]
 ```
-Array[5][
-  
-  {
-    "id": 13,
-    "localisation": "42 Rue de Cornulier, 44000 Nantes",
-    "name": "Nantes"
-  }, ...
-```
 
-* Suppression:
+* Affiche un langage par son nom :
 
-Méthode DELETE - ``` http://localhost:8080/localisation/remove ```
+Méthode GET - ``` http://localhost:8080/langages/?langage=java ```
 
-Réponse:
+Réponse :
 
-```
-  {
+```  
+{
     "id": 1,
-    "localisation": "55 Rue de Vincennes, 93100 Montreuil",
-    "name": "Simplon"
-  }
+    "language": "Java"
+}
+```
+* Modifier un langage :
+
+Méthode PUT - ``` http://localhost:8080/langages ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "id": 9,
+    "language": "C"
+}
+```
+Réponse :
+
+```
+Language has been update
+```
+
+* Suppression d'un langage:
+
+Méthode DELETE - ``` http://localhost:8080/langages ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "id": 9
+}
+```
+Réponse :
+
+```
+Language has been delete
+```
+* Ajout de la liaison Langage/Question :
+
+Méthode POST - ``` http://localhost:8080/langages/qlink ```
+
+Type de Données passées dans le body de la requête:
+
+```
+{
+        "id": 6,
+        "question": "C'est un Test ?"
+}
+```
+#### Contrôleur FaqController :
+
+Elles sont basées sur des requêtes du type:  ``` http://localhost:8080/faq ```
+
+__Exemples__ :
+
+* Ajout d'une nouvelle question a la FAQ :
+
+Méthode POST - ``` http://localhost:8080/faq ```
+
+Type de Données passées dans le body de la requête:
+
+```
+{
+   "question": "Ou trouver la présentation des Endpoints?",
+    "response": "Dans le Readme.",
+    "priority": "1"
+}
+```
+
+* Affiche la liste de toutes les questions FAQ :
+
+Méthode GET - ``` http://localhost:8080/faq ```
+
+Réponse :
+
+```  
+[
+    {
+        "id": 1,
+        "question": "Comment marche ce jeu ?",
+        "response": "Comme ca.",
+        "priority": "1"
+    },
+    {
+        "id": 2,
+        "question": "Ou trouver la présentation des Endpoints?",
+        "response": "Dans le Readme.",
+        "priority": "1"
+    }
+]
+```
+
+* Modifier une question de la FAQ :
+
+Méthode PUT - ``` http://localhost:8080/faq ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+	  "id": 2,
+    "question": "Ou trouver la présentation des Endpoints?",
+    "response": "Dans le Readme à cette adresse: https://github.com/Fr93562/projet-fil-rouge-Simplon/blob/master/README.md",
+    "priority": "1"
+}
+```
+
+* Suppression d'une question de la FAQ:
+
+Méthode DELETE - ``` http://localhost:8080/faq ```
+
+Type de Données passées dans le body de la requête :
+
+```
+{
+    "id": 2
+}
 ```
 
 ### Gestion des erreurs
