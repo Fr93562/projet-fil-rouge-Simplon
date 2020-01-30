@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.api.project.app.model.entity.Faq;
 import fr.api.project.app.repository.FaqRepository;
 
-
+/**
+ * Gere les path de la FAQ
+ * @author Camille
+ *
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/faq")

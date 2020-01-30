@@ -22,7 +22,7 @@ import fr.api.project.app.repository.LangageRepository;
 
 
 /**
- * Gere les paths de User
+ * Gere les paths de langage
  * 
  * @author FrancoisMacko
  */

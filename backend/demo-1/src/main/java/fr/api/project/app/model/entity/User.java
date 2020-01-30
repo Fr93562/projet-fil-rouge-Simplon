@@ -13,8 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
-/*
+/**
  * Correspond a la table des utilisateurs
+ * @author 
+ *
  */
 @Entity
 public class User {

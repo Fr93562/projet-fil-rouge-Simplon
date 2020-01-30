@@ -10,8 +10,10 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-/*
+/**
  * Correspond a la table des langages
+ * @author 
+ *
  */
 @Entity
 public class Langage {

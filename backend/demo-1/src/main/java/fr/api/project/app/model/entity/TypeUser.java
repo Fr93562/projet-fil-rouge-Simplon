@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/*
+/**
  * Correspond a la table des types d'utilisateurs
+ * @author 
+ *
  */
 @Entity
 public class TypeUser {
