@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * Declaration de l'objet model Question
@@ -33,6 +35,7 @@ public class Question
 	private Categorie categorie;
 	
 	@ManyToOne //Plusieurs Questions ont une Ressource
+	@JsonIgnoreProperties("questions")
 	private Ressource ressource;
 	
 	/**

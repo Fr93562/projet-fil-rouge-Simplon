@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -32,6 +33,7 @@ public class Ressource
 	private String link;
 	
 	@OneToMany(mappedBy="ressource") //Une ressource peut avoir plusieurs Questions
+	@JsonIgnoreProperties("ressource")
 	private Collection<Question> questions;
 
 	/**
@@ -75,13 +77,11 @@ public class Ressource
 		this.link = link;
 	}
 
-	//TODO: Meme fonction que JsonIgnore voir a remplacer pour afficher l'objet Question sans boucle
-	@JsonIgnore //Evite les boucles d'appel
-	public Collection<Question> getQuestion() {
+	public Collection<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestion(Collection<Question> question) {
+	public void setQuestions(Collection<Question> question) {
 		this.questions = question;
 	}
 }
