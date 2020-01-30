@@ -1,0 +1,4 @@
+fr.api.project
+fr.api.project.app.controller
+fr.api.project.app.model.entity
+fr.api.project.app.repository
