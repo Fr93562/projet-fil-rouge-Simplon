@@ -60,7 +60,7 @@ public class QuestionController {
 	@RequestMapping(params = {"langage"})
 	public List<Question> listQuestionParLangage(String langage) {
 
-		Optional<List<Question>> questionList = questionRepository.findAllByLangage(langage);
+		Optional<List<Question>> questionList = questionRepository.findAllByLangage(langage); // TODO pourquoi ne pas plutot récuperer le langage (il possède une liste de questions)
 		if(questionList.isPresent()) {
 			return questionList.get();
 		}
