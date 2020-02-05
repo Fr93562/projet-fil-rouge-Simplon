@@ -21,7 +21,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	 * @return Liste de questions correspondant au langage
 	 */
 	@Query(value = "SELECT * FROM question LEFT JOIN langage_question lq ON question.id = lq.question_id WHERE lq.langage_id = (SELECT id FROM langage WHERE language=?1)", nativeQuery = true)
-	Optional<List<Question>> findAllByLangage(String langage);
+	Optional<List<Question>> findAllByLangage(String langage); // TODO est-ce que cette méthode est encore utilisée?
 
 	/**
 	 * Fourni la Liste des questions correspondant a la ressource

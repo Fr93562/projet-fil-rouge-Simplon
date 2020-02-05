@@ -26,7 +26,7 @@ import fr.api.project.app.repository.LangageRepository;
  * 
  * @author FrancoisMacko
  */
-@CrossOrigin("*")
+@CrossOrigin("*") // TODO remplacer par l'adresse du serveur front
 @RestController
 @RequestMapping("/langages")
 public class LangageController {
@@ -59,7 +59,7 @@ public class LangageController {
 		
 		  if(verify.isPresent()) {
 			  
-			  output = langageRepository2.findByLanguage(langage);
+			  output = langageRepository2.findByLanguage(langage); // TODO pourquoi cette deuxième requete?
 		  }
 		
 		return output;

@@ -18,6 +18,6 @@ public interface LangageRepository extends JpaRepository<Langage, Integer> {
 	Optional<Langage> findByLanguage(String langage);
 
 	@Query(value = "INSERT INTO langage_question VALUES (?2, ?1)", nativeQuery = true)
-	String insertLangageQuestion(int idQuestion, int idLangage);
+	String insertLangageQuestion(int idQuestion, int idLangage); // TODO ajouter une question a l'entite langage puis sauver l'entite devrait faire la meme chose
 
 }
