@@ -1,0 +1,41 @@
+#text{
+    text-justify: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+    margin-top: 40px;
+    }
+
+#image1 {
+    background-image:url('src/assets/hbdbPBzw.jpeg');
+    width: 100%;
+    height:500px; 
+    background-size:cover; 
+    background-position:50% 50%;
+}
+
+#logo{
+    width: 50%;
+    color: aqua;
+}
+
+#trivial{
+    color: white;
+    font-size: 40px;
+    }
+
+#blocBlanc{
+    background-color: white;
+    height: 300px;
+    }    
+
+h3{
+    color: aqua;
+    font-weight: bolder;
+}
+
+.container{
+    width: 100% ;
+    max-width: none;
+}
