@@ -1,4 +1,4 @@
-package fr.api.project;
+package fr.api.trivialCode;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

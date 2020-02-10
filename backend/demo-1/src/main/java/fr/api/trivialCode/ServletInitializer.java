@@ -1,4 +1,4 @@
-package fr.api.project;
+package fr.api.trivialCode;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

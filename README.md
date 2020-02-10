@@ -827,7 +827,11 @@ Un exemple sur la récupération d'un étudiant:
 
 ```
 
-/
+### Lien vers la collection Postman
+
+Vous pouvez consulter ici la majeur partie des requêtes Postman:
+
+``` https://www.getpostman.com/collections/54a9b989f4bb0d6e85ea ```
 
 ### Mises à jour
 

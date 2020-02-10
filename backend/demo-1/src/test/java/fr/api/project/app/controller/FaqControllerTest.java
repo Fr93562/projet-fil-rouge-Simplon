@@ -19,8 +19,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fr.api.project.app.model.entity.Faq;
-import fr.api.project.app.repository.FaqRepository;
+import fr.api.trivialCode.app.model.entity.Faq;
+import fr.api.trivialCode.app.repository.FaqRepository;
 
 /**
  * tests des requetes api du controlleur faq
@@ -60,7 +60,7 @@ class FaqControllerTest
 	{
 		//Faq faqDisplayed = new Faq();
 		List<Faq> allFaq = new ArrayList<Faq>();
-		allFaq.add(new Faq("règle du jeu","comme ça","1"));
+		allFaq.add(new Faq("rï¿½gle du jeu","comme ï¿½a","1"));
 		allFaq.add(new Faq("jouer solo", "like this", "2"));
 		when(this.repoVirtuel.findAll()).thenReturn(allFaq);
 		
