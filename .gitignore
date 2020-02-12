@@ -15,6 +15,7 @@ build/
 .sts4-cache
 /bin/
 /backend/demo-1/bin/
+/frontankular/frontend/node_modules/
 
 ### IntelliJ IDEA ###
 .idea
