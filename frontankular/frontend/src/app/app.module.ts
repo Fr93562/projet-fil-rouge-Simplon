@@ -16,7 +16,7 @@ import { ColorDirective } from './shared/directives/color.directive';
 import { AdminComponent } from './admin/admin.component';
 import { CompteComponent } from './compte/compte.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-import { LangagesComponent } from './admin/langages-questions/langages.component';
+import { LangagesComponent } from './admin/langages/langages.component';
 
 
 @NgModule({
