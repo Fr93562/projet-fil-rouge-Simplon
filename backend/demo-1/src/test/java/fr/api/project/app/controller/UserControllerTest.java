@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import fr.api.trivialCode.controller.UserController;
+
 /**
  * tests des requetes api du controlleur user
  * @author didax

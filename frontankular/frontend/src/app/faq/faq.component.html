@@ -4,23 +4,15 @@
     <h1 class="trivial">La foire aux questions</h1>
   </div>
 </div>
-
-<div class="row h-100 text blocBlanc">
-  <h3>Les règles du jeu</h3>
-  <p>ppppppppppppppppppppppppppp
-    pppppppppppppppppppppppppppppppp
-    pppppppppp
-    ppppppppppppppppppp
-    pppp
-  </p>
+<div *ngFor="let faq of faqs" class="">
+  <i class="material-icons blocBleu code overlay">code</i>
+    <p class="question">{{ faq.id }} - {{ faq.question }}</p>
+    <p class="response">{{ faq.response }}</p>   
 </div>
 
-<div class="row h-100 text blocBlanc">
-  <h3>Fonctionnement du site</h3>
-  <p>ppppppppppppppppppppppppppp
-    pppppppppppppppppppppppppppppppp
-    pppppppppp
-    ppppppppppppppppppp
-    pppp
-  </p>
-</div>
+<!-- a supprimé pour test -->
+<button title="Test create"
+    (click)="postFaq()">Test create</button>
+    <button title="Test delete"
+    (click)="deleteFaq()">Test delete</button>
+<!-- a supprimé pour test -->

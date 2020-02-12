@@ -5,6 +5,25 @@
 
 .row {
     flex-direction: column;
+}
+  
+.question {
+    font-style: bold;
+    font-size: larger;
+}
+
+.response {
+    font-size: large;
+}
+
+.code {
+    padding: 1%;
+    width: auto;
+    border-radius: 100%;
+    transform: scale(1);
+    transition: .3s ease;
+}
+  
+  .code:hover {
+    transform: scale(1.5);
   }
-  
-  
