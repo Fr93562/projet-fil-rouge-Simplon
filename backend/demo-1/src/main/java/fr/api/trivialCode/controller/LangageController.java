@@ -25,7 +25,7 @@ import fr.api.trivialCode.repository.LangageRepository;
 import fr.api.trivialCode.service.Authentification;
 
 /**
- * Gere les paths de langage
+ * Gere les paths de langages
  * 
  * @author FrancoisMacko
  */
