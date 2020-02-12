@@ -1,0 +1,49 @@
+<!-- <h3>Langage</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let language of languages" class="col-1-4"
+      routerLink="/detail/{{langa.id}}">
+    <div class="module hero">
+      <h4>{{language.language}}</h4>
+    </div>
+  </a>
+</div> -->
+
+<!-- Page content -->
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Langage</th>
+        <!-- <th scope="col">Id-question</th> -->
+      </tr>
+    </thead>
+    <tbody >
+      <a 
+      *ngFor="let language of languages; let index = index"
+      class="row">
+        <td>{{language.id}}</td>
+        <td>{{language.language}}</td>
+        <!-- <td>{{language.question_id}}</td> -->
+      </a>
+    </tbody>
+  </table>
+
+
+  <div class="ajout">
+    <label>Ajout d'un langage
+      <input #language />
+    </label>
+    <button (click)="add(language.value); language.value=''">
+      Ajout
+    </button>
+  </div>
+
+  <!-- <div class="suppression">
+    <label>Supprimer un langage
+      <input #language />
+    </label>
+    <button (click)="delete(language.id); language.value=''">
+      Supprimer
+    </button>
+  </div> -->
+ 

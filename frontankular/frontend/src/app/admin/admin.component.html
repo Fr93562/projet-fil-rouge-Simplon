@@ -1,56 +1,10 @@
 <!-- Side navigation -->
 <div class="col-md-3 sidenav" *ngIf="true">
-  <a >Langages/Questions</a>
+  <a (click)="display=!display">Langages/Questions</a>
   <a >Ressources</a>
   <a >Ranking</a>
   <a >Faq</a>
   <a >Utilisateurs</a>
 </div>
 
-<!-- <h3>Langage</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let language of languages" class="col-1-4"
-      <!-- routerLink="/detail/{{langa.id}}"> -->
-    <!-- <div class="module hero">
-      <h4>{{language.language}}</h4>
-    </div>
-  </a>
-</div> --> -->
-
-<!-- Page content -->
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Identifiant</th>
-        <th scope="col">Langage</th>
-        <!-- <th scope="col">Id-question</th> -->
-      </tr>
-    </thead>
-    <tbody *ngFor="let language of languages">
-      <tr class="row">
-        <td>{{language.id}}</td>
-        <td>{{language.language}}</td>
-        <!-- <td>{{language.question_id}}</td> -->
-      </tr>
-    </tbody>
-  </table>
-
-
-  <div class="ajout">
-    <label>Ajout d'un langage:
-      <input #language />
-    </label>
-    <button (click)="add(language.value); language.value=''">
-      Ajout
-    </button>
-  </div>
-
-  <div class="suppression">
-    <label>Supprimer un langage:
-      <input #language />
-    </label>
-    <button (click)="delete(language.value); language.value=''">
-      Supprimer
-    </button>
-  </div>
- 
+<app-langages-questions [languages]="languages" *ngIf="display"></app-langages-questions>
