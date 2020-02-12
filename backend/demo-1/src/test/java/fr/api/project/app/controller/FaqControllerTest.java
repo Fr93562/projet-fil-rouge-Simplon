@@ -19,8 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fr.api.trivialCode.app.model.entity.Faq;
-import fr.api.trivialCode.app.repository.FaqRepository;
+import fr.api.trivialCode.controller.FaqController;
+import fr.api.trivialCode.model.Faq;
+import fr.api.trivialCode.repository.FaqRepository;
 
 /**
  * tests des requetes api du controlleur faq
