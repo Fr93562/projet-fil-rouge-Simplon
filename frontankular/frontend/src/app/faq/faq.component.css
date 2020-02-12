@@ -20,13 +20,10 @@
     padding: 1%;
     width: auto;
     border-radius: 100%;
-}
-
-.overlay {
     transform: scale(1);
     transition: .3s ease;
-  }
+}
   
-  .overlay:hover {
+  .code:hover {
     transform: scale(1.5);
   }

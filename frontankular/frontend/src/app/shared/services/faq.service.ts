@@ -11,10 +11,12 @@ import { tap, catchError } from 'rxjs/operators';
 export class FaqService {
 
   httpOptions: any;
+  tokenUser = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDYW1pbGxlLENhbWlsbGUifQ.SjfrzVEz84enwBPJGXxdge0IcYiQg6GljcakY2BKLGI';
   /*httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };*/
   url = baseUrl + '/faq';
+
 
   constructor(private http: HttpClient) { }
 
@@ -29,28 +31,23 @@ export class FaqService {
    * Envoi une requete pour l'ajout d'une FAQ
    * @param newFaq Faq a ajouter
    */
-  createFaq(newFaq: Faq): Observable<Faq> {
-    console.log(newFaq);
-    console.log(this.url);
-    return this.http.post<Faq>(this.url, newFaq);
+  createFaq(newFaq: Faq): Observable<any> {
+    return this.http.post<any>(this.url, newFaq, this.httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json',
+      token: this.tokenUser})
+    });
   }
 
   deleteFaq(delFaq: Faq): Observable<any> {
-    return this.http.delete(this.url + '/supprimer', this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      body: { delFaq }});
+    return this.http.request('delete', this.url, {body: delFaq, headers: new HttpHeaders({ 'Content-Type': 'application/json',
+                                                                token: this.tokenUser })});
   }
 
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  updateFaq(newFaq: Faq): Observable<any> {
+    return this.http.put<any>(this.url, newFaq, this.httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json',
+      token: this.tokenUser})
+    });
   }
 
 }
