@@ -1,10 +1,12 @@
 <!-- Side navigation -->
 <div class="col-md-3 sidenav" *ngIf="true">
-  <a (click)="display=!display">Langages/Questions</a>
+  <a (click)="display1=!display1">Langages</a>
+  <a >Questions</a>
   <a >Ressources</a>
   <a >Ranking</a>
-  <a >Faq</a>
+  <a (click)="display2=!display2">Faq</a>
   <a >Utilisateurs</a>
 </div>
 
-<app-langages-questions [languages]="languages" *ngIf="display"></app-langages-questions>
+<app-langages *ngIf="display1"></app-langages>
+<app-gestion-faq *ngIf="display2"></app-gestion-faq>

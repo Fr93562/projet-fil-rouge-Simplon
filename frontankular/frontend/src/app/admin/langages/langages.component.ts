@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Language } from 'src/app/shared/models/language';
-
+import { LanguageService } from 'src/app/shared/services/languageService.service';
 
 
 @Component({
@@ -9,13 +9,39 @@ import { Language } from 'src/app/shared/models/language';
   styleUrls: ['./langages.component.css']
 })
 export class LangagesComponent implements OnInit {
-  @Input() languages: Language[];
+  public languages: Language[];
+  public language: Language;
+
+  constructor(private languageService: LanguageService) { }
+
+  ngOnInit() {
+    this.languageService.getLanguages().subscribe((languages: Language[]) => {
+      this.languages = languages
+    });
+
+    this.language = new Language;
+  }
 
 
-constructor() { }
+  addLanguage(nomLanguage: string): void {
+    this.language.language = nomLanguage;
+    this.languageService.addLanguage(this.language)
+      .subscribe(language => {
+        this.languages.push(language);
+      });
+  }
 
-ngOnInit() {
+
+
+  deleteLanguage(nomLanguage: string): void {
+    this.language.language = nomLanguage;
+    this.languageService.deleteLanguage(this.language)
+      .subscribe(language => {
+        this.languages.push(language);
+      });
+  }
 }
 
-
-}
+//  delete(id: number): void {
+//     this.languageService.deleteLanguage(id).subscribe();
+//   }

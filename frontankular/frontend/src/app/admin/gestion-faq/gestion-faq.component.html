@@ -1,0 +1,41 @@
+<h3>Gestion Faq</h3>
+
+
+
+<!-- Page content -->
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:10%" scope="col">Id</th>
+            <th style="width:10%" scope="col">Priorité</th>
+            <th style="width:40%" scope="col">Question</th>
+            <th style="width:40%" scope="col">Reponse</th>
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let faq of faqs; let index = index" class="row">
+        <td>{{faq.id}}</td>
+        <td>{{faq.priority}}</td>
+        <td>{{faq.question}}</td>
+        <td>{{faq.response}}</td>
+    </tbody>
+</table>
+
+
+<div class="ajout">
+    <label>Ajout d'une faq
+        <input #faq />
+    </label>
+    <button (click)="addLanguage(language.value); language.value=''">
+        Ajout
+    </button>
+</div>
+
+<div class="suppression">
+    <label>Supprimer une faq
+        <input #faq />
+    </label>
+    <button (click)="deleteLanguage(language.value); language.value=''">
+        Supprimer
+    </button>
+</div>

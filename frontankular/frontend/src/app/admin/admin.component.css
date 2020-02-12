@@ -1,10 +1,10 @@
 .sidenav {
     height: 100%;
     position: fixed; 
-    z-index: 1; 
+    z-index: 4; 
     top: 0; 
     left: 0;
-    /* background-color: #0bc5ef; */
+    background-color: black;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 10%;
     
@@ -31,19 +31,6 @@
     padding: 0px 10px;
   }
 
-  .table{
-
-    margin-left: 30%;
-    margin-top: 15%;
-    width: 200px;
-  }
-
-  .ajout{
-    margin-left: 30%;
-  }
-
-  .suppression{
-    margin-left: 30%;
-  }
+  
 
 
