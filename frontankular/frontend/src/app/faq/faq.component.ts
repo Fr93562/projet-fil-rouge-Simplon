@@ -11,6 +11,7 @@ export class FaqComponent implements OnInit {
 
   faqs: Faq[];
   test: Faq;
+  response: string;
 
   constructor(private faqService: FaqService) { }
 
@@ -23,14 +24,20 @@ export class FaqComponent implements OnInit {
         .subscribe(faqs => this.faqs = faqs);
   }
 
+  // a supprimé pour test
   postFaq()  {
-    console.log('hello');
     this.test = new Faq();
-    this.test.id = 0;
+    this.test.id = 1;
     this.test.priority = 1;
     this.test.question = 'test';
-    this.test.response = 'ca marche?';
-    console.log(this.test);
-    this.faqService.createFaq(this.test).subscribe();
+    this.test.response = 'ca marche2?';
+    this.faqService.updateFaq(this.test).subscribe();
   }
+
+  deleteFaq()  {
+    this.test = new Faq();
+    this.test.id = 6;
+    this.faqService.deleteFaq(this.test).subscribe();
+  }
+  // a supprimé pour test
 }
