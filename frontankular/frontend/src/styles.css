@@ -1,0 +1,141 @@
+ /* Material icons */ 
+  .material-icons { 
+font-family: 'Material Icons'; 
+font-weight: normal;  font-style: normal;  font-size: 24px;  /* Preferred icon size */ 
+display: inline-block; 
+line-height: 1; 
+text-transform: none; 
+letter-spacing: normal; 
+word-wrap: normal; 
+white-space: nowrap; 
+direction: ltr; 
+
+/* Support for all WebKit browsers. */ 
+-webkit-font-smoothing: antialiased; 
+
+/* Support for Safari and Chrome. */ 
+text-rendering: optimizeLegibility; 
+
+/* Support for Firefox. */ 
+-moz-osx-font-smoothing: grayscale; 
+
+/* Support for IE. */ 
+font-feature-settings: 'liga'; 
+} 
+
+.text {
+  text-justify: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+  margin-top: 40px;
+}
+
+.container {
+  width: 100% ;
+  max-width: none;
+  padding: 0;
+}
+
+.trivial{
+  color: white;
+  font-size: 40px;
+}
+
+.image {
+  background-size:cover; 
+  width: 100%;
+  background-position:50% 50%;
+}
+
+.logo {
+  width:150px;
+}
+
+.row {
+  margin-right: 0px;
+ 
+}
+
+.blocBlanc{
+  background-color: white;
+  height: auto;
+}
+
+.blocBleu{
+  background-color:#0bc5ef;
+  height: auto;
+}
+
+/* STRUCTURE BLOC CONNEXION */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+#formContent {
+  border-radius: 10px;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  text-align: center;
+}
+
+#formFooter {
+  background-color: #f6f6f6;
+  opacity: 0.6;
+  border-top: 1px solid #dce8f1;
+  padding: 15px;   
+  border-radius: 10px;
+}
+
+
+/* FORM TYPOGRAPHY*/
+
+input[type=submit] {
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  width: 85%;
+  margin: 10px 20px 40px 20px;
+}
+
+input[type=submit]:hover {
+  background-color: #0bc5ef;
+}
+
+input[type=text], input[type=password] {
+  background-color: #f6f6f6;
+  opacity: 0.5;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}

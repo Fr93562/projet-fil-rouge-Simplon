@@ -1,0 +1,21 @@
+
+#image1 {
+    background-image:url('src/assets/PmhEp2yw.jpeg');
+    height:500px;
+}
+
+#manette{
+    width: 100%;
+    padding: 0% 25%;
+}
+
+#image2{
+    background-image:url('src/assets/oIUC4KkQ.png');
+    height:200px; 
+}
+
+#image3{
+    background-image:url('src/assets/5DTdHFCA.jpeg');
+    height:400px; 
+    background-position:50% 80%;
+}

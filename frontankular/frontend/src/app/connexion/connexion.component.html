@@ -1,0 +1,27 @@
+<div class="image" id="image1">
+    <div class="row h-100 wrapper">
+
+        <div id="formContent">
+
+            <div>
+                <img src="../assets/32578442.png" class="logo" alt="" />
+            </div>
+
+            <form>
+                <input type="text" id="login" name="login" placeholder="Email">
+                <input type="password" id="password" name="login" placeholder="Mot de passe">
+                
+                <a [routerLink]="['/connexion/compte']" appColor>
+                    <input type="submit" value="Se connecter" >
+                </a>
+                
+            </form>
+
+            <div id="formFooter">
+                <a class="underlineHover col-6 " >Mot de passe oublié?</a>
+                <a class="underlineHover col-6" >S'inscrire</a>
+            </div>
+        </div>
+
+    </div>
+</div>

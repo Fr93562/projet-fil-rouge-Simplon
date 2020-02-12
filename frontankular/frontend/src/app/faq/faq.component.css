@@ -1,0 +1,10 @@
+#image1 {
+    background-image:url('src/assets/hbdbPBzw.jpeg');
+    height:500px;
+}
+
+.row {
+    flex-direction: column;
+  }
+  
+  
