@@ -8,7 +8,7 @@ import { JouerComponent } from './jouer/jouer.component';
 import { FaqComponent } from './faq/faq.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRouting } from './app.routing';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,8 +16,13 @@ import { ColorDirective } from './shared/directives/color.directive';
 import { AdminComponent } from './admin/admin.component';
 import { CompteComponent } from './compte/compte.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-import { LangagesComponent } from './admin/langages/langages.component';
 import { GestionFaqComponent } from './admin/gestion-faq/gestion-faq.component';
+import { GestionUtilisateursComponent } from './admin/gestion-utilisateurs/gestion-utilisateurs.component';
+import { GestionQuestionsComponent } from './admin/gestion-questions/gestion-questions.component';
+import { GestionRessourcesComponent } from './admin/gestion-ressources/gestion-ressources.component';
+import { GestionLangagesComponent } from './admin/gestion-langages/gestion-langages.component';
+import { GestionTypeUtilisateurComponent } from './admin/gestion-type-utilisateur/gestion-type-utilisateur.component';
+import { GestionCategoriesComponent } from './admin/gestion-categories/gestion-categories.component';
 
 
 @NgModule({
@@ -32,8 +37,16 @@ import { GestionFaqComponent } from './admin/gestion-faq/gestion-faq.component';
     AdminComponent,
     CompteComponent,
     ConnexionComponent,
-    LangagesComponent,
-    GestionFaqComponent
+    GestionFaqComponent,
+    GestionUtilisateursComponent,
+    GestionQuestionsComponent,
+    GestionRessourcesComponent,
+ 
+    GestionLangagesComponent,
+ 
+    GestionTypeUtilisateurComponent,
+ 
+    GestionCategoriesComponent
   ],
 
   imports: [

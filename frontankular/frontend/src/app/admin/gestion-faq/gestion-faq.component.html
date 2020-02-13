@@ -13,7 +13,7 @@
         </tr>
     </thead>
 
-    <tbody *ngFor="let faq of faqs; let index = index" class="row">
+    <tbody *ngFor="let faq of faqs; let index = index" class="table">
         <td>{{faq.id}}</td>
         <td>{{faq.priority}}</td>
         <td>{{faq.question}}</td>
@@ -22,7 +22,38 @@
 </table>
 
 
-<div class="ajout">
+
+
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Ajouter Faq</h3>
+<div class="container">
+    <form class="col-6 mx-auto">
+
+        <div class="form-group">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Priorité
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">1</a>
+                    <a class="dropdown-item" href="#">2</a>
+                    <a class="dropdown-item" href="#">3</a>
+                </div>
+            </div>
+
+            <label> Question </label>
+            <textarea class="form-control" id="questionFaq" rows="3"></textarea>
+            <label> Réponse </label>
+            <textarea class="form-control" id="reponseFaq" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- <div class="ajout">
     <label>Ajout d'une faq
         <input #faq />
     </label>
@@ -38,4 +69,4 @@
     <button (click)="deleteLanguage(language.value); language.value=''">
         Supprimer
     </button>
-</div>
+</div> -->
