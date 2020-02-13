@@ -1,29 +1,49 @@
+/* Image Top */
 #image1 {
-    background-image:url('src/assets/hbdbPBzw.jpeg');
-    height:500px;
+  background-image: url("src/assets/hbdbPBzw.jpeg");
+  height: 725px;
 }
 
-.row {
-    flex-direction: column;
+/* Affichage FAQS */
+p {
+  margin: 10px;
 }
-  
+
+div {
+  margin: 10px 0;
+}
+
+.center {
+  text-align: center;
+}
+
 .question {
-    font-style: bold;
-    font-size: larger;
+  font-size: 24px;
 }
 
 .response {
-    font-size: large;
+  font-size: 20px;
 }
 
+/* Affichage Icon */
 .code {
-    padding: 1%;
-    width: auto;
-    border-radius: 100%;
-    transform: scale(1);
-    transition: .3s ease;
+  padding: 1%;
+  width: auto;
+  border-radius: 100%;
+  transition: 0.3s ease;
 }
-  
-  .code:hover {
-    transform: scale(1.5);
-  }
+
+.code:hover {
+  transform: rotate(180deg);
+}
+
+/* Lien RGPD */
+.lignebleu {
+  width: 100%;
+  border: 10px solid;
+  border-color: rgb(138, 221, 239);
+}
+
+.link {
+  font-size: 24px;
+}

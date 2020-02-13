@@ -1,18 +1,35 @@
-<div class="w-100 p-3 image" id="image1">
+<!-- #region Top -->
+<section class="w-100 p-3 image" id="image1">
   <div class="row h-100 text">
-    <img src="../assets/32578442.png" class="logo" alt="" />
-    <h1 class="trivial">La foire aux questions</h1>
+    <div>
+      <img src="../assets/vector.png" class="logo" alt="logo" />
+      <h1 class="trivial">La Foire aux Questions</h1>
+    </div>
   </div>
-</div>
-<div *ngFor="let faq of faqs" class="">
-  <i class="material-icons blocBleu code overlay">code</i>
-    <p class="question">{{ faq.id }} - {{ faq.question }}</p>
-    <p class="response">{{ faq.response }}</p>   
-</div>
+</section>
+<!-- #endregion -->
 
-<!-- a supprimé pour test -->
-<button title="Test create"
-    (click)="postFaq()">Test create</button>
-    <button title="Test delete"
-    (click)="deleteFaq()">Test delete</button>
-<!-- a supprimé pour test -->
+<!-- #region Affichage Faq -->
+<section class="center">
+  <div *ngFor="let faq of faqs">
+    <i class="material-icons blocBleu code">code</i>
+    <p class="question">{{ faq.id }} - {{ faq.question }}</p>
+    <p class="response">{{ faq.response }}</p>
+  </div>
+</section>
+<!-- #endregion -->
+
+<!-- #region Lien RGPD -->
+<section class="center">
+  <div class="lignebleu"></div>
+  <a href="" class="question">Notre Politique RGPD</a>
+</section>
+
+<!-- #endregion -->
+
+<!-- a supprimé apres les test -->
+<br>
+<button title="Test create" (click)="postFaq()">Test create</button>
+<button title="Test create" (click)="updateFaq()">Test update</button>
+<button title="Test delete" (click)="deleteFaq()">Test delete</button>
+<!-- a supprimé apres les test -->

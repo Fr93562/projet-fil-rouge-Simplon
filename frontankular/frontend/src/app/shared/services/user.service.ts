@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { baseUrl } from './baseUrl';
+import { DataService } from './data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 
@@ -13,11 +13,11 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  url = baseUrl+"/users";
+  constructor(private http: HttpClient, private dataService: DataService) { }
+
+  url = this.dataService.baseUrl + '/users';
   list = null;
   user = null;
-
-  constructor(private http: HttpClient) { }
 
   /**
    * Récupere la liste des users
@@ -31,13 +31,13 @@ export class UserService {
   /**
    * Tri la liste des users
    */
-  sortList(limit: number) : User[] {
+  sortList(limit: number): User[] {
 
-    this.list =this.http.get<User[]>(this.url);
+    this.list = this.http.get<User[]>(this.url);
     let orderedList: User[];
 
     for (let i = 0; i < limit; i++) {
-      
+
       orderedList.push(this.list[i]);
     }
     return orderedList;
@@ -48,7 +48,7 @@ export class UserService {
    */
   viewList() {
 
-    this.list =this.http.get<User[]>(this.url);
+    this.list = this.http.get<User[]>(this.url);
     console.log(this.list);
   }
 }
