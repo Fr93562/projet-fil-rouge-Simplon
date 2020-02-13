@@ -1,55 +1,74 @@
-<div class="w-100 p-3 image" id="image1">
+<!-- Section visuelle de la page d'accueil -->
+
+<section class="w-100 p-3 image" id="image1">
   <div class="row h-100 text">
     <div>
-      <img src="../assets/32578442.png" class="logo" alt="logo" />
-        <h1 class="trivial">Trivial'Code</h1>
+
+      <img src="../assets/vector.png" class="logo" alt="logo" />
+      <h1 class="trivial" id="titleHomePage">Trivial'Code</h1>
+
     </div>
   </div>
-</div>
+</section>
 
+<!-- Section présentation -->
 
-<div class="row h-100 blocBleu">
-
+<section class="row" id="homeGameSection">
   <div class="col-md-6">
-    <div class="row h-100 text">
-      <h3>Qu'es-ce que c'est?</h3>
-      <p> ppppppppppppppp
-        ppppppppppppppppppp
-        ppppppppppppppppppppppp
-        pppppppppppppppppppppppp
-      </p>
+    <div class="row h-100 text" id="textContent">
+
+      <h2>Qu'es-ce que c'est?</h2>
+      <p> Ce projet est réalisé dans le cadre de la formation de développeur web & mobile. 
+          C'est un jeu est composé de deux application, une API et front tournant sous Angular.
+
+          Le but de ce jeu est de donner envie à ses utilisateurs de découvrir et 
+          de développer leurs connaissances dans le monde de la tech et plus précisément celui du développement. </p>
+
     </div>
   </div>
 
-  <div class="col-md-6">
-    <img src="../assets/manette.png" id="manette" alt="logo" />
+  <div class="col-md-6" id="manetteContent">
+    <div id="manetteContenair">
+
+      <img src="../assets/manette.png" id="manette" alt="logo" />
+
+    </div>
   </div>
+</section>
 
-</div>
+<!-- Image de présentation -->
 
+<div class="image" id="image2"></div>
 
-<div class="image" id="image2">
-</div>
-
+<!-- Ladder des autres joueurs -->
 
 <div class="blocBlanc">
-  <div class="row h-100 text">
-    <h3>Comparer vous à d'autres joueurs</h3>
-    <p>ppppppppppppppppppppppppppp
-      pppppppppppppppppppppppppppppppp
-      pppppppppp
-      ppppppppppppppppppp
-      pppp
-    </p>
+  <div class="row h-100 text" id ="ladderSection">
+
+    <h2 class="textCenter">Comparer vous à d'autres joueurs</h2>
+
+    <div>        
+        <div *ngFor="let user of users">
+
+          <span class="material-icons overlay">highlight</span>
+            <p class="question">{{ user.username }} -- {{ user.ranking }} </p>
+        </div>
+    </div>
   </div>
 </div>
 
+<!-- Et si c'était vous? -->
 
 <div>
   <div class="row">
     <div class="col-md-6 image" id="image3">
     </div>
-    <div class="col-md-6 blocBleu">
+    <div class="col-md-6" id="colorSection">
+
+      <h2 class="textCenter">Et si c'était vous?</h2>
+      <p class="textCenter">En vous inscrivant, vous avez la possibilité de consulter le site et de jouer au Trivial Code. La création d’un compte utilisateur vous permettra d’accéder à plus de fonctionnalité. Quelles fonctionnalités?
+        Un compte Utilisateur vous permettra d’avoir accès aux liens des cours après chaque partie jouée. Vous aurez un accès au classement des joueurs et pourrait également faire partie de celui-ci. </p>
+
     </div>
   </div>
 </div>
