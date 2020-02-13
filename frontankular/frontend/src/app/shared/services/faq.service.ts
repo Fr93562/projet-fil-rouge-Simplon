@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { baseUrl } from './baseUrl';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Faq } from '../models/faq';
 import { tap, catchError } from 'rxjs/operators';
+import { RequestService } from './request.service';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FaqService {
+export class FaqService extends RequestService {
 
-  httpOptions: any;
-  tokenUser = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDYW1pbGxlLENhbWlsbGUifQ.SjfrzVEz84enwBPJGXxdge0IcYiQg6GljcakY2BKLGI';
-  /*httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };*/
-  url = baseUrl + '/faq';
+  url = this.data.baseUrl + '/faq';
 
-
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient, public data: DataService) {
+    super(http, data);
+  }
 
   /**
    * Récupere la liste des Faqs
    */
   getFaqsList(): Observable<any> {
-    return this.http.get<Faq[]>(this.url);
+    return this.getTrivialCode(this.url);
   }
 
   /**
@@ -32,22 +29,23 @@ export class FaqService {
    * @param newFaq Faq a ajouter
    */
   createFaq(newFaq: Faq): Observable<any> {
-    return this.http.post<any>(this.url, newFaq, this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json',
-      token: this.tokenUser})
-    });
+    return this.postTrivialCode(this.url, newFaq);
   }
 
+  /**
+   * Envoi une requete pour la suppression d'une FAQ
+   * @param delFaq Faq a supprimer
+   */
   deleteFaq(delFaq: Faq): Observable<any> {
-    return this.http.request('delete', this.url, {body: delFaq, headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                                                                token: this.tokenUser })});
+    return this.deleteTrivialCode(this.url, delFaq);
   }
 
+  /**
+   * Envoi une requete pour la mise a d'une FAQ
+   * @param newFaq Faq a mettre a jour
+   */
   updateFaq(newFaq: Faq): Observable<any> {
-    return this.http.put<any>(this.url, newFaq, this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json',
-      token: this.tokenUser})
-    });
+    return this.postTrivialCode(this.url, newFaq);
   }
 
 }
