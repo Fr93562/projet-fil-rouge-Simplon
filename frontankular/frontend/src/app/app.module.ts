@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CompteComponent } from './compte/compte.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { LangagesComponent } from './admin/langages/langages.component';
+import { GestionFaqComponent } from './admin/gestion-faq/gestion-faq.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LangagesComponent } from './admin/langages/langages.component';
     AdminComponent,
     CompteComponent,
     ConnexionComponent,
-    LangagesComponent
+    LangagesComponent,
+    GestionFaqComponent
   ],
 
   imports: [
