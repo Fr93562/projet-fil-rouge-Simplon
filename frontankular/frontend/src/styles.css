@@ -1,4 +1,6 @@
- /* Material icons */ 
+*{}
+
+/* Material icons */ 
   .material-icons { 
 font-family: 'Material Icons'; 
 font-weight: normal;  font-style: normal;  font-size: 24px;  /* Preferred icon size */ 
