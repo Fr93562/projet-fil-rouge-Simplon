@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../shared/models/user';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-accueil',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
   
-  constructor() { }
+  users: User[];
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+
+    this.getLadder();
   }
 
+  getLadder() {
 
+    this.userService.getList().subscribe( users => this.users = users);
+  }
 
 }
