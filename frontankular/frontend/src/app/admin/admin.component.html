@@ -1,13 +1,45 @@
-<!-- Side navigation -->
-<div class="col-md-3 sidenav" *ngIf="true">
-  <a (click)="display1=!display1">Langages</a>
-  <a >Questions</a>
-  <a >Ressources</a>
-  <a >Ranking</a>
-  <a (click)="display2=!display2">Faq</a>
-  <a >Utilisateurs</a>
+
+
+<div>
+<div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin-top: 20%;">
+  <a class="nav-item nav-link active" id="utilisateurs-tab" data-toggle="tab" href="#utilisateurs" aria-controls="nav-utilisateur" aria-selected="false">Utilisateurs</a>
+  <a class="nav-item nav-link" id="typeUtilisateur-tab" data-toggle="tab" href="#typeUtilisateur" aria-controls="nav-typeUtilisateur" aria-selected="false">Type Utilisateur</a>
+  <a class="nav-item nav-link" id="langages-tab" data-toggle="tab" href="#langages" aria-controls="nav-langages" aria-selected="false">Langages</a>
+  <a class="nav-item nav-link" id="questions-tab" data-toggle="tab" href="#questions" aria-controls="nav-questions" aria-selected="false">Questions</a>
+  <a class="nav-item nav-link" id="categories-tab" data-toggle="tab" href="#categories" aria-controls="nav-categories" aria-selected="false">Categories</a>
+  <a class="nav-item nav-link" id="ressources-tab" data-toggle="tab" href="#ressources" aria-controls="nav-ressources" aria-selected="false">Ressources</a>
+
+  <a class="nav-item nav-link" id="faq-tab" data-toggle="tab" href="#faq" aria-controls="nav-faq" aria-selected="false">Faq</a>
+</div>
 </div>
 
-<app-langages *ngIf="display1"></app-langages>
-<app-gestion-faq *ngIf="display2"></app-gestion-faq>
+<div class="tab-content" id="nav-tabContent">
+<app-gestion-utilisateurs class="tab-pane fade show active" id="utilisateurs" aria-labelledby="nav-utilisateur-tab"></app-gestion-utilisateurs>
+<app-gestion-type-utilisateur  class="tab-pane fade show active" id="typeUtilisateur" aria-labelledby="nav-typeUtilisateur-tab"></app-gestion-type-utilisateur>
+<app-gestion-langages class="tab-pane fade" id="langages" aria-labelledby="nav-langages-tab"></app-gestion-langages>
+<app-gestion-questions class="tab-pane fade" id="questions" aria-labelledby="nav-questions-tab"></app-gestion-questions>
+<app-gestion-categories class="tab-pane fade" id="categories" aria-labelledby="nav-categories-tab"></app-gestion-categories>
+<app-gestion-ressources class="tab-pane fade" id="ressources" aria-labelledby="nav-ressources-tab"></app-gestion-ressources>
+<app-gestion-faq class="tab-pane fade" id="faq"  aria-labelledby="nav-faq-tab"></app-gestion-faq>
+</div>
 
+
+ 
+
+
+
+<!-- <div class="col-md-3 sidenav" *ngIf="true">
+  <a (click)="gestionUtilisateurs=!gestionUtilisateurs">Utilisateurs</a>
+  <a (click)="gestionLangages=!gestionLangages">Langages</a>
+  <a (click)="gestionQuestions=!gestionQuestions">Questions</a>
+  <a (click)="gestionRessources=!gestionRessources">Ressources</a>
+  <a (click)="gestionRanking=!gestionRanking">Ranking</a>
+  <a (click)="gestionFaq=!gestionFaq">Faq</a>
+</div>
+
+<app-gestion-utilisateurs *ngIf="gestionUtilisateurs"></app-gestion-utilisateurs>
+<app-gestion-langages *ngIf="gestionLangages"></app-gestion-langages>
+<app-gestion-questions *ngIf="gestionQuestions"></app-gestion-questions>
+<app-gestion-ressources *ngIf="gestionRessources"></app-gestion-ressources>
+<app-gestion-ranking *ngIf="gestionRanking"></app-gestion-ranking>
+<app-gestion-faq *ngIf="gestionFaq"></app-gestion-faq> -->

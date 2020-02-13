@@ -10,8 +10,9 @@ import { FaqService } from '../shared/services/faq.service';
   providers: [LanguageService, FaqService]
 })
 export class AdminComponent implements OnInit {
-  public display1: boolean = false;
-  public display2: boolean = false;
+  
+
+
  
   constructor(private languageService: LanguageService, private faqService: FaqService) { }
 
