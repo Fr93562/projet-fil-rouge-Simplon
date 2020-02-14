@@ -1,5 +1,41 @@
-#image1 {
+#image1 
+{
     background-image:url('src/assets/XXVXVfyQ.jpeg');
     height:50em; 
+}
+/*style du formulaire*/
+#login, #password
+{
+    width: 280px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0px;
+
+    position: relative;
+    left: 79px;
+    
+    background-color: rgba(255,255,255, 1);
+    color: white; 
+}
+/* écart entre "mot de passe" et "se connecter" */
+#password
+{
+    margin-bottom: 50px;
+}
+/* style bouton connexion*/
+#connexion-button
+{
+    width: 280px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0px;
+
+    background-color: rgb(138, 221, 239);
+    color: white;
+    
+}
+#other
+{
+    color: white;
 }
   
