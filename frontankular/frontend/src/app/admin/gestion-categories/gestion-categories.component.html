@@ -1,1 +1,50 @@
-<p>gestion-categories works!</p>
+<h3>Gestion Categorie</h3>
+
+
+<table class="table col-4 mx-auto">
+  <thead>
+    <tr>
+      <th style="width:30%" scope="col">Id</th>
+      <th style="width:70%" scope="col">type</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let categorie of categories; let index = index" class="table">
+    <td>{{categorie.id}} </td>
+    <td> {{categorie.type}}</td>
+  </tbody>
+</table>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Ajouter Categorie </h3>
+<form [formGroup]='form' (ngSubmit)='postCategory(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>Type</label>
+    <input formControlName=type class="form-control" rows="1">
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Modifier Categorie</h3>
+<form [formGroup]='form' (ngSubmit)='updateCategory(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>ID</label>
+    <input formControlName=id class="form-control">
+  </div>
+  <div class="form-group">
+    <label> type </label>
+    <input formControlName=type class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Supprimer Categorie</h3>
+<form [formGroup]='form' (ngSubmit)='deleteCategory(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>ID</label>
+    <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
+    <small class="form-text text-muted">Saissir id de la categorie à supprimer</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>

@@ -1,1 +1,148 @@
-<p>gestion-questions works!</p>
+<h3>Gestion Question</h3>
+
+<table class="table col-10 mx-auto">
+    <thead>
+        <tr>
+            <th style="width:5%" scope="col">Id</th>
+            <th style="width:5%" scope="col">Niveau</th>
+            <th style="width:40%" scope="col">Question</th>
+            <th style="width:10%" scope="col">Reponse</th>
+            <th style="width:10%" scope="col">Choix 1</th>
+            <th style="width:10%" scope="col">Choix 2</th>
+            <th style="width:10%" scope="col">Choix 3</th>
+            <th style="width:5%" scope="col">Id Ressource</th>
+            <th style="width:5%" scope="col">Id Categorie</th>
+
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let question of questions; let index = index" class="table">
+        <td>{{question.id}}</td>
+        <td>{{question.level}}</td>
+        <td>{{question.question}}</td>
+        <td>{{question.answer}}</td>
+        <td>{{question.choice1}}</td>
+        <td>{{question.choice2}}</td>
+        <td>{{question.choice3}}</td>
+        <td>{{question.ressource.id}}</td>
+        <td>{{question.categorie.id}}</td>
+    </tbody>
+</table>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Ajouter question</h3>
+
+<form [formGroup]='form' (ngSubmit)='postQuestion(form)' class="col-5 mx-auto">
+
+
+    <div class="form-group">
+        <label>Level</label>
+        <input formControlName=level class="form-control" rows="1">
+    </div>
+    <div class="form-group">
+        <label> Question </label>
+        <textarea formControlName=question class="form-control" rows="6"></textarea>
+    </div>
+    <div class="form-group">
+        <label> Réponse </label>
+        <textarea formControlName=answer class="form-control" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+        <label> Choix 1 </label>
+        <textarea formControlName=choice1 class="form-control" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+        <label> Choix 2 </label>
+        <textarea formControlName=choice2 class="form-control" rows="6"></textarea>
+    </div>
+    <div class="form-group">
+        <label> Choix 3 </label>
+        <textarea formControlName=choice3 class="form-control" rows="6"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Id Ressource</label>
+        <input formControlName=ressourceId class="form-control" rows="1">
+    </div>
+    <div class="form-group">
+        <label>Id Categorie</label>
+        <input formControlName=categorieId class="form-control" rows="1">
+    </div>
+
+    <!-- <div formGroupeName="ressource">
+        <div class="form-group">
+            <label>Id Ressource</label>
+            <input value=id  formControlName=id class="form-control" rows="1">
+        </div>
+    </div>
+    <div formGroupeName="categorie">
+        <div class="form-group">
+            <label>Id Categorie</label>
+            <input value=id formControlName=id class="form-control" rows="1">
+        </div>
+    </div> -->
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+
+</form>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Modifier question</h3>
+
+<form [formGroup]='form' (ngSubmit)='updateQuestion(form)' class="col-5 mx-auto">
+
+    <div class='form-group'>
+        <div class="form-group">
+            <label>ID</label>
+            <input formControlName=id class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Level</label>
+            <input formControlName=level class="form-control" rows="1">
+        </div>
+        <div class="form-group">
+            <label> Question </label>
+            <textarea formControlName=question class="form-control" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+            <label> Réponse </label>
+            <textarea formControlName=answer class="form-control" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label> Choix 1 </label>
+            <textarea formControlName=choice1 class="form-control" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label> Choix 2 </label>
+            <textarea formControlName=choice2 class="form-control" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+            <label> Choix 3 </label>
+            <textarea formControlName=choice3 class="form-control" rows="6"></textarea>
+        </div>
+        <div formGroupeName='ressource'>
+            <div class="form-group">
+                <label>Id Ressource</label>
+                <input value=id formControlName=id class="form-control" rows="1">
+            </div>
+        </div>
+        <div formGroupeName='categorie'>
+            <div class="form-group">
+                <label>Id Categorie</label>
+                <input formControlName=id class="form-control" rows="1">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+
+</form>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Supprimer question</h3>
+
+<form [formGroup]='form' (ngSubmit)='deleteQuestion(form)' class="col-5 mx-auto">
+    <div class="form-group">
+        <label>ID</label>
+        <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
+        <small class="form-text text-muted">Saissir id de la question à supprimer</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>

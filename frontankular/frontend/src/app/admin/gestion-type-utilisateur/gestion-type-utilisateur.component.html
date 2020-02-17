@@ -1,1 +1,51 @@
-<p>gestion-type-utilisateur works!</p>
+
+<h3>Gestion Type d'utilisateur</h3>
+
+
+<table class="table col-4 mx-auto">
+  <thead>
+    <tr>
+      <th style="width:30%" scope="col">Id</th>
+      <th style="width:70%" scope="col">type</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let typeUser of typeUsers; let index = index" class="table">
+    <td>{{typeUser.id}} </td>
+    <td> {{typeUser.type}}</td>
+  </tbody>
+</table>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Ajouter type d'utilisateur </h3>
+<form [formGroup]='form' (ngSubmit)='postTypeUser(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>Type</label>
+    <input formControlName=type class="form-control" rows="1">
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Modifier type d'utilisateur</h3>
+<form [formGroup]='form' (ngSubmit)='updateTypeUser(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>ID</label>
+    <input formControlName=id class="form-control">
+  </div>
+  <div class="form-group">
+    <label> type </label>
+    <input formControlName=type class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
+
+
+<!-- <h3 class="ajout text-left" style="margin-top:100px;">Supprimer Type d'utilisateur</h3>
+<form [formGroup]='form' (ngSubmit)='deleteTypeUser(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>ID</label>
+    <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
+    <small class="form-text text-muted">Saissir id du type d'utilisateur à supprimer</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Supprimer</button>
+</form> -->

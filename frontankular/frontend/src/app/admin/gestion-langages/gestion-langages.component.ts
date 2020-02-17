@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Language } from 'src/app/shared/models/language';
-import { LanguageService } from 'src/app/shared/services/languageService.service';
-
+import { LanguageService } from 'src/app/shared/services/language.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-gestion-langages',
@@ -11,37 +11,44 @@ import { LanguageService } from 'src/app/shared/services/languageService.service
 export class GestionLangagesComponent implements OnInit {
   public languages: Language[];
   public language: Language;
+  public form: FormGroup;
 
   constructor(private languageService: LanguageService) { }
 
   ngOnInit() {
-    this.languageService.getLanguages().subscribe((languages: Language[]) => {
+    this.languageService.getLanguagesList().subscribe((languages: Language[]) => {
       this.languages = languages
     });
 
-    this.language = new Language;
+    this.form = new FormGroup({
+      id: new FormControl(),
+      language: new FormControl()
+    })
+   
+  }
+
+  postLanguage(form: FormGroup) {
+    this.language = new Language();
+    this.language.id = null;
+    this.language.language = form.controls['language'].value;
+    this.languageService.createLangage(this.language).subscribe();
+    this.form.reset();
+  }
+
+  updateLanguage(form: FormGroup) {
+    this.language;
+    this.language.id = form.controls['id'].value;
+    this.language.language = form.controls['language'].value;
+    this.languageService.updateLanguage(this.language).subscribe();
+    this.form.reset();
   }
 
 
-  addLanguage(nomLanguage: string): void {
-    this.language.language = nomLanguage;
-    this.languageService.addLanguage(this.language)
-      .subscribe(language => {
-        this.languages.push(language);
-      });
+  deleteLanguage(form: FormGroup) {
+    this.language;
+    this.language.id = form.controls['id'].value;
+    this.languageService.deleteLanguage(this.language).subscribe();
+    this.form.reset();
   }
 
-
-
-  deleteLanguage(nomLanguage: string): void {
-    this.language.language = nomLanguage;
-    this.languageService.deleteLanguage(this.language)
-      .subscribe(language => {
-        this.languages.push(language);
-      });
-  }
 }
-
-//  delete(id: number): void {
-//     this.languageService.deleteLanguage(id).subscribe();
-//   }

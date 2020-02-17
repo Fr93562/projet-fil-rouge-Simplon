@@ -41,11 +41,8 @@ import { GestionCategoriesComponent } from './admin/gestion-categories/gestion-c
     GestionUtilisateursComponent,
     GestionQuestionsComponent,
     GestionRessourcesComponent,
- 
     GestionLangagesComponent,
- 
     GestionTypeUtilisateurComponent,
- 
     GestionCategoriesComponent
   ],
 

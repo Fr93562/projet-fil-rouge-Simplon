@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageService } from '../shared/services/languageService.service';
+import { LanguageService } from '../shared/services/language.service';
 import { FaqService } from '../shared/services/faq.service';
 
 

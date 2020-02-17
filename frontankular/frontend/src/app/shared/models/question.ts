@@ -1,11 +1,15 @@
-export class Question{
+import { Categorie } from './categorie';
+import { Ressource } from './ressource';
+
+
+export class Question {
     id: number;
+    level: number;
+    question: string;
     answer: string;
     choice1: string;
     choice2: string;
     choice3: string;
-    level: number;
-    question: string;
-    ressource_id: number;
-    langage_id: number;
+    categorie: Categorie;
+    ressource: Ressource;
 }
