@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.api.trivialCode.model.ResponseObject;
 import fr.api.trivialCode.model.Ressource;
 import fr.api.trivialCode.repository.RessourceRepository;
 import fr.api.trivialCode.service.Authentification;
@@ -46,10 +48,7 @@ public class RessourceController {
 	 * @return la ressource ajoutée
 	 */
 	@PostMapping
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public String ajoutRessource(@RequestBody Ressource ressource, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> ajoutRessource(@RequestBody Ressource ressource, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -58,10 +57,10 @@ public class RessourceController {
 			if (auth.verify()[1].equalsIgnoreCase("Administrateur")) {
 
 				ressourceRepository.saveAndFlush(ressource);
-				output = "success";
+				return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.CREATED);
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -83,9 +82,7 @@ public class RessourceController {
 	 * @param newRessource ressource modifiée
 	 */
 	@PutMapping
-	public String modifierRessource(@RequestBody Ressource newRessource, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> modifierRessource(@RequestBody Ressource newRessource, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -96,11 +93,11 @@ public class RessourceController {
 				Optional<Ressource> oldRessource = ressourceRepository.findById(newRessource.getId());
 				if (oldRessource.isPresent()) {
 					ressourceRepository.saveAndFlush(newRessource);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -109,10 +106,7 @@ public class RessourceController {
 	 * @param removeRessource ressource à supprimer
 	 */
 	@DeleteMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	public String supprimerRessource(@RequestBody Ressource removeRessource, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> supprimerRessource(@RequestBody Ressource removeRessource, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -123,22 +117,11 @@ public class RessourceController {
 				Optional<Ressource> oldRessource = ressourceRepository.findById(removeRessource.getId());
 				if (oldRessource.isPresent()) {
 					ressourceRepository.delete(removeRessource);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
-	/**
-	 * Retourne la Liste des ressources correspondant a la liste des IDs des
-	 * questions
-	 * 
-	 * @param ids Liste des IDs a recuperer
-	 * @return Liste des ressources correspondant au IDs des questions
-	 */
-	@GetMapping("/end")
-	public List<Ressource> returnListRessources(@RequestBody List<Integer> ids) {
-		return ressourceRepository.findAllById(ids);
-	}
 }
