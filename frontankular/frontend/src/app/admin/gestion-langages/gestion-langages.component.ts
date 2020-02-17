@@ -12,6 +12,7 @@ export class GestionLangagesComponent implements OnInit {
   public languages: Language[];
   public language: Language;
   public form: FormGroup;
+  public formupdate: FormGroup;
 
   constructor(private languageService: LanguageService) { }
 
@@ -21,6 +22,10 @@ export class GestionLangagesComponent implements OnInit {
     });
 
     this.form = new FormGroup({
+      id: new FormControl(),
+      language: new FormControl()
+    })
+    this.formupdate = new FormGroup({
       id: new FormControl(),
       language: new FormControl()
     })
@@ -35,10 +40,15 @@ export class GestionLangagesComponent implements OnInit {
     this.form.reset();
   }
 
-  updateLanguage(form: FormGroup) {
+  dynForm(event) {
+    console.log(this.languages[event.target.selectedIndex]);
+    this.formupdate.controls['language'].setValue(this.languages[event.target.selectedIndex].language);
+  }
+
+  updateLanguage(formupdate: FormGroup) {
     this.language;
-    this.language.id = form.controls['id'].value;
-    this.language.language = form.controls['language'].value;
+    this.language.id = formupdate.controls['id'].value;
+    this.language.language = formupdate.controls['language'].value;
     this.languageService.updateLanguage(this.language).subscribe();
     this.form.reset();
   }

@@ -13,6 +13,7 @@ export class GestionCategoriesComponent implements OnInit {
   public categories: Categorie[];
   public categorie: Categorie;
   public form: FormGroup;
+  public formupdate: FormGroup;
 
   constructor(private categorieService: CategorieService) { }
 
@@ -25,7 +26,11 @@ export class GestionCategoriesComponent implements OnInit {
       id: new FormControl(),
       type: new FormControl()
     })
-   
+    this.formupdate = new FormGroup({
+      id: new FormControl(),
+      type: new FormControl()
+    })
+
   }
 
   postCategory(form: FormGroup) {
@@ -36,10 +41,15 @@ export class GestionCategoriesComponent implements OnInit {
     this.form.reset();
   }
 
-  updateCategory(form: FormGroup) {
+  dynForm(event) {
+    console.log(this.categories[event.target.selectedIndex]);
+    this.formupdate.controls['type'].setValue(this.categories[event.target.selectedIndex].type);
+  }
+
+  updateCategory(formupdate: FormGroup) {
     this.categorie;
-    this.categorie.id = form.controls['id'].value;
-    this.categorie.type = form.controls['type'].value;
+    this.categorie.id = formupdate.controls['id'].value;
+    this.categorie.type = formupdate.controls['type'].value;
     this.categorieService.updateCategory(this.categorie).subscribe();
     this.form.reset();
   }
