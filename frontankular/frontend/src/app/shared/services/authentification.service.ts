@@ -30,16 +30,34 @@ export class AuthentificationService extends RequestService
   public login (user: User)
   {
     let response: any = this.postAuthentification(user);
-    console.log(response.subscribe(dataReponse2 => this.dataReponse = dataReponse2));
-    console.log(this.dataReponse);
+    response.subscribe(loginResponse => this.dataReponse = loginResponse);
+   
+    if (this.dataReponse != null) {
+
+      if(this.dataReponse[0] != "unauthorized") {
+
+        sessionStorage.setItem('username', this.dataReponse[0]);
+        sessionStorage.setItem('role', this.dataReponse[1]);
+        sessionStorage.setItem('token', this.dataReponse[2]);
+        sessionStorage.setItem('point', "1");
+        console.log("accès autorisé");
+      } else {
+
+        console.log("accès refusé");
+      }
+
+    } else {
+
+      console.log("La réponse n'a pas encore été reçue");
+    }
   }
 
   /**
-   * supprime le token/username
+   * supprime la session
    */
   public logout()
   {
-
+    sessionStorage.clear();
   }
 
   /**
@@ -47,8 +65,6 @@ export class AuthentificationService extends RequestService
    */
   private postAuthentification (user: User): Observable<any>
   {
-    return this.postTrivialCode(this.url, user)
+    return this.postTrivialCode(this.url, user);
   }
-
-
 }

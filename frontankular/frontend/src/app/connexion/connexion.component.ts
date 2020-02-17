@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators} from '@angular/forms';
+import {Router} from "@angular/router"
 
 import { User } from '../shared/models/user';
 import { AuthentificationService } from '../shared/services/authentification.service';
@@ -28,13 +29,27 @@ export class ConnexionComponent implements OnInit {
   
   user : User = new User();
 
-  constructor(private fb: FormBuilder, private auth : AuthentificationService) 
+  constructor(private fb: FormBuilder, private auth : AuthentificationService, private router: Router) 
   { 
     
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.redirect();
+  }
   
+  /**
+   * renvoie vers la page mon compte si l'user est connecté
+   */
+  redirect(){
+
+    if ( sessionStorage.getItem('username') != null && sessionStorage.getItem('token') != null) {
+
+      this.router.navigate(['/connexion/compte']);
+    }
+  }
+
   /**
    * récupère les informations du formulaire et effectue une vérification
    * et le stocke dans le composant
@@ -70,7 +85,5 @@ export class ConnexionComponent implements OnInit {
     this.getData();
     this.sendData();
   }
-
-
 }
 
