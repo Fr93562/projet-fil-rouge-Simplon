@@ -1,3 +1,6 @@
+import { TypeUser } from './typeUser';
+import { Language } from './language';
+
 /**
  * corresponds aux joueurs et administrateurs
  */
@@ -7,6 +10,7 @@ export class User{
     email: string;
     password: string;
     username: string;
-    type_user_id: number;
+    typeUser: TypeUser;
+    langage: Language[];
     ranking: number;
 }

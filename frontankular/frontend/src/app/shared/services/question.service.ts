@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { DataService } from './data.service';
 import { RequestService } from './request.service';
@@ -34,7 +34,6 @@ export class QuestionService extends RequestService {
    * @param newQuestion Question a ajouter
    */
   createQuestion(newQuestion: Question, langage: string): Observable<any> {
-    console.log(newQuestion);
     return this.postTrivialCode(this.url2 + langage, newQuestion);
   }
 
