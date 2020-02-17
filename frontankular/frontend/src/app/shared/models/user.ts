@@ -1,4 +1,4 @@
-import { TypeUser } from './typeUser';
+import { TypeUser} from './typeUser';
 import { Language } from './language';
 
 /**

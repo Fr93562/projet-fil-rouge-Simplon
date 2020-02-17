@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { typeUser } from 'src/app/shared/models/typeUser';
+import { TypeUser } from 'src/app/shared/models/TypeUser';
 import { TypeUserService } from 'src/app/shared/services/type-user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -11,14 +11,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class GestionTypeUtilisateurComponent implements OnInit {
 
-  public typeUsers: typeUser[];
-  public typeUser: typeUser;
+  public typeUsers: TypeUser[];
+  public typeUser: TypeUser;
   public form: FormGroup;
 
   constructor(private typeUserService: TypeUserService) { }
 
   ngOnInit() {
-    this.typeUserService.getTypeUserList().subscribe((typeUsers: typeUser[]) => {
+    this.typeUserService.getTypeUserList().subscribe((typeUsers: TypeUser[]) => {
       this.typeUsers = typeUsers
     });
 
@@ -30,7 +30,7 @@ export class GestionTypeUtilisateurComponent implements OnInit {
   }
 
   postTypeUser(form: FormGroup) {
-    this.typeUser = new typeUser();
+    this.typeUser = new TypeUser();
     this.typeUser.id = null;
     this.typeUser.type = form.controls['type'].value;
     this.typeUserService.createTypeUser(this.typeUser).subscribe();
