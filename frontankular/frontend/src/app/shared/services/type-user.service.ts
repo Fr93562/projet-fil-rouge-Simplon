@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { DataService } from './data.service';
 import { RequestService } from './request.service';
-import { typeUser } from '../models/typeUser';
+import { TypeUser } from '../models/typeUser';
 
 
 
@@ -34,7 +34,7 @@ export class TypeUserService extends RequestService{
    * Envoi une requete pour l'ajout d'un type d'utilisateur
    * @param newType type a ajouter
    */
-  createTypeUser(newType: typeUser): Observable<any> {
+  createTypeUser(newType: TypeUser): Observable<any> {
     return this.postTrivialCode(this.url, newType);
   }
 
@@ -43,7 +43,7 @@ export class TypeUserService extends RequestService{
    * Envoi une requete pour la mise a jour d'un type d'utilisateur
    * @param newType type a mettre a jour
    */
-  updateTypeUser(newType: typeUser): Observable<any> {
+  updateTypeUser(newType: TypeUser): Observable<any> {
     return this.postTrivialCode(this.url, newType);
   }
 
@@ -51,7 +51,7 @@ export class TypeUserService extends RequestService{
    * Envoi une requete pour la suppression d'un type d'utilisateur
    * @param delType type à supprimer
    */
-  deleteTypeUser(delType: typeUser): Observable<any> {
+  deleteTypeUser(delType: TypeUser): Observable<any> {
     return this.deleteTrivialCode(this.url, delType);
   }
 }

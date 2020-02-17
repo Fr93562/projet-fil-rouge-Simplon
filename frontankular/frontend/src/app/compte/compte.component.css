@@ -1,28 +1,74 @@
-.compte 
+.image 
 {
     background-image:url('src/assets/home-ladder.jpg');
-    height:50em; 
+    height:660px; 
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.containerTop{
+    position: relative;
+    top: 42.03%;
+    height: 500px;
+    width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
 }
 #logoCompte{
-    margin-left: 700px;
+    position: relative;
+    left: 31%;
+    width: 150px;
 }
-#allCompte{
-    margin-left: 450px;
+.dateInscription, .titreCompte, .idJoueur{
+    text-align: center;
+    color: white;
+    font-style: italic;
 }
-section{
-    margin-top: 50px;
+#dateInscription{
+    font-size: 18px;
+}
+#idJoueur{
+    position: relative;
+    left: 14%;
+    background-color: white;
+    width: 250px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    border-radius: 20px;
+    border: 1px;
+    color: black;
+}
+#partieBoutons{
+    height: 560px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    background-color: #56baed;
 }
 #titreUser{
-    margin-left: 200px;
-    margin-bottom: 50px;
+    
+    top: 15%;
+    text-align: center;
+    top: 20%;
+    color: white;
 }
-#majButton{
+#majButton1, #majButton2, #majButton3{
     width: 280px;
     height: 60px;
     border-radius: 20px;
     border: 0px;
 
-    background-color: rgb(138, 221, 239);
+    position: relative;
+    left: 46px;
+
+
+    background-color: white;
     color: black;
 }
 #scoreButton{
@@ -30,12 +76,35 @@ section{
     height: 60px;
     border-radius: 20px;
     border: 0px;
-    margin-left: 50px;
 
-    background-color: rgb(138, 221, 239);
-    color: black;
+    position: relative;
+    left: 46px;
+
+    background-color: black;
+    color: white;
 }
 .majButton{
-    margin-bottom: 50px;
+
+    width: 380px;
+    height: 380px;
+
+    position: relative;
+    top: 15%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.majButton2{
+
+    width: 380px;
+    height: 300px;
+
+    position: relative;
+    top: 22%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
   
