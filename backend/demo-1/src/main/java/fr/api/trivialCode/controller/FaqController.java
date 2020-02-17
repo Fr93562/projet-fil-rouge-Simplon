@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.api.trivialCode.model.Faq;
+import fr.api.trivialCode.model.ResponseObject;
 import fr.api.trivialCode.repository.FaqRepository;
 import fr.api.trivialCode.service.Authentification;
 
@@ -44,9 +47,7 @@ public class FaqController {
 	 * @return la question ajoutee
 	 */
 	@PostMapping
-	public String ajoutFaq(@RequestBody Faq faq, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> ajoutFaq(@RequestBody Faq faq, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -55,10 +56,10 @@ public class FaqController {
 			if (auth.verify()[1].equalsIgnoreCase("Administrateur")) {
 
 				faqRepository.saveAndFlush(faq);
-				output = "success";
+				return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.CREATED);
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -77,9 +78,7 @@ public class FaqController {
 	 * @param newFaq question modifie
 	 */
 	@PutMapping
-	public String modifierFaq(@RequestBody Faq newFaq, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> modifierFaq(@RequestBody Faq newFaq, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -91,10 +90,10 @@ public class FaqController {
 				if (oldFaq.isPresent()) {
 					faqRepository.saveAndFlush(newFaq);
 				}
-				output = "success";
+				return ResponseEntity.ok(new ResponseObject("Success"));
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -103,9 +102,7 @@ public class FaqController {
 	 * @param removeFaq question a supprimer
 	 */
 	@DeleteMapping
-	public String supprimerFaq(@RequestBody Faq removeFaq, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> supprimerFaq(@RequestBody Faq removeFaq, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -117,9 +114,9 @@ public class FaqController {
 				if (oldFaq.isPresent()) {
 					faqRepository.delete(removeFaq);
 				}
-				output = "success";
+				return ResponseEntity.ok(new ResponseObject("Success"));
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 }

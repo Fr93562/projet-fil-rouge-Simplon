@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.api.trivialCode.model.Categorie;
 import fr.api.trivialCode.model.Langage;
 import fr.api.trivialCode.model.Question;
+import fr.api.trivialCode.model.ResponseObject;
 import fr.api.trivialCode.repository.CategorieRepository;
 import fr.api.trivialCode.repository.LangageRepository;
 import fr.api.trivialCode.repository.QuestionRepository;
@@ -60,10 +62,7 @@ public class QuestionController {
 	 * @return La question ajouté
 	 */
 	@PostMapping(params = { "langage" })
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public String addQuestion(@RequestBody Question newQuestion, String langage, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> addQuestion(@RequestBody Question newQuestion, String langage, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -79,11 +78,11 @@ public class QuestionController {
 					Langage langageComplet = langageVerif.get();
 					langageComplet.getQuestion().add(saveQuestion);
 					langageRepository.saveAndFlush(langageComplet);
-					output = "authorized";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.CREATED);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -124,10 +123,7 @@ public class QuestionController {
 	 * @return Un String contenant le resultat de la requete
 	 */
 	@PutMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	public String updateQuestion(@RequestBody Question modifQuestion, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> updateQuestion(@RequestBody Question modifQuestion, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -140,11 +136,11 @@ public class QuestionController {
 				if (verify.isPresent()) {
 
 					questionRepository.saveAndFlush(modifQuestion);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -163,10 +159,7 @@ public class QuestionController {
 	 * @return La categorie cree
 	 */
 	@PostMapping("/cat")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public String addCategorie(@RequestBody Categorie newCategorie, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> addCategorie(@RequestBody Categorie newCategorie, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -175,10 +168,10 @@ public class QuestionController {
 			if (auth.verify()[1].equalsIgnoreCase("Administrateur")) {
 
 				categorieRepository.saveAndFlush(newCategorie);
-				output = "success";
+				return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -188,10 +181,7 @@ public class QuestionController {
 	 * @return la categorie modifier
 	 */
 	@PutMapping("/cat")
-	@ResponseStatus(code = HttpStatus.OK)
-	public String updateCategorie(@RequestBody Categorie modifCategorie, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> updateCategorie(@RequestBody Categorie modifCategorie, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -204,41 +194,11 @@ public class QuestionController {
 				if (verify.isPresent()) {
 
 					categorieRepository.saveAndFlush(modifCategorie);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
-	}
-
-	/**
-	 * Supprime la categorie
-	 * 
-	 * @param delCategorie categorie a supprimé
-	 * @return retourne un message en fonction du resultat de la requete
-	 */
-	@DeleteMapping("/cat")
-	@ResponseStatus(code = HttpStatus.OK)
-	public String deleteCategorie(@RequestBody Categorie delCategorie, HttpServletRequest request) {
-
-		String output = "unauthorized";
-
-		if (request.getHeader("token") != null) {
-
-			auth.setToken(request.getHeader("token"));
-
-			if (auth.verify()[1].equalsIgnoreCase("Administrateur")) {
-
-				Optional<Categorie> verify = categorieRepository.findById(delCategorie.getId());
-
-				if (verify.isPresent()) {
-
-					categorieRepository.delete(delCategorie);
-					output = "success";
-				}
-			}
-		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -247,10 +207,7 @@ public class QuestionController {
 	 * @param delQuestion : corresponds au Json transformé en objet question
 	 */
 	@DeleteMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	public String delete(@RequestBody Question delQuestion, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> delete(@RequestBody Question delQuestion, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -263,10 +220,10 @@ public class QuestionController {
 				if (verify.isPresent()) {
 					questionRepository.deleteByIdLink(delQuestion.getId());
 					questionRepository.delete(delQuestion);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 }

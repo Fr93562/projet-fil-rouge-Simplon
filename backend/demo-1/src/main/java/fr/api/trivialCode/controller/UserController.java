@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.api.trivialCode.model.ResponseObject;
 import fr.api.trivialCode.model.TypeUser;
 import fr.api.trivialCode.model.User;
 import fr.api.trivialCode.repository.TypeUserRepository;
@@ -49,7 +51,7 @@ public class UserController {
 	 * @param userData: Corresponds aux données users passées dans le Json
 	 * @return
 	 */
-	@PostMapping()
+	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public User create(@RequestBody User userData) {
 
@@ -106,10 +108,7 @@ public class UserController {
 	 * @return : une reponse en fonction de l'existence
 	 */
 	@PutMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	public String update(@RequestBody User userData, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> update(@RequestBody User userData, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -125,11 +124,11 @@ public class UserController {
 					userData.setTypeUser(defaultRole);
 
 					userRepository.saveAndFlush(userData);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -139,10 +138,7 @@ public class UserController {
 	 * @return : une reponse en fonction de l'existence
 	 */
 	@PutMapping("/admin")
-	@ResponseStatus(code = HttpStatus.OK)
-	public String updateAll(@RequestBody User userData, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> updateAll(@RequestBody User userData, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -155,43 +151,11 @@ public class UserController {
 				if (verify.isPresent()) {
 
 					userRepository.saveAndFlush(userData);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
-	}
-
-	/**
-	 * Mets a jour le ranking
-	 * 
-	 * @param username Utilisateur a mettre a jour
-	 * @param point    Points a ajouter
-	 * @return Un message en fonction de la reussite ou non
-	 */
-	@PutMapping(value = "/ranking", params = { "id", "point" })
-	@ResponseStatus(code = HttpStatus.OK)
-	public String updateRanking(int id, long point, HttpServletRequest request) {
-
-		String output = "unauthorized";
-
-		if (request.getHeader("token") != null) {
-
-			auth.setToken(request.getHeader("token"));
-
-			if (auth.verify()[1].equalsIgnoreCase("Joueur")) {
-
-				Optional<User> userExiste = userRepository.findById(id);
-
-				if (userExiste.isPresent()) {
-					User userModif = userExiste.get();
-					userModif.setRanking(userModif.getRanking() + point);
-					userRepository.saveAndFlush(userModif);
-					output = "success";
-				}
-			}
-		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -201,12 +165,7 @@ public class UserController {
 	 * @param userData : corresponds au Json transformé en objet user
 	 */
 	@DeleteMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	public String delete(@RequestBody User userData, HttpServletRequest request) {
-
-		String output = "unauthorized";
-		
-		System.out.println(request.getHeader("token"));
+	public ResponseEntity<ResponseObject> delete(@RequestBody User userData, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -219,11 +178,11 @@ public class UserController {
 				if (verify.isPresent()) {
 
 					userRepository.delete(userData);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -243,10 +202,7 @@ public class UserController {
 	 * @return Le type cree
 	 */
 	@PostMapping("/type")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public String addTypeUser(@RequestBody TypeUser newTypeUser, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> addTypeUser(@RequestBody TypeUser newTypeUser, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -255,10 +211,10 @@ public class UserController {
 			if (auth.verify()[1].equalsIgnoreCase("Administrateur")) {
 
 				typeUserRepository.saveAndFlush(newTypeUser);
-				output = "success";
+				return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.CREATED);
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**
@@ -268,10 +224,7 @@ public class UserController {
 	 * @return le type modifie
 	 */
 	@PutMapping("/type")
-	@ResponseStatus(code = HttpStatus.OK)
-	public String updateTypeUser(@RequestBody TypeUser modifTypeUser, HttpServletRequest request) {
-
-		String output = "unauthorized";
+	public ResponseEntity<ResponseObject> updateTypeUser(@RequestBody TypeUser modifTypeUser, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
 
@@ -283,10 +236,10 @@ public class UserController {
 
 				if (verify.isPresent()) {
 					typeUserRepository.saveAndFlush(modifTypeUser);
-					output = "success";
+					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}
 		}
-		return output;
+		return ResponseEntity.badRequest().build();
 	}
 }
