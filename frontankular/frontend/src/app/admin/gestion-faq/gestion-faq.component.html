@@ -1,15 +1,12 @@
 <h3>Gestion Faq</h3>
 
-
-
-<!-- Page content -->
-<table class="table">
+<table class="table col-10 mx-auto">
     <thead>
         <tr>
-            <th style="width:10%" scope="col">Id</th>
-            <th style="width:10%" scope="col">Priorité</th>
-            <th style="width:40%" scope="col">Question</th>
-            <th style="width:40%" scope="col">Reponse</th>
+            <th style="width:5%" scope="col">Id</th>
+            <th style="width:5%" scope="col">Priorité</th>
+            <th style="width:30%" scope="col">Question</th>
+            <th style="width:60%" scope="col">Reponse</th>
         </tr>
     </thead>
 
@@ -21,52 +18,66 @@
     </tbody>
 </table>
 
+<div>
 
+    <h3 class="ajout text-left" style="margin-top:100px;">Ajouter Faq</h3>
 
+    <form [formGroup]='form' (ngSubmit)='postFaq(form)' class="col-5 mx-auto">
 
-
-
-<h3 class="ajout text-left" style="margin-top:100px;">Ajouter Faq</h3>
-<div class="container">
-    <form class="col-6 mx-auto">
-
-        <div class="form-group">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Priorité
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">1</a>
-                    <a class="dropdown-item" href="#">2</a>
-                    <a class="dropdown-item" href="#">3</a>
-                </div>
+        <div class='form-group'>
+            <div class="form-group">
+                <label>Priorite</label>
+                <input formControlName=priorite class="form-control" rows="1">
             </div>
-
-            <label> Question </label>
-            <textarea class="form-control" id="questionFaq" rows="3"></textarea>
-            <label> Réponse </label>
-            <textarea class="form-control" id="reponseFaq" rows="3"></textarea>
+            <div class="form-group">
+                <label> Question </label>
+                <textarea formControlName=question class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label> Réponse </label>
+                <textarea formControlName=reponse class="form-control" rows="6"></textarea>
+            </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </div>
     </form>
+
+
+    <h3 class="ajout text-left" style="margin-top:100px;">Modifier Faq</h3>
+
+    <form [formGroup]='form' (ngSubmit)='updateFaq(form)' class="col-5 mx-auto">
+
+        <div class="form-group">
+            <label>ID</label>
+            <input formControlName=id class="form-control">
+        </div>
+        <div class="form-group">
+            <label> Priorité </label>
+            <input formControlName=priorite class="form-control">
+        </div>
+        <div class="form-group">
+            <label> Question </label>
+            <textarea formControlName=question class="form-control" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label> Réponse </label>
+            <textarea formControlName=reponse class="form-control" rows="6" #reponse></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+
+    </form>
+
+
+    <h3 class="ajout text-left" style="margin-top:100px;">Supprimer Faq</h3>
+
+    <form [formGroup]='form' (ngSubmit)='deleteFaq(form)' class="col-5 mx-auto">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
+            <small class="form-text text-muted">Saissir id de la faq à supprimer</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Supprimer</button>
+    </form>
+
+
+
 </div>
-
-
-<!-- <div class="ajout">
-    <label>Ajout d'une faq
-        <input #faq />
-    </label>
-    <button (click)="addLanguage(language.value); language.value=''">
-        Ajout
-    </button>
-</div>
-
-<div class="suppression">
-    <label>Supprimer une faq
-        <input #faq />
-    </label>
-    <button (click)="deleteLanguage(language.value); language.value=''">
-        Supprimer
-    </button>
-</div> -->

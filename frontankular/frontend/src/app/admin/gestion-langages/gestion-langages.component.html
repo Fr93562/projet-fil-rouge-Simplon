@@ -1,40 +1,50 @@
 <h3>Gestion Langage</h3>
 
 
-
-<!-- Page content -->
-<table class="table">
+<table class="table col-4 mx-auto">
   <thead>
     <tr>
       <th style="width:30%" scope="col">Id</th>
       <th style="width:70%" scope="col">Langage</th>
-      <!-- <th scope="col">Id-question</th> -->
     </tr>
   </thead>
   <tbody *ngFor="let language of languages; let index = index" class="table">
-    <tr>
-      <td>{{language.id}} </td>
-      <td> {{language.language}}</td>
-      <!-- <td>{{language.question_id}}</td> -->
-    </tr>
+    <td>{{language.id}} </td>
+    <td> {{language.language}}</td>
   </tbody>
 </table>
 
 
-<div class="ajout">
-  <label>Ajout d'un langage
-    <input #language />
-  </label>
-  <button (click)="addLanguage(language.value); language.value=''">
-    Ajout
-  </button>
-</div>
+<h3 class="ajout text-left" style="margin-top:100px;">Ajouter Langage</h3>
+<form [formGroup]='form' (ngSubmit)='postLanguage(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>Langage</label>
+    <input formControlName=language class="form-control" rows="1">
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
 
-<div class="suppression">
-  <label>Supprimer un langage
-    <input #language />
-  </label>
-  <button (click)="deleteLanguage(language.value); language.value=''">
-    Supprimer
-  </button>
-</div>
+
+<h3 class="ajout text-left" style="margin-top:100px;">Modifier Langage</h3>
+<form [formGroup]='form' (ngSubmit)='updateLanguage(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>ID</label>
+    <input formControlName=id class="form-control">
+  </div>
+  <div class="form-group">
+    <label> langage </label>
+    <input formControlName=language class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Modifier</button>
+</form>
+
+
+<h3 class="ajout text-left" style="margin-top:100px;">Supprimer Langage</h3>
+<form [formGroup]='form' (ngSubmit)='deleteLanguage(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>ID</label>
+    <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
+    <small class="form-text text-muted">Saissir id du langage à supprimer</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>

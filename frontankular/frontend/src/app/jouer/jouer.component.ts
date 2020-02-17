@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Language } from '../shared/models/language';
-import { LanguageService } from '../shared/services/languageService.service';
+import { LanguageService } from '../shared/services/language.service';
 
 @Component({
   selector: 'app-jouer',
@@ -20,7 +20,7 @@ languages: Language[];
 
 getLanguages(): void {
   
-  this.languageService.getLanguages().subscribe(languages => this.languages = languages );
+  this.languageService.getLanguagesList().subscribe(languages => this.languages = languages );
   
 }
 
