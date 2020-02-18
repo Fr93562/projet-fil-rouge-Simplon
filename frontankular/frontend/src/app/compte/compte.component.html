@@ -8,7 +8,7 @@
             <div id="titreUser">
                 <h1>Nom Prénom</h1>
             </div>
-            <p class="dateInscription" id="dateInscription">Inscrit le jj/mm/aaaa</p>
+            <p class="dateInscription" id="dateInscription">Inscrit le : {{ inscriptionDate | date: 'short' }}</p>
             <p class="idJoueur" id="idJoueur">Numero X/Y Joueurs</p>
             <h4 class="titreCompte">Mon compte utilisateur</h4>
         </div>
@@ -16,7 +16,7 @@
     <div id="partieBoutons">
         <div class="majButton">
             <button id="majButton1" >Mettre à Jour Mes Données</button>                       
-            <button id="majButton2" >Me Déconnecter</button>            
+            <button id="majButton2" [routerLink]="['/accueil']" >Me Déconnecter</button>            
             <button id="majButton3" >Me Désinscrire</button>                
         </div>
         <div class="majButton2">

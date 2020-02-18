@@ -5,8 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './compte.component.html',
   styleUrls: ['./compte.component.css']
 })
-export class CompteComponent implements OnInit {
+export class CompteComponent implements OnInit 
+{
 
+  inscriptionDate = new Date();
+  
   constructor() { }
 
   ngOnInit() {
