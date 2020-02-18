@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
 import { Question } from 'src/app/shared/models/question';
 import { QuestionService } from 'src/app/shared/services/question.service';
-import { FormGroup, FormControl } from '@angular/forms';
 import { Categorie } from 'src/app/shared/models/categorie';
 import { Ressource } from 'src/app/shared/models/ressource';
 

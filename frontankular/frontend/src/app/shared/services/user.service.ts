@@ -78,7 +78,7 @@ export class UserService extends RequestService {
    * Envoi une requete pour la suppression d'un utilisateur
    * @param delUser Utilisateur a supprimer
    */
-  deleteQuestion(delUser: User): Observable<any> {
+  deleteUser(delUser: User): Observable<any> {
     return this.deleteTrivialCode(this.url, delUser);
   }
 
