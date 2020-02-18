@@ -1,3 +1,4 @@
+/* arrière plan de connexion */
 #image1 
 {
     background-image:url('src/assets/XXVXVfyQ.jpeg');
@@ -38,4 +39,27 @@
 {
     color: white;
 }
-  
+/* mediaqueries */
+@media screen and (min-width: 350px) and (max-width:519.9px) {
+ 
+    #login, #password
+    {
+        left: 10px;
+    }
+    #connexion-button
+    {
+        position: relative;
+        left: 15px;
+    }
+}
+
+@media screen and (max-width:349px) {
+
+    #login, #password
+    {
+        left: -5px;
+    }
+    #connexion-button
+    {
+    }
+}

@@ -14,6 +14,7 @@ import { AuthentificationService } from '../shared/services/authentification.ser
 })
 export class CompteComponent implements OnInit 
 {
+
   public user: User;
   public updateForm: boolean = false;
   public deleteForm: boolean = false;
@@ -38,7 +39,7 @@ export class CompteComponent implements OnInit
    */
   redirect(){
 
-    if ( sessionStorage.getItem('username') == null && sessionStorage.getItem('token') == null) {
+    if ( sessionStorage.getItem('username') == "" && sessionStorage.getItem('token') == "") {
 
       this.router.navigate(['/connexion']);
     }
@@ -102,6 +103,7 @@ export class CompteComponent implements OnInit
 
   deleteUser() 
   {
+    console.log(this.userService.deleteUser(this.user));
     this.userService.deleteUser(this.user).subscribe();
     this.logout();
   }

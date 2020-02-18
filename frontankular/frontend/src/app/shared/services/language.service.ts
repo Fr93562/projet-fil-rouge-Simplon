@@ -6,6 +6,11 @@ import { DataService } from './data.service';
 import { RequestService } from './request.service';
 import { Language } from 'src/app/shared/models/language';
 
+/**
+ * gere les requêtes langage avec l'Api
+ * 
+ * @author : elodie
+ */
 @Injectable({ providedIn: 'root' })
 export class LanguageService extends RequestService {
 

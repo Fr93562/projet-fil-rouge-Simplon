@@ -6,6 +6,11 @@ import { DataService } from './data.service';
 import { RequestService } from './request.service';
 import { Ressource } from 'src/app/shared/models/ressource';
 
+/**
+ * gere les requêtes ressource avec l'Api
+ * 
+ * @author : elodie
+ */
 @Injectable({ providedIn: 'root' })
 export class RessourceService extends RequestService {
   

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators} from '@angular/forms';
-import {Router} from "@angular/router"
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from "@angular/router"
 
 import { User } from '../shared/models/user';
 import { AuthentificationService } from '../shared/services/authentification.service';
@@ -20,31 +20,31 @@ import { AuthentificationService } from '../shared/services/authentification.ser
 export class ConnexionComponent implements OnInit {
 
   // attributs du formulaire
-  formUsername = new FormControl('',Validators.required);
-  formPassword = new FormControl('',Validators.required);
+  formUsername = new FormControl('', Validators.required);
+  formPassword = new FormControl('', Validators.required);
 
   // attributs de data
   private username: string = "";
   private password: string = "";
-  
-  user : User = new User();
 
-  constructor(private fb: FormBuilder, private auth : AuthentificationService, private router: Router) 
-  { 
-    
+  user: User = new User();
+
+  constructor(private fb: FormBuilder, private auth: AuthentificationService, private router: Router) {
+
   }
 
   ngOnInit() {
 
     this.redirect();
   }
-  
+
   /**
    * renvoie vers la page mon compte si l'user est connecté
+   * utilisé à l'intialisation du composant
    */
-  redirect(){
+  redirect() {
 
-    if ( sessionStorage.getItem('username') != null && sessionStorage.getItem('token') != null) {
+    if (sessionStorage.getItem('username') != "" && sessionStorage.getItem('token') != "") {
 
       this.router.navigate(['/connexion/compte']);
     }
@@ -54,14 +54,13 @@ export class ConnexionComponent implements OnInit {
    * récupère les informations du formulaire et effectue une vérification
    * et le stocke dans le composant
    */
-  getData(){
+  getData() {
 
     this.username = this.formUsername.value;
     this.password = this.formPassword.value;
     let fake = "fake";
 
-    if (this.password.length > 255 || this.password.length < 6 || this.username.length > 30 || this.username.length < 4)
-    {
+    if (this.password.length > 255 || this.password.length < 6 || this.username.length > 30 || this.username.length < 4) {
       this.username = fake;
       this.password = fake;
     }
@@ -84,6 +83,7 @@ export class ConnexionComponent implements OnInit {
 
     this.getData();
     this.sendData();
+    this.redirect();
   }
 }
 

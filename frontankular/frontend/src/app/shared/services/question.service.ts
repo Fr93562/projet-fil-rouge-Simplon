@@ -6,7 +6,11 @@ import { DataService } from './data.service';
 import { RequestService } from './request.service';
 import { Question } from 'src/app/shared/models/question';
 
-
+/**
+ * gere les requêtes questions avec l'Api
+ * 
+ * @author : elodie
+ */
 @Injectable({ providedIn: 'root' })
 export class QuestionService extends RequestService {
 

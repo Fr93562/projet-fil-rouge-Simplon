@@ -23,6 +23,8 @@ import { GestionRessourcesComponent } from './admin/gestion-ressources/gestion-r
 import { GestionLangagesComponent } from './admin/gestion-langages/gestion-langages.component';
 import { GestionTypeUtilisateurComponent } from './admin/gestion-type-utilisateur/gestion-type-utilisateur.component';
 import { GestionCategoriesComponent } from './admin/gestion-categories/gestion-categories.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { RgpdComponent } from './rgpd/rgpd.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { GestionCategoriesComponent } from './admin/gestion-categories/gestion-c
     GestionRessourcesComponent,
     GestionLangagesComponent,
     GestionTypeUtilisateurComponent,
-    GestionCategoriesComponent
+    GestionCategoriesComponent,
+    InscriptionComponent,
+    RgpdComponent
   ],
 
   imports: [

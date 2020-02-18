@@ -29,27 +29,29 @@ export class AuthentificationService extends RequestService
    */
   public login (user: User)
   {
+    
     let response: any = this.postAuthentification(user);
-    response.subscribe(loginResponse => this.dataReponse = loginResponse);
-   
-    if (this.dataReponse != null) {
+    response.subscribe(loginResponse => {
+      this.dataReponse = loginResponse;
+      if (this.dataReponse != null) {
 
-      if(this.dataReponse[0] != "unauthorized") {
-
-        sessionStorage.setItem('username', this.dataReponse[0]);
-        sessionStorage.setItem('role', this.dataReponse[1]);
-        sessionStorage.setItem('token', this.dataReponse[2]);
-        sessionStorage.setItem('point', "1");
-        console.log("accès autorisé");
+        if(this.dataReponse[0] != "unauthorized") {
+  
+          sessionStorage.setItem('username', this.dataReponse[0]);
+          sessionStorage.setItem('role', this.dataReponse[1]);
+          sessionStorage.setItem('token', this.dataReponse[2]);
+          sessionStorage.setItem('point', "1");
+          console.log("accès autorisé");
+        } else {
+  
+          console.log("accès refusé");
+        }
+  
       } else {
-
-        console.log("accès refusé");
+  
+        console.log("La réponse n'a pas encore été reçue");
       }
-
-    } else {
-
-      console.log("La réponse n'a pas encore été reçue");
-    }
+    });
   }
 
   /**
@@ -57,7 +59,8 @@ export class AuthentificationService extends RequestService
    */
   public logout()
   {
-    sessionStorage.clear();
+    sessionStorage.setItem('token', '');
+    sessionStorage.setItem('username', '');  
   }
 
   /**
