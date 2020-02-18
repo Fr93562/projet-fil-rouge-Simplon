@@ -13,7 +13,6 @@ export class GestionCategoriesComponent implements OnInit {
   public categories: Categorie[];
   public categorie: Categorie;
   public form: FormGroup;
-  public formupdate: FormGroup;
 
   constructor(private categorieService: CategorieService) { }
 
@@ -26,38 +25,34 @@ export class GestionCategoriesComponent implements OnInit {
       id: new FormControl(),
       type: new FormControl()
     })
-    this.formupdate = new FormGroup({
-      id: new FormControl(),
-      type: new FormControl()
-    })
-
   }
 
   postCategory(form: FormGroup) {
     this.categorie = new Categorie();
     this.categorie.id = null;
     this.categorie.type = form.controls['type'].value;
-    this.categorieService.createCategory(this.categorie).subscribe();
+    this.categorieService.createCategory(this.categorie).subscribe(maj => {
+      this.categorieService.getCategoryList().subscribe((categories: Categorie[]) => {
+        this.categories = categories
+      });
+    });
     this.form.reset();
   }
 
   dynForm(event) {
     console.log(this.categories[event.target.selectedIndex]);
-    this.formupdate.controls['type'].setValue(this.categories[event.target.selectedIndex].type);
+    this.form.controls['type'].setValue(this.categories[event.target.selectedIndex].type);
   }
 
-  updateCategory(formupdate: FormGroup) {
-    this.categorie;
-    this.categorie.id = formupdate.controls['id'].value;
-    this.categorie.type = formupdate.controls['type'].value;
-    this.categorieService.updateCategory(this.categorie).subscribe();
-    this.form.reset();
-  }
-
-  deleteCategory(form: FormGroup) {
-    this.categorie;
+  updateCategory(form: FormGroup) {
+    this.categorie = new Categorie();
     this.categorie.id = form.controls['id'].value;
-    this.categorieService.deleteCategory(this.categorie).subscribe();
+    this.categorie.type = form.controls['type'].value;
+    this.categorieService.updateCategory(this.categorie).subscribe(maj => {
+      this.categorieService.getCategoryList().subscribe((categories: Categorie[]) => {
+        this.categories = categories
+      });
+    });
     this.form.reset();
   }
 
