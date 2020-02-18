@@ -73,6 +73,7 @@ export class GestionQuestionsComponent implements OnInit {
     this.questionService.updateQuestion(this.question).subscribe();
     this.form.reset();
   }
+  
 
   deleteQuestion(form: FormGroup) {
     this.question;
