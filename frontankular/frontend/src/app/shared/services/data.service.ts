@@ -11,7 +11,7 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      token: this.tokenUser
+      token: sessionStorage.getItem('token')
     })
   };
 

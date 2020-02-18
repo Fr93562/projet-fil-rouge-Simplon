@@ -35,6 +35,15 @@ export class UserService extends RequestService {
   }
 
   /**
+   * Récupere un user
+   */
+  getByUsername(username: string): Observable<any> {
+
+    console.log(this.list);
+    return this.http.get<User>(this.url + "/?username=" + username);
+  }
+
+  /**
    * Tri la liste des users
    */
   sortList(limit: number): User[] {
