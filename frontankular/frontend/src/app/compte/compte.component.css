@@ -106,5 +106,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}  
+/* Modification du formulaire update */
+#formUpdate
+{
+    width: 330px;
 }
-  
+#formUpdate p
+{
+    text-align: center;
+}
+#customUpdateForm
+{
+    border-radius: 15px;
+}
+#emailButton
+{
+    position: relative;
+    left: 120px;
+}

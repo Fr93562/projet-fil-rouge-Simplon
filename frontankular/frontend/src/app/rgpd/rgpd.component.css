@@ -1,0 +1,117 @@
+.image 
+{
+    background-image:url('src/assets/rgpd.jpg');
+    height:860px; 
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.containerTop{
+    position: relative;
+    top: 42.03%;
+    height: 500px;
+    width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+#logoCompte{
+    position: relative;
+    left: 31%;
+    width: 150px; 
+}
+.dateInscription, .titreCompte, .idJoueur{
+    text-align: center;
+    color: white;
+    font-style: italic;
+}
+#dateInscription{
+    font-size: 18px;
+}
+#idJoueur{
+    position: relative;
+    left: 14%;
+    background-color: white;
+    width: 250px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    border-radius: 20px;
+    border: 1px;
+    color: black;
+}
+#partieBoutons{
+    height: auto;
+    width: 100%;
+    padding: 150px 0px 150px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    background-color: #dce8f1;
+}
+#titreUser{
+    
+    top: 15%;
+    text-align: center;
+    top: 20%;
+    color: black;
+}
+#majButton1, #majButton2, #majButton3{
+    width: 280px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0px;
+
+    position: relative;
+    left: 46px;
+
+
+    background-color: white;
+    color: black;
+}
+#scoreButton{
+    width: 280px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0px;
+
+    position: relative;
+    left: 46px;
+
+    background-color: black;
+    color: white;
+}
+.majButton{
+
+    width: 80%;
+    height: auto;
+
+    position: relative;
+    top: 15%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.majButton p, .majButton h3, .majButton a
+{
+    text-align: center;
+    margin-bottom: 25px;
+}
+.majButton2{
+
+    width: 380px;
+    height: 300px;
+
+    position: relative;
+    top: 22%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+  

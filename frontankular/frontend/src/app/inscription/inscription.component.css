@@ -1,0 +1,48 @@
+#image1 
+{
+    background-image:url('src/assets/inscription.jpg');
+    height:50em; 
+}
+/*style du formulaire*/
+#login, #email, #password, #langages
+{
+    width: 280px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0px;
+    opacity: 1;
+
+    position: relative;
+    right: 60px;
+
+    background-color: rgb(232, 240, 254) !important;
+    color: black; 
+    text-align: center;
+}
+/* écart entre "mot de passe" et "se connecter" */
+#password
+{
+    margin-bottom: 50px;
+}
+/* style bouton connexion*/
+#connexion-button
+{
+    width: 280px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0px;
+
+    background-color: rgb(138, 221, 239);
+    color: white;
+    
+}
+.other
+{
+    color: white;
+    margin-top: 50px !important;
+}
+.otherLien a
+{
+    margin-top: 20px !important;
+}
+  
