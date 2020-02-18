@@ -30,11 +30,13 @@ export class FaqComponent implements OnInit {
   // a supprimé apres les test
   postFaq()  {
     this.test = new Faq();
-    this.test.id = 1;
+    //this.test.id = 1;
     this.test.priority = 1;
-    this.test.question = 'test';
-    this.test.response = 'ca marche2?';
+    this.test.question = 'La tete à toto';
+    this.test.response = 'Tati';
     this.faqService.createFaq(this.test).subscribe();
+
+    console.log(this.faqService.createFaq(this.test).subscribe());
   }
 
   updateFaq()  {

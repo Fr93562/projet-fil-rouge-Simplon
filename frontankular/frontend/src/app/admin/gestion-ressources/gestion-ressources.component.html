@@ -32,7 +32,7 @@
 
 
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier Ressource</h3>
-<form [formGroup]='form' (ngSubmit)='updateLink(form)' class="col-5 mx-auto">
+<form [formGroup]='formupdate' (ngSubmit)='updateLink(formupdate)' class="col-5 mx-auto">
     
     <div class="form-group">
         <label>Id</label>
@@ -56,9 +56,16 @@
 <form [formGroup]='form' (ngSubmit)='deleteLink(form)' class="col-5 mx-auto">
     <div class="form-group">
         <label>Id</label>
-        <select class="form-control" formControlName=id>
-          <option *ngFor="let ressource of ressources">{{ressource.id}}</option>
+        <select (change)="dynForm($event)" class="form-control" formControlName=id>
+          <option *ngFor="let ressource of ressources" [ngValue]="ressource.id">{{ressource.id}}</option>
         </select>
       </div>
+   
+   
+    <!-- <div class="form-group">
+        <label>ID</label>
+        <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
+        <small class="form-text text-muted">Saissir id de la ressource à supprimer</small>
+    </div> -->
     <button type="submit" class="btn btn-primary">Supprimer</button>
 </form>

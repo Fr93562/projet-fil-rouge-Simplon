@@ -41,6 +41,7 @@ export class ConnexionComponent implements OnInit {
   
   /**
    * renvoie vers la page mon compte si l'user est connecté
+   * utilisé à l'intialisation du composant
    */
   redirect(){
 
@@ -84,6 +85,7 @@ export class ConnexionComponent implements OnInit {
 
     this.getData();
     this.sendData();
+    this.redirect();
   }
 }
 

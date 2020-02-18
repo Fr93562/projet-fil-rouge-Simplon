@@ -34,7 +34,7 @@ export class RequestService {
    */
   public deleteTrivialCode(apiUrl: string, delObject: any): Observable<any> {
     return this.http.request('delete', apiUrl, {body: delObject, headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                                                                token: this.dataService.tokenUser })});
+                                                                token: sessionStorage.getItem('token') })});
   }
 
   /**

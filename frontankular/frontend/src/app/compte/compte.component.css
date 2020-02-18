@@ -106,7 +106,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}  
+}
+  
 /* Modification du formulaire update */
 #formUpdate
 {

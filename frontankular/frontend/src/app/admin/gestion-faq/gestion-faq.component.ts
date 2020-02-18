@@ -12,7 +12,7 @@ export class GestionFaqComponent implements OnInit {
   public faqs: Faq[];
   public faq: Faq;
   public form: FormGroup;
- 
+  public formupdate: FormGroup;
 
   constructor(private faqService: FaqService) { }
 
@@ -27,7 +27,12 @@ export class GestionFaqComponent implements OnInit {
       question: new FormControl(),
       reponse: new FormControl()
     })
-
+    this.formupdate = new FormGroup({
+      id: new FormControl(),
+      priorite: new FormControl(),
+      question: new FormControl(),
+      reponse: new FormControl()
+    })
     console.log(this.form);
   }
 
@@ -37,43 +42,31 @@ export class GestionFaqComponent implements OnInit {
     this.faq.priority = form.controls['priorite'].value;
     this.faq.question = form.controls['question'].value;
     this.faq.response = form.controls['reponse'].value;
-    this.faqService.createFaq(this.faq).subscribe(maj => {
-      this.faqService.getFaqsList().subscribe((faqs: Faq[]) => {
-        this.faqs = faqs
-      });
-    });
+    this.faqService.createFaq(this.faq).subscribe();
     this.form.reset();
   }
 
   dynForm(event) {
     console.log(this.faqs[event.target.selectedIndex]);
-    this.form.controls['priorite'].setValue(this.faqs[event.target.selectedIndex].priority);
-    this.form.controls['question'].setValue(this.faqs[event.target.selectedIndex].question);
-    this.form.controls['reponse'].setValue(this.faqs[event.target.selectedIndex].response);
+    this.formupdate.controls['priorite'].setValue(this.faqs[event.target.selectedIndex].priority);
+    this.formupdate.controls['question'].setValue(this.faqs[event.target.selectedIndex].question);
+    this.formupdate.controls['reponse'].setValue(this.faqs[event.target.selectedIndex].response);
   }
 
-  updateFaq(form: FormGroup) {
-    this.faq = new Faq();
-    this.faq.id = form.controls['id'].value;
-    this.faq.priority = form.controls['priorite'].value;
-    this.faq.question = form.controls['question'].value;
-    this.faq.response = form.controls['reponse'].value;
-    this.faqService.updateFaq(this.faq).subscribe(maj => {
-      this.faqService.getFaqsList().subscribe((faqs: Faq[]) => {
-        this.faqs = faqs
-      });
-    });
+  updateFaq(formupdate: FormGroup) {
+    this.faq;
+    this.faq.id = formupdate.controls['id'].value;
+    this.faq.priority = formupdate.controls['priorite'].value;
+    this.faq.question = formupdate.controls['question'].value;
+    this.faq.response = formupdate.controls['reponse'].value;
+    this.faqService.updateFaq(this.faq).subscribe();
     this.form.reset();
   }
 
   deleteFaq(form: FormGroup) {
-    this.faq = new Faq();
+    this.faq;
     this.faq.id = form.controls['id'].value;
-    this.faqService.deleteFaq(this.faq).subscribe(maj => {
-      this.faqService.getFaqsList().subscribe((faqs: Faq[]) => {
-        this.faqs = faqs
-      });
-    });
+    this.faqService.deleteFaq(this.faq).subscribe();
     this.form.reset();
   }
 

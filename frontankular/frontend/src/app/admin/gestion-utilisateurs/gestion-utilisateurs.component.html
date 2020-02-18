@@ -67,7 +67,7 @@
 
 
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier utilisateur</h3>
-<form [formGroup]='form' (ngSubmit)='updateUser(form)' class="col-5 mx-auto">
+<form [formGroup]='formupdate' (ngSubmit)='updateUser(formupdate)' class="col-5 mx-auto">
 
     <div class="form-group">
         <label>Id</label>
@@ -108,11 +108,11 @@
 
 
 <h3 class="ajout text-left" style="margin-top:100px;">Supprimer Utilisateur</h3>
-<form [formGroup]='form' (ngSubmit)='deleteUser(form)' class="col-5 mx-auto">
+<form [formGroup]='formupdate' (ngSubmit)='deleteUser(formupdate)' class="col-5 mx-auto">
   <div class="form-group">
     <label>Id</label>
-    <select class="form-control" formControlName=id>
-      <option *ngFor="let user of users">{{user.id}}</option>
+    <select (change)="dynForm($event)" class="form-control" formControlName=id>
+      <option *ngFor="let user of users" [ngValue]="user.id">{{user.id}}</option>
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Supprimer</button>

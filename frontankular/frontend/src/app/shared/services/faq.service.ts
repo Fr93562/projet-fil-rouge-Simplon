@@ -29,6 +29,7 @@ export class FaqService extends RequestService {
    * @param newFaq Faq a ajouter
    */
   createFaq(newFaq: Faq): Observable<any> {
+    console.log(this.postTrivialCode(this.url, newFaq));
     return this.postTrivialCode(this.url, newFaq);
   }
 

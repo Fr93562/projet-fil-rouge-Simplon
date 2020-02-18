@@ -10,7 +10,7 @@
         </tr>
     </thead>
 
-    <tbody *ngFor="let faq of faqs" class="table">
+    <tbody *ngFor="let faq of faqs; let index = index" class="table">
         <td>{{faq.id}}</td>
         <td>{{faq.priority}}</td>
         <td>{{faq.question}}</td>
@@ -26,12 +26,8 @@
 
     <div class='form-group'>
         <div class="form-group">
-            <label>Priorité</label>
-            <select  class="form-control" formControlName=priorite>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
+            <label>Priorite</label>
+            <input formControlName=priorite class="form-control" rows="1">
         </div>
         <div class="form-group">
             <label> Question </label>
@@ -48,7 +44,7 @@
 
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier Faq</h3>
 
-<form [formGroup]='form' (ngSubmit)='updateFaq(form)' class="col-5 mx-auto">
+<form [formGroup]='formupdate' (ngSubmit)='updateFaq(formupdate)' class="col-5 mx-auto">
 
     <div class="form-group">
         <label>Id</label>
@@ -56,13 +52,10 @@
             <option *ngFor="let faq of faqs" [ngValue]="faq.id">{{faq.id}}</option>
         </select>
     </div>
+
     <div class="form-group">
-        <label>Priorité</label>
-        <select  class="form-control" formControlName=priorite>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-        </select>
+        <label> Priorité </label>
+        <input formControlName=priorite class="form-control">
     </div>
     <div class="form-group">
         <label> Question </label>
@@ -81,8 +74,8 @@
 <form [formGroup]='form' (ngSubmit)='deleteFaq(form)' class="col-5 mx-auto">
     <div class="form-group">
         <label>Id</label>
-        <select class="form-control" formControlName=id>
-            <option *ngFor="let faq of faqs">{{faq.id}}</option>
+        <select (change)="dynForm($event)" class="form-control" formControlName=id>
+            <option *ngFor="let faq of faqs" [ngValue]="faq.id">{{faq.id}}</option>
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Supprimer</button>

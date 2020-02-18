@@ -8,7 +8,7 @@
       <th style="width:70%" scope="col">type</th>
     </tr>
   </thead>
-  <tbody *ngFor="let categorie of categories;" class="table">
+  <tbody *ngFor="let categorie of categories; let index = index" class="table">
     <td>{{categorie.id}} </td>
     <td> {{categorie.type}}</td>
   </tbody>
@@ -26,7 +26,7 @@
 
 
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier Categorie</h3>
-<form [formGroup]='form' (ngSubmit)='updateCategory(form)' class="col-5 mx-auto">
+<form [formGroup]='formupdate' (ngSubmit)='updateCategory(formupdate)' class="col-5 mx-auto">
   <div class="form-group">
     <label>Id</label>
     <select (change)="dynForm($event)" class="form-control" formControlName=id>
@@ -40,4 +40,14 @@
   <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
 
+<h3 class="ajout text-left" style="margin-top:100px;">Supprimer Categorie</h3>
+<form [formGroup]='form' (ngSubmit)='deleteCategory(form)' class="col-5 mx-auto">
+  <div class="form-group">
+    <label>Id</label>
+    <select (change)="dynForm($event)" class="form-control" formControlName=id>
+      <option *ngFor="let categorie of categories" [ngValue]="categorie.id">{{categorie.id}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>
 
