@@ -21,7 +21,7 @@
 #logoCompte{
     position: relative;
     left: 31%;
-    width: 150px;
+    width: 150px; 
 }
 .dateInscription, .titreCompte, .idJoueur{
     text-align: center;
