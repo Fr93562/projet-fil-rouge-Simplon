@@ -16,7 +16,7 @@
         </tr>
     </thead>
 
-    <tbody *ngFor="let question of questions; let index = index" class="table">
+    <tbody *ngFor="let question of questions;" class="table">
         <td>{{question.id}}</td>
         <td>{{question.level}}</td>
         <td>{{question.question}}</td>
@@ -37,7 +37,11 @@
 
     <div class="form-group">
         <label>Level</label>
-        <input formControlName=level class="form-control" rows="1">
+        <select class="form-control" formControlName=level>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
     </div>
     <div class="form-group">
         <label> Question </label>
@@ -67,19 +71,10 @@
         <label>Id Categorie</label>
         <input formControlName=categorieId class="form-control" rows="1">
     </div>
-
-    <!-- <div formGroupeName="ressource">
-        <div class="form-group">
-            <label>Id Ressource</label>
-            <input value=id  formControlName=id class="form-control" rows="1">
-        </div>
+    <div class="form-group">
+        <label>Langage</label>
+        <input formControlName=langage class="form-control" rows="1">
     </div>
-    <div formGroupeName="categorie">
-        <div class="form-group">
-            <label>Id Categorie</label>
-            <input value=id formControlName=id class="form-control" rows="1">
-        </div>
-    </div> -->
     <button type="submit" class="btn btn-primary">Ajouter</button>
 
 </form>
@@ -91,12 +86,18 @@
 
     <div class='form-group'>
         <div class="form-group">
-            <label>ID</label>
-            <input formControlName=id class="form-control">
+            <label>Id</label>
+            <select (change)="dynForm($event)" class="form-control" formControlName=id> 
+                <option *ngFor="let question of questions" [ngValue]="question.id">{{question.id}}</option>
+            </select>
         </div>
         <div class="form-group">
             <label>Level</label>
-            <input formControlName=level class="form-control" rows="1">
+            <select class="form-control" formControlName=level>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
         </div>
         <div class="form-group">
             <label> Question </label>
@@ -118,31 +119,29 @@
             <label> Choix 3 </label>
             <textarea formControlName=choice3 class="form-control" rows="6"></textarea>
         </div>
-        <div formGroupeName='ressource'>
-            <div class="form-group">
-                <label>Id Ressource</label>
-                <input value=id formControlName=id class="form-control" rows="1">
-            </div>
+        <div class="form-group">
+            <label>Id Ressource</label>
+            <input formControlName=ressourceId class="form-control" rows="1">
         </div>
-        <div formGroupeName='categorie'>
-            <div class="form-group">
-                <label>Id Categorie</label>
-                <input formControlName=id class="form-control" rows="1">
-            </div>
+        <div class="form-group">
+            <label>Id Categorie</label>
+            <input formControlName=categorieId class="form-control" rows="1">
         </div>
+        
+
         <button type="submit" class="btn btn-primary">Modifier</button>
     </div>
 
 </form>
 
 
-<h3 class="ajout text-left" style="margin-top:100px;">Supprimer question</h3>
-
+<h3 class="ajout text-left" style="margin-top:100px;">Supprimer Question</h3>
 <form [formGroup]='form' (ngSubmit)='deleteQuestion(form)' class="col-5 mx-auto">
     <div class="form-group">
-        <label>ID</label>
-        <input type="number" formControlName=id class="form-control" placeholder="Entrer id">
-        <small class="form-text text-muted">Saissir id de la question à supprimer</small>
+        <label>Id</label>
+        <select class="form-control" formControlName=id>
+            <option *ngFor="let question of questions">{{question.id}}</option>
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Supprimer</button>
 </form>
