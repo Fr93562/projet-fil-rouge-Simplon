@@ -6,7 +6,7 @@ import { Language } from './language';
  */
 export class User{
     id: number;
-    date_inscription: Date;
+    dateInscription: Date;
     email: string;
     password: string;
     username: string;
