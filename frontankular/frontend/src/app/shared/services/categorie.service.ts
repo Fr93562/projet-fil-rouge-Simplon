@@ -24,7 +24,6 @@ export class CategorieService extends RequestService {
     super(http, data);
   }
 
-
   /**
    * Récupere la liste des Categories d'une question
    */
@@ -53,8 +52,6 @@ export class CategorieService extends RequestService {
    * @param newCategory Categorie a mettre a jour
    */
   updateCategory(newCategory: Categorie): Observable<any> {
-    return this.postTrivialCode(this.url, newCategory);
+    return this.updateTrivialCode(this.url, newCategory);
   }
 }
-
-

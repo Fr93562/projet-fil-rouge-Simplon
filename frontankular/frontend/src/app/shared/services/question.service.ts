@@ -54,7 +54,7 @@ export class QuestionService extends RequestService {
    * @param newQuestion Question a mettre a jour
    */
   updateQuestion(newQuestion: Question): Observable<any> {
-    return this.postTrivialCode(this.url1, newQuestion);
+    return this.updateTrivialCode(this.url1, newQuestion);
   }
 
 }

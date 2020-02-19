@@ -1,5 +1,6 @@
 <h3>Gestion Utilisateur</h3>
 
+<!-- Section visuelle de la table des utilisateurs-->
 <table class="table col-10 mx-auto">
     <thead>
         <tr>
@@ -31,7 +32,7 @@
     </tbody>
 </table>
 
-
+<!-- Section visuelle de l'ajout d'un utilisateur-->
 <h3 class="ajout text-left" style="margin-top:100px;">Ajouter utilisateur</h3>
 <form [formGroup]='form' (ngSubmit)='postUser(form)' class="col-5 mx-auto">
 
@@ -66,8 +67,9 @@
 </form>
 
 
+<!-- Section visuelle de la modification d'un utilisateur-->
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier utilisateur</h3>
-<form [formGroup]='formupdate' (ngSubmit)='updateUser(formupdate)' class="col-5 mx-auto">
+<form [formGroup]='formUpdate' (ngSubmit)='updateUser(formUpdate)' class="col-5 mx-auto">
 
     <div class="form-group">
         <label>Id</label>
@@ -99,6 +101,7 @@
         <select multiple class="form-control" formControlName=langage>
             <option *ngFor="let langage of languages"> {{langage.language}}</option>
         </select>
+        <small id="emailHelp" class="form-text text-muted">Veuillez reselectionner les langages</small>
     </div>
 
     <button type="submit" class="btn btn-primary">Modifier</button>
@@ -106,13 +109,13 @@
 </form>
 
 
-
+<!-- Section visuelle de la suppression d'un utilisateur-->
 <h3 class="ajout text-left" style="margin-top:100px;">Supprimer Utilisateur</h3>
-<form [formGroup]='formupdate' (ngSubmit)='deleteUser(formupdate)' class="col-5 mx-auto">
+<form [formGroup]='form' (ngSubmit)='deleteUser(form)' class="col-5 mx-auto">
   <div class="form-group">
     <label>Id</label>
-    <select (change)="dynForm($event)" class="form-control" formControlName=id>
-      <option *ngFor="let user of users" [ngValue]="user.id">{{user.id}}</option>
+    <select class="form-control" formControlName=id>
+      <option *ngFor="let user of users">{{user.id}}</option>
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Supprimer</button>

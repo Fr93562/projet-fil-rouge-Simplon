@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Ressource } from 'src/app/shared/models/ressource';
-import { RessourceService } from 'src/app/shared/services/ressource.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { Ressource } from 'src/app/shared/models/ressource';
+import { RessourceService } from 'src/app/shared/services/ressource.service';
+
+
+
+/**
+ * Gestion des ressources
+ */
 @Component({
   selector: 'app-gestion-ressources',
   templateUrl: './gestion-ressources.component.html',
@@ -12,7 +18,7 @@ export class GestionRessourcesComponent implements OnInit {
   public ressources: Ressource[];
   public ressource: Ressource;
   public form: FormGroup;
-  public formupdate: FormGroup;
+  public formUpdate: FormGroup;
 
   constructor(private ressourceService: RessourceService) { }
 
@@ -26,7 +32,7 @@ export class GestionRessourcesComponent implements OnInit {
       text: new FormControl(),
       link: new FormControl()
     })
-    this.formupdate = new FormGroup({
+    this.formUpdate = new FormGroup({
       id: new FormControl(),
       text: new FormControl(),
       link: new FormControl()
@@ -34,36 +40,64 @@ export class GestionRessourcesComponent implements OnInit {
    
   }
 
+   /**
+ * Methode qui permet de creer une ressource
+ * @param form renvoie le formulaire
+ */
   postLink(form: FormGroup) {
     this.ressource = new Ressource();
     this.ressource.id = null;
     this.ressource.text = form.controls['text'].value;
     this.ressource.link = form.controls['link'].value;
-    this.ressourceService.createLink(this.ressource).subscribe();
+    this.ressourceService.createLink(this.ressource).subscribe(maj => {
+      this.ressourceService.getLinkList().subscribe((ressources: Ressource[]) => {
+        this.ressources = ressources
+      });
+    });
     this.form.reset();
   }
 
+
+   /**
+  * préremplie le formulaire de modification avec les données de l'id selectionné
+  * @param event 
+  */
   dynForm(event) {
     console.log(this.ressources[event.target.selectedIndex]);
-    this.formupdate.controls['text'].setValue(this.ressources[event.target.selectedIndex].text);
-    this.formupdate.controls['link'].setValue(this.ressources[event.target.selectedIndex].link);
+    this.formUpdate.controls['text'].setValue(this.ressources[event.target.selectedIndex].text);
+    this.formUpdate.controls['link'].setValue(this.ressources[event.target.selectedIndex].link);
   }
 
-  updateLink(formupdate: FormGroup) {
-    this.ressource;
-    this.ressource.id = formupdate.controls['id'].value;
-    this.ressource.text = formupdate.controls['text'].value;
-    this.ressource.link = formupdate.controls['link'].value;
-    this.ressourceService.updateLink(this.ressource).subscribe();
+  
+   /**
+ * Methode qui permet de modifier une ressource
+ * @param form renvoie le formulaire
+ */
+  updateLink(formUpdate: FormGroup) {
+    this.ressource = new Ressource();
+    this.ressource.id = formUpdate.controls['id'].value;
+    this.ressource.text = formUpdate.controls['text'].value;
+    this.ressource.link = formUpdate.controls['link'].value;
+    this.ressourceService.updateLink(this.ressource).subscribe(maj => {
+      this.ressourceService.getLinkList().subscribe((ressources: Ressource[]) => {
+        this.ressources = ressources
+      });
+    });
     this.form.reset();
   }
 
+   /**
+ * Methode qui permet de supprimer une ressource
+ * @param form renvoie le formulaire
+ */
   deleteLink(form: FormGroup) {
-    this.ressource;
+    this.ressource = new Ressource();
     this.ressource.id = form.controls['id'].value;
-    this.ressourceService.deleteLink(this.ressource).subscribe();
+    this.ressourceService.deleteLink(this.ressource).subscribe(maj => {
+      this.ressourceService.getLinkList().subscribe((ressources: Ressource[]) => {
+        this.ressources = ressources
+      });
+    });
     this.form.reset();
   }
-
-
 }

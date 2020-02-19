@@ -80,7 +80,7 @@ export class UserService extends RequestService {
    * @param newUser Utilisateur a mettre a jour
    */
   updateUser(newUser: User): Observable<any> {
-    return this.postTrivialCode(this.url, newUser);
+    return this.updateTrivialCode(this.url, newUser);
   }
 
   /**
