@@ -85,7 +85,6 @@ export class GestionQuestionsComponent implements OnInit {
 
 
   dynForm(event) {
-    console.log(this.questions[event.target.selectedIndex]);
     this.formUpdate.controls['level'].setValue(this.questions[event.target.selectedIndex].level);
     this.formUpdate.controls['question'].setValue(this.questions[event.target.selectedIndex].question);
     this.formUpdate.controls['answer'].setValue(this.questions[event.target.selectedIndex].answer);

@@ -64,7 +64,6 @@ export class GestionFaqComponent implements OnInit {
    * @param event 
    */
   dynForm(event) {
-    console.log(this.faqs[event.target.selectedIndex]);
     this.formUpdate.controls['priorite'].setValue(this.faqs[event.target.selectedIndex].priority);
     this.formUpdate.controls['question'].setValue(this.faqs[event.target.selectedIndex].question);
     this.formUpdate.controls['reponse'].setValue(this.faqs[event.target.selectedIndex].response);

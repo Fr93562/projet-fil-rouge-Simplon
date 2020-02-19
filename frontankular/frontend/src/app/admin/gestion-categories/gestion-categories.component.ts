@@ -58,7 +58,6 @@ export class GestionCategoriesComponent implements OnInit {
   * @param event 
   */
   dynForm(event) {
-    console.log(this.categories[event.target.selectedIndex]);
     this.formUpdate.controls['type'].setValue(this.categories[event.target.selectedIndex].type);
   }
 

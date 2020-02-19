@@ -63,7 +63,6 @@ export class GestionRessourcesComponent implements OnInit {
   * @param event 
   */
   dynForm(event) {
-    console.log(this.ressources[event.target.selectedIndex]);
     this.formUpdate.controls['text'].setValue(this.ressources[event.target.selectedIndex].text);
     this.formUpdate.controls['link'].setValue(this.ressources[event.target.selectedIndex].link);
   }

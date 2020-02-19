@@ -62,7 +62,6 @@ export class GestionLangagesComponent implements OnInit {
   * @param event 
   */
   dynForm(event) {
-    console.log(this.languages[event.target.selectedIndex]);
     this.formUpdate.controls['language'].setValue(this.languages[event.target.selectedIndex].language);
   }
 
