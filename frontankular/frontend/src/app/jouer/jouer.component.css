@@ -1,7 +1,7 @@
 /* image de fond */
 .fontsection {
   background-image: url("src/assets/gameback.jpg");
-  height: 1022px;
+  height: 1000px;
 }
 
 /* positionnement general */
@@ -11,10 +11,11 @@
   text-align: center;
 }
 
-h1, h2 {
+h1,
+h2 {
   position: relative;
-    top: 30px;
-    color:  rgba(138, 221, 239, 1);
+  top: 30px;
+  color: rgba(138, 221, 239, 1);
 }
 
 p {
@@ -28,13 +29,14 @@ a {
 }
 
 div select {
-  width: 320px;
-    height: 150px;
-    border-radius: 20px;
-    border: 0px;
-    background-color: rgb(232, 240, 254) !important;
-    color: black;
-    text-align: center;
+  width: 80%;
+  max-width: 320px;
+  height: 150px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: rgb(232, 240, 254) !important;
+  color: black;
+  text-align: center;
 }
 
 /* affichage titre cadre */
@@ -45,18 +47,19 @@ div select {
 
 /* création du cadre bleu*/
 .gamecadre {
-  width: 763px;
+  width: 80%;
+  max-width: 763px;
   height: 554px;
   margin: 0 auto;
   background: rgba(138, 221, 239, 0.8);
   border-radius: 25px;
   position: relative;
-    top: 130px;
-    overflow: auto;
+  top: 130px;
+  overflow: auto;
 }
 
 /* affichage des reponses */
-.reponses{
+.reponses {
   border-radius: 20px;
   border: 0px;
   background-color: rgb(232, 240, 254) !important;
@@ -64,4 +67,36 @@ div select {
   text-align: center;
   width: 300px;
   margin: 40px 20px;
+}
+
+@media screen and (max-width: 450px) {
+  .reponses {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .gamecadre {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fontsection {
+    height: 1400px;
+  }
+}
+
+@media screen and (min-width: 451px) and (max-width: 650px) {
+  .reponses {
+    width: 80%;
+    margin: 15px 0;
+  }
+
+  .gamecadre {
+    width: 80%;
+    height: 100%;
+  }
+
+  .fontsection {
+    height: 1400px;
+  }
 }

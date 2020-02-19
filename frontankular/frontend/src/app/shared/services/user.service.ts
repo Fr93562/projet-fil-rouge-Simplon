@@ -29,8 +29,6 @@ export class UserService extends RequestService {
    * Récupere la liste des users
    */
   getList(): Observable<any> {
-
-    console.log(this.list);
     return this.http.get<User[]>(this.url);
   }
 
@@ -39,7 +37,6 @@ export class UserService extends RequestService {
    */
   getByUsername(username: string): Observable<any> {
 
-    console.log(this.list);
     return this.http.get<User>(this.url + "/?username=" + username);
   }
 
@@ -64,7 +61,6 @@ export class UserService extends RequestService {
   viewList() {
 
     this.list = this.http.get<User[]>(this.url);
-    console.log(this.list);
   }
 
  /**
