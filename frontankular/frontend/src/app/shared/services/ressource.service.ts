@@ -53,7 +53,7 @@ export class RessourceService extends RequestService {
    * @param newLink Ressource a mettre a jour
    */
   updateLink(newLink: Ressource): Observable<any> {
-    return this.postTrivialCode(this.url, newLink);
+    return this.updateTrivialCode(this.url, newLink);
   }
 
 }

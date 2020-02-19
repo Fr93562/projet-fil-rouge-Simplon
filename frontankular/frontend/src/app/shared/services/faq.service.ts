@@ -50,7 +50,7 @@ export class FaqService extends RequestService {
    * @param newFaq Faq a mettre a jour
    */
   updateFaq(newFaq: Faq): Observable<any> {
-    return this.postTrivialCode(this.url, newFaq);
+    return this.updateTrivialCode(this.url, newFaq);
   }
 
 }

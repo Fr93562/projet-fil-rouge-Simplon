@@ -1,6 +1,6 @@
 <h3>Gestion Langage</h3>
 
-
+<!-- Section visuelle de la table des langages-->
 <table class="table col-4 mx-auto">
   <thead>
     <tr>
@@ -15,6 +15,7 @@
 </table>
 
 
+<!-- Section visuelle de l'ajout de langage-->
 <h3 class="ajout text-left" style="margin-top:100px;">Ajouter Langage</h3>
 <form [formGroup]='form' (ngSubmit)='postLanguage(form)' class="col-5 mx-auto">
   <div class="form-group">
@@ -25,8 +26,9 @@
 </form>
 
 
+<!-- Section visuelle de la modification de langage-->
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier Langage</h3>
-<form [formGroup]='form' (ngSubmit)='updateLanguage(form)' class="col-5 mx-auto">
+<form [formGroup]='formUpdate' (ngSubmit)='updateLanguage(formUpdate)' class="col-5 mx-auto">
   
   <div class="form-group">
     <label>Id</label>
@@ -43,13 +45,13 @@
 </form>
 
 
+<!-- Section visuelle de la suppression de langage-->
 <h3 class="ajout text-left" style="margin-top:100px;">Supprimer Langage</h3>
 <form [formGroup]='form' (ngSubmit)='deleteLanguage(form)' class="col-5 mx-auto">
   <div class="form-group">
     <label>Id</label>
     <select class="form-control" formControlName=id>
       <option *ngFor="let language of languages">{{language.id}}</option>
-
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Supprimer</button>

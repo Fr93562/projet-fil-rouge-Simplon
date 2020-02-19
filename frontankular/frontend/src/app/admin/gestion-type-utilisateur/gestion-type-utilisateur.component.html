@@ -1,6 +1,6 @@
 <h3>Gestion Type d'utilisateur</h3>
 
-
+<!-- Section visuelle de la table des types d'utilisateurs-->
 <table class="table col-4 mx-auto">
   <thead>
     <tr>
@@ -8,13 +8,13 @@
       <th style="width:70%" scope="col">type</th>
     </tr>
   </thead>
-  <tbody *ngFor="let typeUser of typeUsers; let index = index" class="table">
+  <tbody *ngFor="let typeUser of typeUsers" class="table">
     <td>{{typeUser.id}} </td>
     <td> {{typeUser.type}}</td>
   </tbody>
 </table>
 
-
+<!-- Section visuelle de l'ajout d'un type d'utilisateur-->
 <h3 class="ajout text-left" style="margin-top:100px;">Ajouter type d'utilisateur </h3>
 <form [formGroup]='form' (ngSubmit)='postTypeUser(form)' class="col-5 mx-auto">
   <div class="form-group">
@@ -25,8 +25,9 @@
 </form>
 
 
+<!-- Section visuelle de la modification d'un type d'utilisateur-->
 <h3 class="ajout text-left" style="margin-top:100px;">Modifier type d'utilisateur</h3>
-<form [formGroup]='formupdate' (ngSubmit)='updateTypeUser(formupdate)' class="col-5 mx-auto">
+<form [formGroup]='formUpdate' (ngSubmit)='updateTypeUser(formUpdate)' class="col-5 mx-auto">
 
   <div class="form-group">
     <label>Id</label>

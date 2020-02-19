@@ -53,7 +53,7 @@ export class LanguageService extends RequestService {
    * @param newLanguage Langage a mettre a jour
    */
   updateLanguage(newLanguage: Language): Observable<any> {
-    return this.postTrivialCode(this.url, newLanguage);
+    return this.updateTrivialCode(this.url, newLanguage);
   }
 
 }

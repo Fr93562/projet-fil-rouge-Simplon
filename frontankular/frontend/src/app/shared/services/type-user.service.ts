@@ -47,7 +47,7 @@ export class TypeUserService extends RequestService{
    * @param newType type a mettre a jour
    */
   updateTypeUser(newType: TypeUser): Observable<any> {
-    return this.postTrivialCode(this.url, newType);
+    return this.updateTrivialCode(this.url, newType);
   }
 
   /**
