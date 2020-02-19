@@ -6,6 +6,7 @@ import { DataService } from './data.service';
 import { RequestService } from './request.service';
 import { TypeUser } from '../models/typeUser';
 
+
 /**
  * gere les requêtes typeUser avec l'Api
  * 
