@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Language } from 'src/app/shared/models/language';
 import { LanguageService } from 'src/app/shared/services/language.service';
@@ -31,8 +31,8 @@ export class InscriptionComponent implements OnInit {
 
     this.form = new FormGroup({
       email: new FormControl(),
-      password: new FormControl(),
-      username: new FormControl(),
+      password: new FormControl('',Validators.required),
+      username: new FormControl('',Validators.required),
       langage: new FormControl()
     });
   }
@@ -44,9 +44,7 @@ export class InscriptionComponent implements OnInit {
    * @param form : données récupérées de l'html
    */
   postUser(form: FormGroup) {
-    let err: string;
     this.user = new User();
-
 
     this.user.username = form.controls['username'].value;
     this.user.email = form.controls['email'].value;
