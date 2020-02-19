@@ -19,7 +19,6 @@ export class GestionQuestionsComponent implements OnInit {
   public question: Question;
   public form: FormGroup;
 
- 
   constructor(private questionService: QuestionService) { }
 
   ngOnInit() {
@@ -36,7 +35,9 @@ export class GestionQuestionsComponent implements OnInit {
       choice2: new FormControl(),
       choice3: new FormControl(),
      categorieId: new FormControl(),
-     ressourceId: new FormControl()
+     ressourceId: new FormControl(),
+     langage: new FormControl()
+
     })
     console.log(this.form);
   }
@@ -56,12 +57,31 @@ export class GestionQuestionsComponent implements OnInit {
     let res = new Ressource;
     res.id = form.controls['ressourceId'].value;
     this.question.ressource = res;
-    this.questionService.createQuestion(this.question, "java").subscribe();
+
+    this.questionService.createQuestion(this.question, form.controls['langage'].value).subscribe(maj => {
+      this.questionService.getQuestionsList().subscribe((questions: Question[]) => {
+        this.questions = questions
+      });
+    });
     this.form.reset();
   }
 
+
+  dynForm(event) {
+    console.log(this.questions[event.target.selectedIndex]);
+    this.form.controls['level'].setValue(this.questions[event.target.selectedIndex].level);
+    this.form.controls['question'].setValue(this.questions[event.target.selectedIndex].question);
+    this.form.controls['answer'].setValue(this.questions[event.target.selectedIndex].answer);
+    this.form.controls['choice1'].setValue(this.questions[event.target.selectedIndex].choice1);
+    this.form.controls['choice2'].setValue(this.questions[event.target.selectedIndex].choice2);
+    this.form.controls['choice3'].setValue(this.questions[event.target.selectedIndex].choice3);
+    this.form.controls['categorieId'].setValue(this.questions[event.target.selectedIndex].categorie);
+    this.form.controls['ressourceId'].setValue(this.questions[event.target.selectedIndex].ressource);
+  }
+
   updateQuestion(form: FormGroup) {
-    this.question;
+    this.question = new Question();
+
     this.question.id = form.controls['id'].value;
     this.question.level = form.controls['level'].value;
     this.question.question = form.controls['question'].value;
@@ -69,17 +89,34 @@ export class GestionQuestionsComponent implements OnInit {
     this.question.choice1 = form.controls['choice1'].value;
     this.question.choice2 = form.controls['choice2'].value;
     this.question.choice3 = form.controls['choice3'].value;
-    this.question.categorie.id = form.controls['id'].value;
-    this.question.ressource.id = form.controls['id'].value;
-    this.questionService.updateQuestion(this.question).subscribe();
+
+    let cat = new Categorie();
+    cat.id = form.controls['categorieId'].value;
+    this.question.categorie = cat;
+    let res = new Ressource;
+    res.id = form.controls['ressourceId'].value;
+    this.question.ressource = res;
+    // this.question.categorie.id = form.controls['categorieId'].value;
+    // this.question.ressource.id = form.controls['ressourceId'].value;
+    this.questionService.updateQuestion(this.question).subscribe(maj => {
+      this.questionService.getQuestionsList().subscribe((questions: Question[]) => {
+        this.questions = questions
+      });
+    });
+
     this.form.reset();
   }
   
 
   deleteQuestion(form: FormGroup) {
-    this.question;
+    this.question = new Question();
     this.question.id = form.controls['id'].value;
-    this.questionService.deleteQuestion(this.question).subscribe();
+    this.questionService.deleteQuestion(this.question).subscribe(maj => {
+      this.questionService.getQuestionsList().subscribe((questions: Question[]) => {
+        this.questions = questions
+      });
+    });
+
     this.form.reset();
   }
 
