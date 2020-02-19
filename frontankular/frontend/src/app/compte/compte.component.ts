@@ -15,7 +15,7 @@ import { AuthentificationService } from '../shared/services/authentification.ser
 export class CompteComponent implements OnInit 
 {
 
-  public user: User;
+  public user: User = new User();
   public updateForm: boolean = false;
   public deleteForm: boolean = false;
   public scoreShow: boolean = false;

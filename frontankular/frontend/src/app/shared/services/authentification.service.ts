@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
+import { Router } from "@angular/router"
 import { tap, catchError } from 'rxjs/operators';
 import { RequestService } from './request.service';
 import { DataService } from './data.service';
@@ -19,7 +20,7 @@ export class AuthentificationService extends RequestService
 
   url = this.dataService.baseUrl + '/login';
 
-  constructor(public http: HttpClient, public data: DataService) 
+  constructor(public http: HttpClient, public data: DataService, private router: Router) 
   { 
     super(http,data);
   }
@@ -41,6 +42,7 @@ export class AuthentificationService extends RequestService
           sessionStorage.setItem('role', this.dataReponse[1]);
           sessionStorage.setItem('token', this.dataReponse[2]);
           sessionStorage.setItem('point', "1");
+          this.router.navigate(['/connexion/compte']);
           console.log("accès autorisé");
         } else {
   
