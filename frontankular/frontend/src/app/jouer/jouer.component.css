@@ -1,3 +1,31 @@
-.test {
-    
+.fontsection {
+  background-image: url("src/assets/gameback.jpg");
+  height: 1022px;
+}
+
+.topdiv {
+  position: relative;
+  top: 12%;
+  text-align: center;
+}
+
+.gamecadre {
+  width: 763px;
+  height: 554px;
+  margin: 0 auto;
+  background: rgba(138, 221, 239, 0.8);
+  border-radius: 25px;
+}
+
+.response{
+
+    width: 380px;
+    height: 380px;
+
+    position: relative;
+    top: 15%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
