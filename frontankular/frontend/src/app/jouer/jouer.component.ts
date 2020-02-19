@@ -143,6 +143,7 @@ export class JouerComponent implements OnInit {
    */
   clear() {
     this.gameService.clear();
+    this.useQuestions = [];
     this.gamestatement = 0;
   }
 }
