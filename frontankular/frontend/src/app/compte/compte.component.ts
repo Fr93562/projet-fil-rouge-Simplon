@@ -39,7 +39,7 @@ export class CompteComponent implements OnInit
    */
   redirect(){
 
-    if ( sessionStorage.getItem('username') == null && sessionStorage.getItem('token') == null) {
+    if ( sessionStorage.getItem('username') == "" && sessionStorage.getItem('token') == "") {
 
       this.router.navigate(['/connexion']);
     }

@@ -3,6 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataService } from './data.service';
 
+/**
+ * parent des autres services qui communiquent avec l'api
+ * 
+ * @author : camille
+ */
 @Injectable({
   providedIn: 'root'
 })

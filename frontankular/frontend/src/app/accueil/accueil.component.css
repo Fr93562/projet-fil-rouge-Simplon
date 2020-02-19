@@ -76,3 +76,43 @@
 {
     text-align: center;
 }
+/* mediaqueries */
+@media screen and (min-width: 724px) and (max-width: 1024px) {
+ 
+    h2 
+    {
+        margin-top: 25px;
+    }
+  }
+  @media screen and (min-width: 520px) and (max-width: 723.9px) {
+ 
+    h2 
+    {
+        margin-top: 25px;
+    }
+  }
+  @media screen and (min-width: 350px) and (max-width:519.9px) {
+ 
+    h2 
+    {
+        margin-top: 25px;
+    }
+    #manetteContenair
+    {
+        width: 280px;
+        left: 10%;
+    }
+  }
+
+@media screen and (max-width:349px) {
+ 
+    h2 
+    {
+        margin-top: 25px;
+    }
+    #manetteContenair
+    {
+        width: 280px;
+        left: 6%;
+    }
+}

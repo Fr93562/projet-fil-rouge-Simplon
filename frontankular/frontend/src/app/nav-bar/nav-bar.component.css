@@ -36,3 +36,12 @@
     position: relative;
     top: 5px;
 }
+
+/* mediaqueries */
+@media screen and (max-width:519.9px) {
+ 
+    footer
+    {
+        height: 91px;
+    }
+}

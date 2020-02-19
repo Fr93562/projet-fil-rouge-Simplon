@@ -1,33 +1,13 @@
+<!-- background de l'image-->
 <div class="image" id="image1">
     <div class="row h-100 wrapper">
 
+        <!-- contient le block formulaire + logo -->
+
         <div id="formContent">
-            <!-- logo -->
             <div>
                 <img src="../assets/vector.png" class="logo" alt="" />
             </div>
-
-            <!-- formulaire de connexion 1er champs
-            <form>
-                <input [formControl] = "formUsername"
-                       type="text"                        
-                       name="login"
-                       id="login" 
-                       maxlength="30"
-                       minlength="4"
-                       class="form-control" 
-                       placeholder="Username" required>
-                <input [formControl] = "formPassword"
-                       type="password"  
-                       id="password" 
-                       maxlength="255"
-                       minlength="6"
-                       name="login" 
-                       class="form-control"
-                       placeholder="Mot de passe" required>
-                <button (click) = "sendRequest()" class="btn btn-primary" id="connexion-button">Se Connecter</button>               
-            </form>
-            -->
             
             <div *ngIf="create">
                 <div class="alert alert-success" role="alert">
@@ -36,6 +16,9 @@
             </div>
 
             <h2 class="ajout text-center" class="other" style="margin-top:100px;">Ajouter utilisateur</h2>
+
+            <!-- formulaire -->
+
             <form [formGroup]='form' (ngSubmit)='postUser(form)' class="col-5 mx-auto">
 
                 <div class="form-group">
@@ -57,9 +40,11 @@
 
             </form>
             <br>
-            <!-- autre choix -->
+            <!-- lien de retour -->
             <div class="otherlien">
+
                 <a class="underlineHover col-6 " [routerLink]="['/connexion']">Retour au portail de connexion</a>
+                
             </div>
         </div>
 

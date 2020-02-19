@@ -1,20 +1,26 @@
 <!-- #region Top -->
+
 <section class="w-100 p-3 image" id="image1">
   <div class="row h-100 text">
     <div>
+
       <img src="../assets/vector.png" class="logo" alt="logo" />
       <h1 class="trivial">La Foire aux Questions</h1>
+
     </div>
   </div>
 </section>
+
 <!-- #endregion -->
 
 <!-- #region Affichage Faq -->
 <section class="center">
   <div *ngFor="let faq of faqs">
+
     <i class="material-icons blocBleu code">code</i>
     <p class="question">{{ faq.id }} - {{ faq.question }}</p>
     <p class="response">{{ faq.response }}</p>
+    
   </div>
 </section>
 <!-- #endregion -->

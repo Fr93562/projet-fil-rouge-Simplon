@@ -45,4 +45,34 @@
 {
     margin-top: 20px !important;
 }
-  
+
+/* mediaqueries */
+@media screen and (min-width: 350px) and (max-width:519.9px) {
+ 
+    h2 
+    {
+        position: relative;
+        left: 20px;
+    }
+
+    #login, #password, #email, #langages
+    {
+        right: 80px;
+    }
+    #connexion-button
+    {
+        position: relative;
+        left: 15px;
+    }
+}
+
+@media screen and (max-width:349px) {
+
+    #login, #password
+    {
+        left: -5px;
+    }
+    #connexion-button
+    {
+    }
+}

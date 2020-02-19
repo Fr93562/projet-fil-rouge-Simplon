@@ -59,7 +59,8 @@ export class AuthentificationService extends RequestService
    */
   public logout()
   {
-    sessionStorage.clear();
+    sessionStorage.setItem('token', '');
+    sessionStorage.setItem('username', '');  
   }
 
   /**

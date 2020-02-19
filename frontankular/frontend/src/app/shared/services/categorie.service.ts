@@ -6,7 +6,12 @@ import { DataService } from './data.service';
 import { RequestService } from './request.service';
 import { Categorie } from 'src/app/shared/models/categorie';
 
-@Injectable({ providedIn: 'root'})
+/**
+ * gere les requêtes categorie avec l'Api
+ * 
+ * @author : elodie
+ */
+@Injectable({ providedIn: 'root' })
 export class CategorieService extends RequestService {
 
   url = this.data.baseUrl + '/questions/cat';
@@ -19,7 +24,6 @@ export class CategorieService extends RequestService {
     super(http, data);
   }
 
-  
   /**
    * Récupere la liste des Categories d'une question
    */
@@ -50,7 +54,6 @@ export class CategorieService extends RequestService {
   updateCategory(newCategory: Categorie): Observable<any> {
     return this.postTrivialCode(this.url, newCategory);
   }
-
 }
 
 

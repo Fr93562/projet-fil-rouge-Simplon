@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Faq } from '../models/faq';
-import { tap, catchError } from 'rxjs/operators';
 import { RequestService } from './request.service';
 import { DataService } from './data.service';
 
+/**
+ * gere les requêtes faq avec l'Api
+ * 
+ * @author : camille
+ */
 @Injectable({
   providedIn: 'root'
 })

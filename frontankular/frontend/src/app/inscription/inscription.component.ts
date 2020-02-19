@@ -40,6 +40,7 @@ export class InscriptionComponent implements OnInit {
   /**
    * permet la création d'un user
    * récupère les données du formulaire et envoie l'objet au service user
+   * 
    * @param form : données récupérées de l'html
    */
   postUser(form: FormGroup) {
