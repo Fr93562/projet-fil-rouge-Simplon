@@ -51,8 +51,17 @@ font-feature-settings: 'liga';
   background-position:50% 50%;
 }
 
+@keyframes animLogo {
+  from{transform: rotateY(180deg);}
+  to{transform: rotateZ(360deg);}
+}
+
 .logo {
   width:150px;
+
+  animation-name: animLogo;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 .row {
