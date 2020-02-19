@@ -102,7 +102,7 @@
     height: 300px;
 
     position: relative;
-    top: 22%;
+    top: 188px;
 
     display: flex;
     flex-direction: column;
@@ -127,3 +127,4 @@
     position: relative;
     left: 120px;
 }
+
