@@ -69,8 +69,6 @@ export class CompteComponent implements OnInit
    */
   openUpdateForm() {
 
-    console.log(this.user);
-
     if (this.updateForm == false) {
 
       this.updateForm = true;
@@ -84,8 +82,6 @@ export class CompteComponent implements OnInit
  * affiche le bouton admin en verifiant si le type d'utilisateur
    */
   openButtonAdmin(){
-    
-    console.log(sessionStorage.getItem('role'));
    
     if (sessionStorage.getItem('role') === "Administrateur")
   
@@ -118,7 +114,6 @@ export class CompteComponent implements OnInit
 
   deleteUser() 
   {
-    console.log(this.userService.deleteUser(this.user));
     this.userService.deleteUser(this.user).subscribe();
     this.logout();
   }

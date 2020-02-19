@@ -55,7 +55,6 @@ export class GestionTypeUtilisateurComponent implements OnInit {
   }
 
   dynForm(event) {
-    console.log(this.typeUsers[event.target.selectedIndex]);
     this.formUpdate.controls['type'].setValue(this.typeUsers[event.target.selectedIndex].type);
   }
 

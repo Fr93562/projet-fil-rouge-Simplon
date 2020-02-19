@@ -52,7 +52,6 @@ export class GestionUtilisateursComponent implements OnInit {
       typeUser: new FormControl(),
       langage: new FormControl(),
     });
-    console.log(this.form);
   }
 
 
@@ -127,8 +126,6 @@ export class GestionUtilisateursComponent implements OnInit {
       });
     });
     this.user.langage = postLangages;
-
-    console.log(this.user);
     this.userService.updateUser(this.user).subscribe(maj => {
       this.userService.getList().subscribe((users: User[]) => {
         this.users = users
@@ -143,7 +140,6 @@ export class GestionUtilisateursComponent implements OnInit {
   * @param event 
   */
   dynForm(event) {
-    console.log(this.users[event.target.selectedIndex]);
     this.formUpdate.controls['email'].setValue(this.users[event.target.selectedIndex].email);
     this.formUpdate.controls['password'].setValue(this.users[event.target.selectedIndex].password);
     this.formUpdate.controls['username'].setValue(this.users[event.target.selectedIndex].username);
