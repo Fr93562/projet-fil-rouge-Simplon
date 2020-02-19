@@ -16,7 +16,7 @@
                 <h1>{{ user.username }}</h1>
             </div>
 
-            <p class="dateInscription" id="dateInscription">Inscrit le : {{ user.dateInscription }}</p>
+            <p class="dateInscription" id="dateInscription">Inscrit le : {{ user.dateInscription | date: 'dd MM yyyy, hh:mm' }}</p>
             <p class="idJoueur" id="idJoueur"> Joueur n° {{ user.id }}</p>
             <h4 class="titreCompte">Mon compte utilisateur</h4>
 
