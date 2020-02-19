@@ -1,31 +1,67 @@
+/* image de fond */
 .fontsection {
   background-image: url("src/assets/gameback.jpg");
   height: 1022px;
 }
 
+/* positionnement general */
 .topdiv {
   position: relative;
   top: 12%;
   text-align: center;
 }
 
+h1, h2 {
+  position: relative;
+    top: 30px;
+    color:  rgba(138, 221, 239, 1);
+}
+
+p {
+  padding-top: 20px;
+}
+
+/* lien vers cours */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+div select {
+  width: 320px;
+    height: 150px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: rgb(232, 240, 254) !important;
+    color: black;
+    text-align: center;
+}
+
+/* affichage titre cadre */
+.prezquestion {
+  font-size: 24px;
+  padding-top: 20px;
+}
+
+/* création du cadre bleu*/
 .gamecadre {
   width: 763px;
   height: 554px;
   margin: 0 auto;
   background: rgba(138, 221, 239, 0.8);
   border-radius: 25px;
+  position: relative;
+    top: 130px;
+    overflow: auto;
 }
 
-.response{
-
-    width: 380px;
-    height: 380px;
-
-    position: relative;
-    top: 15%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+/* affichage des reponses */
+.reponses{
+  border-radius: 20px;
+  border: 0px;
+  background-color: rgb(232, 240, 254) !important;
+  color: black;
+  text-align: center;
+  width: 300px;
+  margin: 40px 20px;
 }

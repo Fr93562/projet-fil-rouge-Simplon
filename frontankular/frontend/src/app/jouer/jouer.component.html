@@ -1,38 +1,56 @@
 <section class="fontsection image">
 
-  <div class="topdiv" id="pregame" *ngIf="gamestatement === 0">
-    <h1>Règles du jeu</h1>
-    <p>Le jeu se présente sous forme de Quizz sur les langages de programmations.</p>
-    <p>Avant de commencer le jeu, il vous faut choisir un ou plusieurs langages pour jouer.</p>
-    
-    <form [formGroup]='formselectlang' (ngSubmit)='findQuestions(formselectlang)' class="col-5 mx-auto">
-      <div class="form-group">
-        <label><p>Veuillez selectionner un/ou plusieurs langages.</p></label>
-        <select multiple class="form-control" formControlName=selectlangage>
-          <option *ngFor="let langage of langages">{{langage.language}}</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Modifier</button>
-    </form>
-  </div>
+  <!-- #region Pre-Game Afficher seulement a la selection du langage-->
+  <div class="topdiv" *ngIf="gamestatement === 0">
 
+    <h1>Règles du jeu</h1>
+
+    <div class="gamecadre">
+      <h3 class="prezquestion">Présentation des règles</h3>
+      <p>Le jeu se présente sous forme de Quizz sur les langages de programmations.</p>
+      <p>Avant de commencer le jeu, il vous faut choisir un ou plusieurs langages pour jouer.</p>
+
+      <form [formGroup]='formselectlang' (ngSubmit)='findQuestions(formselectlang)' class="col-6 mx-auto">
+        <div class="form-group">
+          <p>Veuillez selectionner un/ou plusieurs langages.</p>
+          <select multiple class="form-control" formControlName=selectlangage>
+            <option *ngFor="let langage of langages">{{langage.language}}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+      </form>
+    </div>
+  </div>
+  <!-- #endregion -->
+
+  <!-- #region Game Affichage des questions -->
   <div class="topdiv" id="game" *ngIf="gamestatement === 1">
-    <h2>{{ gametitle }}</h2>
+    <h2>point : {{ point }}</h2>
     <div class="gamecadre">
       <div class="question">
-        <h3><p>{{question.question}}</p></h3>
+        <h3 class="prezquestion">Question :</h3>
+        <p>{{question.question}}</p>
       </div>
       <button type="button" class="reponses" *ngFor="let reponse of reponses" (click)="checkResponse($event)">
         <p>{{ reponse }}</p>
       </button>
     </div>
   </div>
+  <!-- #endregion -->
 
+  <!-- #region Pre-Game Affichage des résultats -->
   <div class="topdiv" id="endgame" *ngIf="gamestatement === 2">
-    <p>point : {{ point }}</p>
-  <tbody *ngFor="let recapQuestion of useQuestions">
-    <tr><td>{{ recapQuestion.question }}</td><td>{{ recapQuestion.ressource.text }}</td><td>{{ recapQuestion.ressource.link }}</td></tr>
-  </tbody>
+    <h2>Vos Resultats</h2>
+    <div class="gamecadre">
+      <h3 class="prezquestion">Vos points : {{ point }}</h3>
+      <div *ngFor="let recapQuestion of useQuestions">
+        <p>{{ recapQuestion.question }} <a href="{{recapQuestion.ressource.link}}" target="_blank">Reponse</a></p>
+      </div>
+      <button type="button" class="reponses" (click)="clear()">
+        <p>Rejouer</p>
+      </button>
+    </div>
   </div>
+  <!-- #endregion -->
 
 </section>
