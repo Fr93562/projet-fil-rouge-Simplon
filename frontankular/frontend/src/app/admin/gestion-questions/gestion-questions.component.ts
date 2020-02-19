@@ -37,6 +37,7 @@ export class GestionQuestionsComponent implements OnInit {
      categorieId: new FormControl(),
      ressourceId: new FormControl(),
      langage: new FormControl()
+
     })
     console.log(this.form);
   }
@@ -56,6 +57,7 @@ export class GestionQuestionsComponent implements OnInit {
     let res = new Ressource;
     res.id = form.controls['ressourceId'].value;
     this.question.ressource = res;
+
     this.questionService.createQuestion(this.question, form.controls['langage'].value).subscribe(maj => {
       this.questionService.getQuestionsList().subscribe((questions: Question[]) => {
         this.questions = questions
@@ -79,6 +81,7 @@ export class GestionQuestionsComponent implements OnInit {
 
   updateQuestion(form: FormGroup) {
     this.question = new Question();
+
     this.question.id = form.controls['id'].value;
     this.question.level = form.controls['level'].value;
     this.question.question = form.controls['question'].value;
@@ -86,6 +89,7 @@ export class GestionQuestionsComponent implements OnInit {
     this.question.choice1 = form.controls['choice1'].value;
     this.question.choice2 = form.controls['choice2'].value;
     this.question.choice3 = form.controls['choice3'].value;
+
     let cat = new Categorie();
     cat.id = form.controls['categorieId'].value;
     this.question.categorie = cat;
@@ -99,6 +103,7 @@ export class GestionQuestionsComponent implements OnInit {
         this.questions = questions
       });
     });
+
     this.form.reset();
   }
   
@@ -111,6 +116,7 @@ export class GestionQuestionsComponent implements OnInit {
         this.questions = questions
       });
     });
+
     this.form.reset();
   }
 

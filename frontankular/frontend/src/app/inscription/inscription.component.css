@@ -1,22 +1,23 @@
-/* arrière plan de connexion */
 #image1 
 {
-    background-image:url('src/assets/XXVXVfyQ.jpeg');
+    background-image:url('src/assets/inscription.jpg');
     height:50em; 
 }
 /*style du formulaire*/
-#login, #password
+#login, #email, #password, #langages
 {
     width: 280px;
     height: 60px;
     border-radius: 20px;
     border: 0px;
+    opacity: 1;
 
     position: relative;
-    left: 79px;
-    
-    background-color: rgba(255,255,255, 1);
+    right: 60px;
+
+    background-color: rgb(232, 240, 254) !important;
     color: black; 
+    text-align: center;
 }
 /* écart entre "mot de passe" et "se connecter" */
 #password
@@ -35,16 +36,28 @@
     color: white;
     
 }
-#other
+.other
 {
     color: white;
+    margin-top: 50px !important;
 }
+.otherLien a
+{
+    margin-top: 20px !important;
+}
+
 /* mediaqueries */
 @media screen and (min-width: 350px) and (max-width:519.9px) {
  
-    #login, #password
+    h2 
     {
-        left: 10px;
+        position: relative;
+        left: 20px;
+    }
+
+    #login, #password, #email, #langages
+    {
+        right: 80px;
     }
     #connexion-button
     {

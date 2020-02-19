@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Faq } from '../models/faq';
-import { tap, catchError } from 'rxjs/operators';
 import { RequestService } from './request.service';
 import { DataService } from './data.service';
 
+/**
+ * gere les requêtes faq avec l'Api
+ * 
+ * @author : camille
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +33,7 @@ export class FaqService extends RequestService {
    * @param newFaq Faq a ajouter
    */
   createFaq(newFaq: Faq): Observable<any> {
+    console.log(this.postTrivialCode(this.url, newFaq));
     return this.postTrivialCode(this.url, newFaq);
   }
 

@@ -1,13 +1,15 @@
 <div class="image" id="image1">
     <div class="row h-100 wrapper">
-
         <div id="formContent">
+
             <!-- logo -->
+
             <div>
                 <img src="../assets/vector.png" class="logo" alt="" />
             </div>
 
             <!-- formulaire de connexion 1er champs -->
+
             <form>
                 <input [formControl] = "formUsername"
                        type="text"                        
@@ -17,7 +19,9 @@
                        minlength="4"
                        class="form-control" 
                        placeholder="Username" required>
+
             <!-- 2eme champs -->
+
                 <input [formControl] = "formPassword"
                        type="password"  
                        id="password" 
@@ -26,16 +30,18 @@
                        name="login" 
                        class="form-control"
                        placeholder="Mot de passe" required>
+
             <!-- bouton -->
+
                 <button (click) = "sendRequest()" class="btn btn-primary" id="connexion-button">Se Connecter</button>               
             </form>
             <br>
+
             <!-- autre choix -->
+
             <div id="other">
-                <a class="underlineHover col-6 " >Mot de passe oublié?</a>
-                <a class="underlineHover col-6" >S'inscrire</a>
+                <a class="underlineHover col-6" [routerLink]="['/connexion/inscription']" >S'inscrire</a>
             </div>
         </div>
-
     </div>
 </div>

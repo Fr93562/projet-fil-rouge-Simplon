@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Faq } from '../shared/models/faq';
 import { FaqService } from '../shared/services/faq.service';
 
+/**
+ * composant de la foire aux questions de trivial'code
+ * 
+ * @author: Camille
+ */
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
@@ -24,20 +29,22 @@ export class FaqComponent implements OnInit {
    */
   getFaqList() {
     this.faqService.getFaqsList()
-        .subscribe(faqs => this.faqs = faqs);
+      .subscribe(faqs => this.faqs = faqs);
   }
 
   // a supprimé apres les test
-  postFaq()  {
+  postFaq() {
     this.test = new Faq();
-    this.test.id = 1;
+    //this.test.id = 1;
     this.test.priority = 1;
-    this.test.question = 'test';
-    this.test.response = 'ca marche2?';
+    this.test.question = 'La tete à toto';
+    this.test.response = 'Tati';
     this.faqService.createFaq(this.test).subscribe();
+
+    console.log(this.faqService.createFaq(this.test).subscribe());
   }
 
-  updateFaq()  {
+  updateFaq() {
     this.test = new Faq();
     this.test.id = 2;
     this.test.priority = 1;
@@ -46,7 +53,7 @@ export class FaqComponent implements OnInit {
     this.faqService.updateFaq(this.test).subscribe();
   }
 
-  deleteFaq()  {
+  deleteFaq() {
     this.test = new Faq();
     this.test.id = 29;
     this.faqService.deleteFaq(this.test).subscribe();

@@ -14,6 +14,7 @@ export class GestionTypeUtilisateurComponent implements OnInit {
   public typeUsers: TypeUser[];
   public typeUser: TypeUser;
   public form: FormGroup;
+  public formupdate: FormGroup;
 
   constructor(private typeUserService: TypeUserService) { }
 
@@ -26,36 +27,33 @@ export class GestionTypeUtilisateurComponent implements OnInit {
       id: new FormControl(),
       type: new FormControl()
     })
-  
+
+    this.formupdate = new FormGroup({
+      id: new FormControl(),
+      type: new FormControl()
+    })
+   
   }
 
   postTypeUser(form: FormGroup) {
     this.typeUser = new TypeUser();
     this.typeUser.id = null;
     this.typeUser.type = form.controls['type'].value;
-    this.typeUserService.createTypeUser(this.typeUser).subscribe(maj => {
-      this.typeUserService.getTypeUserList().subscribe((typeUsers: TypeUser[]) => {
-        this.typeUsers = typeUsers
-      });
-    });
+    this.typeUserService.createTypeUser(this.typeUser).subscribe();
     this.form.reset();
   }
 
   dynForm(event) {
     console.log(this.typeUsers[event.target.selectedIndex]);
-    this.form.controls['type'].setValue(this.typeUsers[event.target.selectedIndex].type);
+    this.formupdate.controls['type'].setValue(this.typeUsers[event.target.selectedIndex].type);
   }
 
 
-  updateTypeUser(form: FormGroup) {
-    this.typeUser = new TypeUser();
-    this.typeUser.id = form.controls['id'].value;
-    this.typeUser.type = form.controls['type'].value;
-    this.typeUserService.updateTypeUser(this.typeUser).subscribe(maj => {
-      this.typeUserService.getTypeUserList().subscribe((typeUsers: TypeUser[]) => {
-        this.typeUsers = typeUsers
-      });
-    });
+  updateTypeUser(formupdate: FormGroup) {
+    this.typeUser;
+    this.typeUser.id = formupdate.controls['id'].value;
+    this.typeUser.type = formupdate.controls['type'].value;
+    this.typeUserService.updateTypeUser(this.typeUser).subscribe();
     this.form.reset();
   }
 

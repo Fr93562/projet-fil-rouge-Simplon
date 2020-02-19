@@ -1,27 +1,83 @@
 <div class="compte">
+
+    <!-- div qui contient l'arrière plan et les infos users -->
+
     <div class="image">
+
+        <!-- div qui contient les infos users et le logo -->
+
         <div class="containerTop">
-            <!-- logo -->
+
             <div id="logoCompte">
                 <img src="../assets/vector.png" class="logo" alt="" />
             </div>
+
             <div id="titreUser">
-                <h1>Nom Prénom</h1>
+                <h1>{{ user.username }}</h1>
             </div>
-            <p class="dateInscription" id="dateInscription">Inscrit le : {{ inscriptionDate | date: 'short' }}</p>
-            <p class="idJoueur" id="idJoueur">Numero X/Y Joueurs</p>
+
+            <p class="dateInscription" id="dateInscription">Inscrit le : {{ user.dateInscription }}</p>
+            <p class="idJoueur" id="idJoueur"> Joueur n° {{ user.id }}</p>
             <h4 class="titreCompte">Mon compte utilisateur</h4>
+
         </div>
     </div>
+
+    <!-- div du menu user -->
+
     <div id="partieBoutons">
+
+        <!-- premiere div: contient les menus users, utilise ngIf pour masquer/afficher les éléments -->
+
         <div class="majButton">
-            <button id="majButton1" >Mettre à Jour Mes Données</button>                       
-            <button id="majButton2" [routerLink]="['/accueil']" >Me Déconnecter</button>            
-            <button id="majButton3" >Me Désinscrire</button>                
+            <div>
+
+                <button type="submit" id="majButton1" (click)="openUpdateForm()">Mettre à jour mon email</button>
+
+                <div *ngIf="updateForm">
+                    <div class="alert alert-light" id="customUpdateForm" role="alert">
+                        <form (ngSubmit)='updateUser(form)' class="" id="formUpdate">
+
+                            <div class="form-group">
+                                <input [formControl] = "update" type="email" name="email" class="form-control" placeholder="email" id="email" value="{{ user.email }}">
+                            </div>
+            
+                            <button type="submit"  class="btn btn-primary" id="emailButton">M'inscrire</button>
+            
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <button id="majButton2" (click)="logout()" [routerLink]="['/connexion']">Me Déconnecter</button>
+
+            <div>
+                <button id="majButton3" (click)="openDeleteForm()" >Me Désinscrire</button>
+              
+                <div *ngIf="deleteForm">
+                    <div class="alert alert-light" id="customUpdateForm" role="alert">
+                        <form (ngSubmit)='deleteUser()' class="" id="formUpdate">
+
+                            <p> Êtes-vous sur de supprimer votre compte?</p>
+                            <button type="submit" ng-click="create=true" class="btn btn-primary" id="emailButton">Me désinscrire</button>
+            
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- seconde div: contient les infos sur le rang -->
+
         <div class="majButton2">
-            <button id="scoreButton" class="scoreButton">Consulter mes Scores</button>
-            <button id="scoreButton" class="scoreButton">Partager mes Scores</button>
+            <button id="scoreButton" class="scoreButton" (click)="openScore()">Consulter mes Scores</button>
+            <div *ngIf="scoreShow">
+                <div class="alert alert-light" id="customUpdateForm" role="alert">
+
+                        <p> Votre meilleur score est de: {{ user.ranking }} </p>
+                                
+                </div>
+            </div>
         </div>
     </div>
 </div>

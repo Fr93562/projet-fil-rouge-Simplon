@@ -44,10 +44,11 @@
     color: black;
 }
 #partieBoutons{
-    height: 560px;
+    min-height: 560px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 
     background-color: #56baed;
 }
@@ -66,7 +67,7 @@
 
     position: relative;
     left: 46px;
-
+    top: 100px;
 
     background-color: white;
     color: black;
@@ -108,3 +109,21 @@
     justify-content: space-around;
 }
   
+/* Modification du formulaire update */
+#formUpdate
+{
+    width: 330px;
+}
+#formUpdate p
+{
+    text-align: center;
+}
+#customUpdateForm
+{
+    border-radius: 15px;
+}
+#emailButton
+{
+    position: relative;
+    left: 120px;
+}

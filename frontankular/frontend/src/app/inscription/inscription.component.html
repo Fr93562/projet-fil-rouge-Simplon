@@ -1,0 +1,52 @@
+<!-- background de l'image-->
+<div class="image" id="image1">
+    <div class="row h-100 wrapper">
+
+        <!-- contient le block formulaire + logo -->
+
+        <div id="formContent">
+            <div>
+                <img src="../assets/vector.png" class="logo" alt="" />
+            </div>
+            
+            <div *ngIf="create">
+                <div class="alert alert-success" role="alert">
+                    L'utilisateur a bien été crée. Connectez-vous dans la rubrique connexion.
+                   </div>
+            </div>
+
+            <h2 class="ajout text-center" class="other" style="margin-top:100px;">Ajouter utilisateur</h2>
+
+            <!-- formulaire -->
+
+            <form [formGroup]='form' (ngSubmit)='postUser(form)' class="col-5 mx-auto">
+
+                <div class="form-group">
+                    <input formControlName=username class="form-control" id="login" placeholder="pseudo" rows="4">
+                </div>
+                <div class="form-group">
+                    <input type="email" formControlName=email class="form-control" placeholder="email" id="email">
+                </div>
+                <div class="form-group">
+                    <input type="password" formControlName=password class="form-control" placeholder="password" id="password">
+                </div>
+                <div class="form-group">
+                    <select multiple class="form-control" formControlName=langage id="langages">
+                        <option *ngFor="let langage of languages"> {{langage.language}}</option>
+                    </select> 
+                </div>
+
+                <button type="submit" ng-click="create=true" class="btn btn-primary">M'inscrire</button>
+
+            </form>
+            <br>
+            <!-- lien de retour -->
+            <div class="otherlien">
+
+                <a class="underlineHover col-6 " [routerLink]="['/connexion']">Retour au portail de connexion</a>
+                
+            </div>
+        </div>
+
+    </div>
+</div>

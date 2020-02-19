@@ -2,7 +2,9 @@ import { TypeUser} from './typeUser';
 import { Language } from './language';
 
 /**
- * corresponds aux joueurs et administrateurs
+ * objet joueur, possède des relations avec plusieurs objets:
+ * n - 1 avec typeUser
+ * n - n avec langage
  */
 export class User{
     id: number;

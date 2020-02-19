@@ -23,20 +23,20 @@ export class GestionLangagesComponent implements OnInit {
     this.form = new FormGroup({
       id: new FormControl(),
       language: new FormControl()
-    })
-   
+    })   
   }
-
 
   postLanguage(form: FormGroup) {
     this.language = new Language();
     this.language.id = null;
     this.language.language = form.controls['language'].value;
+
     this.languageService.createLangage(this.language).subscribe(maj => {
       this.languageService.getLanguagesList().subscribe((languages: Language[]) => {
         this.languages = languages
       });
     });
+
     this.form.reset();
   }
 
@@ -65,7 +65,7 @@ export class GestionLangagesComponent implements OnInit {
         this.languages = languages
       });
     });
+
     this.form.reset();
   }
-
 }

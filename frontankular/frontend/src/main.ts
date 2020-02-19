@@ -10,3 +10,10 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+// Initialise la session storage token
+if(sessionStorage.getItem('token') == null) {
+  
+  sessionStorage.setItem('token', '');
+  sessionStorage.setItem('username', '');
+}
