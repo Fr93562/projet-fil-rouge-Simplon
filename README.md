@@ -38,7 +38,7 @@ L'application back-end est une API:
 
 L'application front-end est une APS:
 
-- *A venir*
+- Elle utilise le framework Angular
 
 ## Designs de l'application
 
@@ -56,31 +56,17 @@ Lien Marvel App:
 
 ## Règles de jeu
 
-* Un plateau de jeu
-* Un dé
-* Des pions
-* Un portefeuille 
+* Un quizz
 
-La partie se termine quand le portefeuille de son adversaire est vide. Vous êtes alors le ``MEILLEUR développeur`` de la partie et votre portefeuille est bien rempli.
+Trivial'Code est un quizz sur le developpement et sur les langages de programmation.
 
 ## Déroulement de la partie
 
-Au début de la partie, chaque joueur dispose du même montant dans son portefeuille (par exemple 1000 euros fictif). 
-
-Le plateau forment un rond. Chaque case correspond à un thème. Si le langage choisi est java, il y aura des cases de couleurs différentes qui definiront le thème de la question. Pour java les différents thèmes seront les tableaux, les boucles, les conditions, les variables, les héritages, etc..  
-
-Le premier joueur est choisi de façon aléatoire par l'ordinateur. Il lance le dé et son pion avance sur le plateau.
-
-Son pion tombera sur une case avec un thème prédéfini. Selon le thème de la case, il pourra alors choisir le niveau de difficulté de la question (sélection entre niveau facile, moyen et difficile) et définir sa mise (sélection entre plusieurs mises possibles 50, 100, 150 et 200).
-
-Par exemple, il pourra choisir une question facile et misera 150 euros, l’autre joueur devra suivre sa mise. Avec un minuteur, la question sera posée à chaque joueur. Questions sous forme de quizz ou de pratique (par exemple une méthode ou il manquerait des mots a remplir).
-
-Dans cet exemple, si un joueur répond faux alors la mise du perdant ira au gagnant. Ainsi la cagnotte du gagnant sera créditée de 150 euros et l'autre joueur perdra sa mise. Si les deux joueurs répondent vrai alors ils gardent leurs 150 euros mais si chacun des joueurs répond faux alors ils perdent leurs mises respectives.
-
-Ensuite le deuxième joueur joue. Chaque joueur joue chacun son tour. La partie se termine quand un joueur n’a plus d’argent dans son portefeuille.
+Au debut de chaque partie, le joueur choisit un ou plusieurs langages de programmation avec lequel il veut jouer.
+La partie commence et l'ensemble des questions est posait au joueur.
 
 ## Compte utilisateur
-Si le joueur a un compte. Son score viendra alimenter son classement personnel et le classement des inscrits qui sera définie en nombre de mise remportée et en jeux gagnés.
+Si le joueur a un compte. Son score viendra alimenter son classement personnel.
 
 ## Fonctionnement de l'application
 
@@ -120,7 +106,7 @@ Type de Données passées dans le body de la requête :
 
 * Récuperer un utilisateur :
 
-Méthode GET - ``` http://localhost:8080/users/?username=test ```
+Méthode GET - ``` http://localhost:8080/users ```
 
 Réponse :
 
@@ -187,9 +173,6 @@ Réponse :
 
 Méthode PUT - ``` http://localhost:8080/users ```
 
-Un lien specifique existe pour l'administrateur.
-
-Méthode PUT - ``` http://localhost:8080/users/admin ```
 
 Type de données passées dans le body de la requête :
 
@@ -223,15 +206,8 @@ Réponse :
 ```
 User has been delete
 ```
-* Mise à jour du classement :
 
-Méthode PUT - ``` http://localhost:8080/users/ranking/?id=8&point=200 ```
 
-Réponse :
-
-```
-Ranking has been update
-```
 
 * Ajouter un type d'utilisateur :
 
@@ -714,7 +690,7 @@ Language has been delete
 ```
 * Ajout de la liaison Langage/Question :
 
-Méthode POST - ``` http://localhost:8080/langages/qlink ```
+Méthode POST - ``` http://localhost:8080/langages/link ```
 
 Type de Données passées dans le body de la requête:
 
