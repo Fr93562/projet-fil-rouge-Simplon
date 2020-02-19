@@ -53,7 +53,7 @@
 
             <div>
                 <button id="majButton3" (click)="openDeleteForm()" >Me Désinscrire</button>
-
+              
                 <div *ngIf="deleteForm">
                     <div class="alert alert-light" id="customUpdateForm" role="alert">
                         <form (ngSubmit)='deleteUser()' class="" id="formUpdate">
@@ -68,7 +68,6 @@
         </div>
 
         <!-- seconde div: contient les infos sur le rang -->
-
 
         <div class="majButton2">
             <button id="scoreButton" class="scoreButton" (click)="openScore()">Consulter mes Scores</button>

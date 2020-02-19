@@ -24,7 +24,6 @@ export class CategorieService extends RequestService {
     super(http, data);
   }
 
-
   /**
    * Récupere la liste des Categories d'une question
    */
