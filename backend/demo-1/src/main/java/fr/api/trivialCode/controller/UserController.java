@@ -114,7 +114,7 @@ public class UserController {
 
 			auth.setToken(request.getHeader("token"));
 
-			if (auth.verify()[1].equalsIgnoreCase("Joueur")) {
+			if (auth.verify()[1].equalsIgnoreCase("Joueur") || auth.verify()[1].equalsIgnoreCase("Administrateur")) {
 
 				Optional<User> verify = userRepository.findById(userData.getId());
 
@@ -168,16 +168,21 @@ public class UserController {
 	public ResponseEntity<ResponseObject> delete(@RequestBody User userData, HttpServletRequest request) {
 
 		if (request.getHeader("token") != null) {
-
+			
 			auth.setToken(request.getHeader("token"));
 
-			if (auth.verify()[1].equalsIgnoreCase("Administrateur")) {
+			if (auth.verify()[1].equalsIgnoreCase("Administrateur") || auth.verify()[1].equalsIgnoreCase("Joueur")) {
+				
+				System.out.println("entrée dans la partie suppression");
 
 				Optional<User> verify = userRepository.findByUsername(userData.getUsername());
 
 				if (verify.isPresent()) {
+					
+					System.out.println("entrée dans is present");
 
-					userRepository.delete(userData);
+
+					userRepository.delete(verify.get());
 					return new ResponseEntity<ResponseObject>(new ResponseObject("Success"),HttpStatus.OK);
 				}
 			}

@@ -182,13 +182,18 @@ public class Authentification {
 			String payload = jwt.subject;
 			String[] content = payload.split(",");
 
+			System.out.println(content);
 			if (content.length != 1) {
 
 				setUsername(content[0]);
 				setPassword(content[1]);
 			}
 	    	
-	      } catch (Exception e) {}
+	      } catch (Exception e) {
+	    	  
+				setUsername("fake");
+				setPassword("fake");
+	      }
 	}
 
 	/**
@@ -219,6 +224,7 @@ public class Authentification {
 	public String[] verify() {
 
 		String[] output = unauthorized();
+
 		decode();
 		
 		if (search()) {

@@ -10,11 +10,11 @@ public class ResponseObject {
 		this.text = text;
 	}
 
-	public String getTest() {
+	public String getText() {
 		return text;
 	}
 
-	public void setTest(String text) {
+	public void setText(String text) {
 		this.text = text;
 	}
 	
