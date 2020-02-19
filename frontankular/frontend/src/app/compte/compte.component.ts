@@ -19,6 +19,7 @@ export class CompteComponent implements OnInit
   public updateForm: boolean = false;
   public deleteForm: boolean = false;
   public scoreShow: boolean = false;
+  public createBotton: boolean = false;
 
   update = new FormControl('',Validators.required);
   delete = new FormControl('',Validators.required);
@@ -31,6 +32,7 @@ export class CompteComponent implements OnInit
 
     this.redirect();
     this.getUser();
+    this.openButtonAdmin();
   }
 
   /**
@@ -58,7 +60,7 @@ export class CompteComponent implements OnInit
    * appelle le service qui gère la déconnexion
    */
   logout() {
-
+    this.createBotton = false;
     this.auth.logout();
   }
 
@@ -76,6 +78,19 @@ export class CompteComponent implements OnInit
 
       this.updateForm = false;
     }
+  }
+
+/**
+ * affiche le bouton admin en verifiant si le type d'utilisateur
+   */
+  openButtonAdmin(){
+    
+    console.log(sessionStorage.getItem('role'));
+   
+    if (sessionStorage.getItem('role') === "Administrateur")
+  
+    this.createBotton = true;
+
   }
 
   /**

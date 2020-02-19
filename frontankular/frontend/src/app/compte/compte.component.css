@@ -44,7 +44,7 @@
     color: black;
 }
 #partieBoutons{
-    min-height: 560px;
+    min-height: 860px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -72,6 +72,10 @@
     background-color: white;
     color: black;
 }
+
+
+
+
 #scoreButton{
     width: 280px;
     height: 60px;
@@ -128,3 +132,10 @@
     left: 120px;
 }
 
+@media screen and (max-width: 800px) {
+    .majButton2
+    {
+      top: 50px;
+    }
+
+}
