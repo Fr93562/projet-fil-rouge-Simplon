@@ -55,5 +55,3 @@ export class CategorieService extends RequestService {
     return this.updateTrivialCode(this.url, newCategory);
   }
 }
-
-

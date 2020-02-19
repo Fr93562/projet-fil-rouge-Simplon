@@ -58,6 +58,3 @@ export class TypeUserService extends RequestService{
     return this.deleteTrivialCode(this.url, delType);
   }
 }
-
-
-

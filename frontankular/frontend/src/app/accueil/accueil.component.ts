@@ -13,13 +13,15 @@ import { UserService } from '../shared/services/user.service';
 })
 export class AccueilComponent implements OnInit {
   
-  users: User[];
+  users: User[] ;
+  userClass: User[] ;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
 
     this.getLadder();
+
   }
 
   /**
@@ -27,7 +29,10 @@ export class AccueilComponent implements OnInit {
    */
   getLadder() {
 
-    this.userService.getList().subscribe( users => this.users = users);
+    this.userService.getList().subscribe(users => {
+      this.users = users;
+      this.userClass = [this.users[0],this.users[1],this.users[2],this.users[3],this.users[4]];
+    });
   }
 
 }
