@@ -20,20 +20,20 @@ export class InscriptionComponent implements OnInit {
 
   public user: User;
   public form: FormGroup;
-  public languages : Language[];
-  public create : boolean = false;
+  public languages: Language[];
+  public create: boolean = false;
 
-  constructor(private userService: UserService, private languageService : LanguageService) { }
+  constructor(private userService: UserService, private languageService: LanguageService) { }
 
   ngOnInit() {
 
     this.languageService.getLanguagesList().subscribe(languages => this.languages = languages);
 
     this.form = new FormGroup({
-        email: new FormControl(),
-        password: new FormControl(),
-        username: new FormControl(),
-        langage: new FormControl()
+      email: new FormControl(),
+      password: new FormControl(),
+      username: new FormControl(),
+      langage: new FormControl()
     });
   }
 
@@ -44,9 +44,9 @@ export class InscriptionComponent implements OnInit {
    * @param form : données récupérées de l'html
    */
   postUser(form: FormGroup) {
-
+    let err: string;
     this.user = new User();
-    this.create = true;
+
 
     this.user.username = form.controls['username'].value;
     this.user.email = form.controls['email'].value;
@@ -55,18 +55,26 @@ export class InscriptionComponent implements OnInit {
     this.user.dateInscription = new Date();
     this.user.typeUser = null;
 
-    let lang: Array<string>;
+    let lang: Array<string> = [];
     let postLangages: Language[] = [];
     lang = form.controls['langage'].value;
-    lang.forEach(langage => {
-      this.languages.forEach(element => {
-        if (langage === element.language){
-          postLangages.push(element);
-        }
+    if (lang === null) {
+      alert("erreur : Choisissez un langage");
+    } else if (this.user.username.length > 30 || this.user.username.length < 4) {
+      alert("erreur : Vôtre nom doit contenir entre 4 et 30 caractères ");
+    } else if (this.user.password.length > 255 || this.user.password.length < 6) {
+      alert("erreur : Vôtre mot de passe doit contenir entre 6 et 255 caractères ");
+    } else {
+      lang.forEach(langage => {
+        this.languages.forEach(element => {
+          if (langage === element.language) {
+            postLangages.push(element);
+          }
+        });
       });
-    });
-    this.user.langage = postLangages;
-
-    this.userService.createUser(this.user).subscribe();
+      this.user.langage = postLangages;
+      this.create = true;
+      this.userService.createUser(this.user).subscribe();
+    }
   }
 }
