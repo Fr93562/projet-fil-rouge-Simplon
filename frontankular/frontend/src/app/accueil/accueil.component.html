@@ -48,10 +48,10 @@
     <h2 class="textCenter">Comparer vous à d'autres joueurs</h2>
 
     <div>        
-        <div *ngFor="let user of users">
+        <div *ngFor="let user of userClass">
 
           <span class="material-icons overlay">highlight</span>
-            <p class="question">{{ user.username }} -- {{ user.ranking }} </p>
+            <p class="question" >{{ user.username }} -- {{ user.ranking }} </p>
         </div>
     </div>
   </div>
